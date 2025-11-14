@@ -407,8 +407,14 @@ Generate detailed, actionable health plan based on their astrological profile.`;
   async generateFamilyContent(userProfile) {
     const gender = userProfile.gender || "male";
     const isMarried = userProfile.age >= 28; // Assume married if 28+
-    
-    const prompt = `Generate comprehensive family planning recommendations for ${userProfile.name} (Age: ${userProfile.age}, Gender: ${gender}, Life Path: ${userProfile.astrology.lifePath}, Planetary Ruler: ${userProfile.astrology.planetaryRuler.planet}, Mahadasha: ${userProfile.astrology.mahadasha}):
+
+    const prompt = `Generate comprehensive family planning recommendations for ${
+      userProfile.name
+    } (Age: ${userProfile.age}, Gender: ${gender}, Life Path: ${
+      userProfile.astrology.lifePath
+    }, Planetary Ruler: ${
+      userProfile.astrology.planetaryRuler.planet
+    }, Mahadasha: ${userProfile.astrology.mahadasha}):
 
 CRITICAL: Return ONLY valid JSON. No markdown, no explanations outside JSON.
 
