@@ -39,7 +39,10 @@ class BlueprintGenerator {
     const birthDate = new Date(dob);
     let age = today.getFullYear() - birthDate.getFullYear();
     const monthDiff = today.getMonth() - birthDate.getMonth();
-    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+    if (
+      monthDiff < 0 ||
+      (monthDiff === 0 && today.getDate() < birthDate.getDate())
+    ) {
       age--;
     }
     return age;
@@ -81,7 +84,7 @@ Be specific, practical, and aligned with Indian job market and astrological prin
         temperature: 0.8,
         maxTokens: 3000,
       });
-      
+
       // Try to parse JSON, if fails return as text
       try {
         return JSON.parse(response.content);
@@ -94,7 +97,10 @@ Be specific, practical, and aligned with Indian job market and astrological prin
       }
     } catch (error) {
       console.error("Error generating career content:", error);
-      return { error: "Failed to generate career content", message: error.message };
+      return {
+        error: "Failed to generate career content",
+        message: error.message,
+      };
     }
   }
 
@@ -449,4 +455,3 @@ Format as structured JSON with sections: priorityVisits, templesByGoal, roadmap,
 }
 
 module.exports = new BlueprintGenerator();
-
