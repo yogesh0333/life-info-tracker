@@ -3,26 +3,23 @@
 ## Problem
 Railway can't detect the Node.js app because it's looking at the root directory instead of `backend/`.
 
-## Solution
+## Solution: Set Root Directory in Railway (REQUIRED)
 
-### Option 1: Set Root Directory in Railway (RECOMMENDED)
+**CRITICAL**: You MUST set the Root Directory in Railway settings!
 
-1. Go to your Railway project
-2. Click on the backend service
+1. Go to your Railway project dashboard
+2. Click on the backend service (the one that's failing)
 3. Go to **Settings** tab
-4. Find **"Root Directory"** field
-5. Set it to: `backend`
-6. Click **Save**
-7. Railway will redeploy automatically
+4. Scroll down to find **"Root Directory"** field
+5. **Set it to**: `backend` (just the word "backend", no slash)
+6. Click **Save** or **Update**
+7. Railway will automatically redeploy
 
-### Option 2: Use railway.json (Already created)
-
-A `railway.json` file has been created at the root that tells Railway to:
-- Build from `backend` directory
-- Run `npm install` in backend
-- Start with `npm start` in backend
-
-If Option 1 doesn't work, Railway should automatically use the `railway.json` file.
+**Why this is needed:**
+- Railway auto-detects Node.js by looking for `package.json`
+- Your `package.json` is in the `backend/` folder
+- Without setting root directory, Railway looks at root and finds no Node.js app
+- Setting root directory to `backend` tells Railway where your app is
 
 ## Verify
 

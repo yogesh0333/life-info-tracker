@@ -21,13 +21,16 @@
 4. **Choose Repository**: `yogesh0333/life-info-tracker` ⚠️ NOT yogesh-life-blueprint!
 5. **Project Name**: `life-info-tracker` (or any name you prefer)
 
-6. **Configure Backend Service** (CRITICAL STEP):
+6. **Configure Backend Service** (CRITICAL - DO THIS FIRST!):
    - Click on the service that was created
    - Go to **Settings** tab
-   - **IMPORTANT**: Set **Root Directory**: `backend` ⚠️ This is required!
-   - **Build Command**: `npm install` (or leave default)
-   - **Start Command**: `npm start` (or leave default)
-   - **Save** the settings
+   - Scroll down to **"Root Directory"** field
+   - **Set Root Directory to**: `backend` (just type "backend", no slash)
+   - **DO NOT** change Build Command or Start Command (leave as default)
+   - Click **Save** or **Update**
+   - Railway will automatically redeploy
+   
+   ⚠️ **If you skip this step, deployment will fail!** Railway needs to know where your Node.js app is.
 
 7. **Add MongoDB Database** (NEW database for this project):
    - In the Railway project, click **"+ New"**
