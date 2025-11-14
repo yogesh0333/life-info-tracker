@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health & Fitness | <span data-user-name>Life</span> Blueprint</title>
+    
+    <!-- Auth Guard -->
+    <script src="auth-guard.js"></script>
+    <script src="../config.js"></script>
+    <script src="../js/userData.js"></script>
+    <script src="../js/pageInit.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <style>
+        .gradient-text { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .chart-container { position: relative; height: 300px; margin: 20px 0; }
+        .meal-card { transition: transform 0.3s; }
+        .meal-card:hover { transform: translateY(-5px); }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background: rgba(30, 41, 59, 0.95); backdrop-filter: blur(10px);">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="../home.html"><i class="fas fa-rocket me-2"></i><span data-user-name>Life</span> Blueprint</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../home.html">🏠 Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="career.html">💼 Career</a></li>
+                    <li class="nav-item"><a class="nav-link" href="business.html">💰 Business</a></li>
+                    <li class="nav-item"><a class="nav-link" href="lifestyle.html">👔 Lifestyle</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="health.html">💪 Health</a></li>
+                    <li class="nav-item"><a class="nav-link" href="family.html">👨‍👩‍👧‍👦 Family</a></li>
+                    <li class="nav-item"><a class="nav-link" href="finance.html">💎 Finance</a></li>
+                    <li class="nav-item"><a class="nav-link" href="spiritual.html">🙏 Spiritual</a></li>
+                    <li class="nav-item"><a class="btn btn-warning text-dark ms-2" href="action.html">✅ Start Now</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="padding-top: 100px; padding-bottom: 50px;">
+        <h1 class="display-3 fw-bold text-center mb-3 gradient-text" data-aos="fade-up">💪 Weight Loss & Fitness Plan</h1>
+        <p class="lead text-center text-muted mb-5" data-aos="fade-up">Current: 91 kg | Target: 68 kg | Timeline: 12 months</p>
+
+        <!-- Current Status -->
+        <div class="row mb-5" data-aos="fade-up">
+            <div class="col-lg-10 mx-auto">
+                <div class="card shadow-lg border-0 rounded-4">
+                    <div class="card-body p-4">
+                        <h3 class="h4 fw-bold mb-4 text-center">📊 Current Status</h3>
+                        <div class="row g-3">
+                            <div class="col-md-3 text-center">
+                                <div class="p-3 bg-danger text-white rounded-3">
+                                    <div class="h4 fw-bold">91 kg</div>
+                                    <small>Current Weight</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center">
+                                <div class="p-3 bg-success text-white rounded-3">
+                                    <div class="h4 fw-bold">68 kg</div>
+                                    <small>Target Weight</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center">
+                                <div class="p-3 bg-warning text-dark rounded-3">
+                                    <div class="h4 fw-bold">-23 kg</div>
+                                    <small>To Lose</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center">
+                                <div class="p-3 bg-info text-white rounded-3">
+                                    <div class="h4 fw-bold">12 mo</div>
+                                    <small>Timeline</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Weight Loss Timeline Chart -->
+        <div class="card shadow-lg border-0 rounded-4 mb-5" data-aos="fade-up">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0"><i class="fas fa-chart-line me-2"></i>Weight Loss Timeline</h4>
+            </div>
+            <div class="card-body">
+                <div class="chart-container">
+                    <canvas id="weightChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Weight Loss Timeline Table -->
+        <div class="card shadow-lg border-0 rounded-4 mb-5" data-aos="fade-up">
+            <div class="card-header bg-success text-white">
+                <h4 class="mb-0"><i class="fas fa-calendar-alt me-2"></i>Monthly Milestones</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Month</th>
+                                <th>Weight</th>
+                                <th>Loss</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Nov 2025</td>
+                                <td>91 kg</td>
+                                <td>Start</td>
+                                <td><span class="badge bg-danger">🔴 Obese</span></td>
+                            </tr>
+                            <tr>
+                                <td>Jan 2026</td>
+                                <td>84 kg</td>
+                                <td>-7 kg</td>
+                                <td><span class="badge bg-warning text-dark">🟠 Overweight</span></td>
+                            </tr>
+                            <tr>
+                                <td>Apr 2026</td>
+                                <td>76 kg</td>
+                                <td>-15 kg</td>
+                                <td><span class="badge bg-success">🟢 Normal</span></td>
+                            </tr>
+                            <tr>
+                                <td>Jul 2026</td>
+                                <td>71 kg</td>
+                                <td>-20 kg</td>
+                                <td><span class="badge bg-success">🟢 Fit</span></td>
+                            </tr>
+                            <tr class="table-success">
+                                <td><strong>Nov 2026</strong></td>
+                                <td><strong>68 kg</strong></td>
+                                <td><strong>-23 kg</strong></td>
+                                <td><span class="badge bg-success fs-6">✅ TARGET</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Daily Meal Plan -->
+        <h2 class="h2 fw-bold text-center mb-4 mt-5" data-aos="fade-up">🍽️ Daily Meal Plan (1,800 kcal)</h2>
+        
+        <div class="row g-4 mb-5">
+            <div class="col-lg-6" data-aos="fade-right">
+                <div class="card shadow-lg border-0 rounded-4 meal-card h-100">
+                    <div class="card-header bg-warning text-dark">
+                        <h5 class="mb-0">🌅 Early Morning (5:30 AM)</h5>
+                    </div>
+                    <div class="card-body">
+                        <p><i class="fas fa-glass-water text-primary me-2"></i>Warm water + lemon + honey</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="card shadow-lg border-0 rounded-4 meal-card h-100">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">🍳 Breakfast (7:00 AM) - 400 kcal</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="mb-0">
+                            <li>🥣 Oats (50g) + milk + banana + almonds</li>
+                            <li>☕ Green tea</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6" data-aos="fade-right">
+                <div class="card shadow-lg border-0 rounded-4 meal-card h-100">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="mb-0">🍎 Mid-Morning (10:30 AM) - 150 kcal</h5>
+                    </div>
+                    <div class="card-body">
+                        <p><i class="fas fa-apple-alt text-danger me-2"></i>Apple + almonds (5-6)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="card shadow-lg border-0 rounded-4 meal-card h-100">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">🍛 Lunch (1:00 PM) - 500 kcal</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="mb-0">
+                            <li>🍞 Roti (2) + dal + sabzi + salad + curd</li>
+                            <li>🚫 NO rice (first 3 months)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6" data-aos="fade-right">
+                <div class="card shadow-lg border-0 rounded-4 meal-card h-100">
+                    <div class="card-header bg-secondary text-white">
+                        <h5 class="mb-0">☕ Evening (4:30 PM) - 150 kcal</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>☕ Green tea + roasted makhana</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="card shadow-lg border-0 rounded-4 meal-card h-100">
+                    <div class="card-header bg-dark text-white">
+                        <h5 class="mb-0">🍲 Dinner (7:30 PM) - 400 kcal</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="mb-0">
+                            <li>🍞 Roti (2) + dal + sabzi + salad</li>
+                            <li>🚫 NO rice EVER at night</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Foods to Avoid -->
+        <div class="card shadow-lg border-0 rounded-4 mb-5 border-danger" data-aos="fade-up">
+            <div class="card-header bg-danger text-white">
+                <h4 class="mb-0"><i class="fas fa-ban me-2"></i>Foods to Avoid</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul>
+                            <li>❌ Fast food, fried items, sweets</li>
+                            <li>❌ Soft drinks, biscuits, chips</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul>
+                            <li>❌ White bread, white rice</li>
+                            <li>❌ Butter, ghee (excess), chocolate, ice cream</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exercise Plan -->
+        <h2 class="h2 fw-bold text-center mb-4 mt-5" data-aos="fade-up">💪 Exercise Plan (6 Days/Week)</h2>
+        
+        <div class="card shadow-lg border-0 rounded-4 mb-5" data-aos="fade-up">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0"><i class="fas fa-dumbbell me-2"></i>Weekly Schedule</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Day</th>
+                                <th>Morning (6:00 AM)</th>
+                                <th>Evening (6:00 PM)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Mon</strong></td>
+                                <td>Cardio (Walk 40min)</td>
+                                <td>Strength (Upper)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tue</strong></td>
+                                <td>Yoga + Pranayama</td>
+                                <td>Cardio (Cycle 30min)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Wed</strong></td>
+                                <td>Cardio (Walk 40min)</td>
+                                <td>Strength (Lower)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Thu</strong></td>
+                                <td>Yoga + Pranayama</td>
+                                <td>Cardio (Walk 30min)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Fri</strong></td>
+                                <td>Cardio (Walk 40min)</td>
+                                <td>Strength (Full Body)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sat</strong></td>
+                                <td>Yoga + Pranayama</td>
+                                <td>Cardio (Cycle 30min)</td>
+                            </tr>
+                            <tr class="table-secondary">
+                                <td><strong>Sun</strong></td>
+                                <td colspan="2" class="text-center">REST - Light Walk 30min</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Strength Training Details -->
+        <div class="row g-4 mb-5">
+            <div class="col-lg-4" data-aos="fade-up">
+                <div class="card shadow-lg border-0 rounded-4 h-100">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">💪 Upper Body (Mon)</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="mb-0">
+                            <li>Push-ups: 3×15</li>
+                            <li>Tricep dips: 3×15</li>
+                            <li>Plank: 3×60 sec</li>
+                            <li>Crunches: 3×20</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="card shadow-lg border-0 rounded-4 h-100">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">💪 Lower Body (Wed)</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="mb-0">
+                            <li>Squats: 3×20</li>
+                            <li>Lunges: 3×12 each</li>
+                            <li>Calf raises: 3×20</li>
+                            <li>Leg raises: 3×15</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="card shadow-lg border-0 rounded-4 h-100">
+                    <div class="card-header bg-warning text-dark">
+                        <h5 class="mb-0">💪 Full Body (Fri)</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="mb-0">
+                            <li>Burpees: 3×10</li>
+                            <li>Mountain climbers: 3×20</li>
+                            <li>Jump squats: 3×12</li>
+                            <li>Plank to push-up: 3×10</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Yoga & Pranayama -->
+        <div class="card shadow-lg border-0 rounded-4 mb-5" data-aos="fade-up">
+            <div class="card-header bg-info text-white">
+                <h4 class="mb-0"><i class="fas fa-om me-2"></i>Yoga & Pranayama (30 min)</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5 class="fw-bold">Surya Namaskar:</h5>
+                        <ul>
+                            <li>Week 1-4: 5 rounds</li>
+                            <li>Week 5-8: 8 rounds</li>
+                            <li>Week 9-12: 12 rounds</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5 class="fw-bold">Pranayama (10 min):</h5>
+                        <ul>
+                            <li>🔥 Kapalbhati: 100 breaths × 3</li>
+                            <li>🧘 Anulom Vilom: 10 min</li>
+                            <li>🔥 Bhastrika: 30 breaths × 2</li>
+                        </ul>
+                        <p class="text-muted"><small>Benefits: Burns belly fat, lung detox (smoking recovery)</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Supplements -->
+        <h2 class="h2 fw-bold text-center mb-4 mt-5" data-aos="fade-up">💊 Supplements</h2>
+        
+        <div class="row g-4 mb-5">
+            <div class="col-lg-6" data-aos="fade-right">
+                <div class="card shadow-lg border-0 rounded-4">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">🌿 Ayurvedic (Daily)</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="mb-0">
+                            <li><strong>Triphala</strong> (before sleep) - ₹150-300/month<br>
+                                <small>🔥 Metabolism, digestion, detox</small></li>
+                            <li><strong>Ashwagandha</strong> (after breakfast) - ₹200-400/month<br>
+                                <small>😌 Stress, energy, muscle</small></li>
+                            <li><strong>Brahmi</strong> (after breakfast) - ₹150-300/month<br>
+                                <small>🧠 Focus, brain (developer needs)</small></li>
+                            <li><strong>Giloy</strong> (after breakfast) - ₹150-250/month<br>
+                                <small>🛡️ Immunity, detox (smoking)</small></li>
+                        </ul>
+                        <div class="alert alert-success mt-3 mb-0">
+                            <strong>Total: ₹650-1,250/month</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="card shadow-lg border-0 rounded-4">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">💊 Modern (Optional)</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="mb-0">
+                            <li>Multivitamin - ₹300-500/month</li>
+                            <li>Omega-3 - ₹400-600/month</li>
+                            <li>Vitamin D3 - ₹200-300/month</li>
+                            <li>Protein Powder - ₹1,500-2,500/month</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Smoking Recovery -->
+        <div class="card shadow-lg border-0 rounded-4 mb-5 border-warning" data-aos="fade-up">
+            <div class="card-header bg-warning text-dark">
+                <h4 class="mb-0"><i class="fas fa-lungs me-2"></i>Smoking Recovery - Lung Detox (6-12 months)</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5 class="fw-bold">Daily:</h5>
+                        <ul>
+                            <li>🍵 Tulsi tea (2 cups)</li>
+                            <li>🍵 Ginger tea (1 cup)</li>
+                            <li>🥛 Turmeric milk (night)</li>
+                            <li>💊 Vasaka tablet (2×/day)</li>
+                            <li>🍎 Amla (1 piece/day)</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5 class="fw-bold">Pranayama (CRITICAL):</h5>
+                        <ul>
+                            <li>🫁 Kapalbhati: 100×3 daily</li>
+                            <li>🫁 Anulom Vilom: 10 min daily</li>
+                            <li>🫁 Bhastrika: 30×2 daily</li>
+                        </ul>
+                        <h5 class="fw-bold mt-3">Timeline:</h5>
+                        <ul>
+                            <li>Month 1-3: Cough, mucus clearing</li>
+                            <li>Month 4-6: Breathing improves</li>
+                            <li>Month 7-12: Lungs 80-90% recovered</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Monthly Cost -->
+        <div class="card shadow-lg border-0 rounded-4 mb-5" data-aos="fade-up">
+            <div class="card-header bg-dark text-white">
+                <h4 class="mb-0"><i class="fas fa-rupee-sign me-2"></i>Monthly Cost Breakdown</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="chart-container">
+                            <canvas id="costChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <table class="table">
+                            <tr>
+                                <td>🥗 Healthy food</td>
+                                <td class="text-end"><strong>₹2,000</strong></td>
+                            </tr>
+                            <tr>
+                                <td>💪 Gym (optional)</td>
+                                <td class="text-end"><strong>₹1,500</strong></td>
+                            </tr>
+                            <tr>
+                                <td>💊 Supplements</td>
+                                <td class="text-end"><strong>₹1,000</strong></td>
+                            </tr>
+                            <tr>
+                                <td>📱 Apps</td>
+                                <td class="text-end"><strong>₹200</strong></td>
+                            </tr>
+                            <tr>
+                                <td>👕 New clothes</td>
+                                <td class="text-end"><strong>₹1,000</strong></td>
+                            </tr>
+                            <tr class="table-success">
+                                <td><strong>TOTAL</strong></td>
+                                <td class="text-end"><strong>₹5,700</strong></td>
+                            </tr>
+                        </table>
+                        <div class="alert alert-info">
+                            <strong>Annual:</strong> ₹68,400 (3% of ₹24 LPA) ✅
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Astrological Support -->
+        <div class="card shadow-lg border-0 rounded-4 mb-5" data-aos="fade-up">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0"><i class="fas fa-star me-2"></i>Astrological Support</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5 class="fw-bold">🌙 Moon in Cancer</h5>
+                        <p><strong>Problem:</strong> Emotional eating</p>
+                        <p><strong>Solution:</strong> Meditation, yoga, healthy comfort foods</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h5 class="fw-bold">🪐 Saturn (Life Path 4)</h5>
+                        <p><strong>Strength:</strong> Discipline, routine</p>
+                        <p><strong>Method:</strong> Strict schedule, consistent effort</p>
+                        <p><strong>Result:</strong> Slow but PERMANENT weight loss ✅</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h5 class="fw-bold">☿ Mercury (Mahadasha)</h5>
+                        <p><strong>Strength:</strong> Intelligence, planning</p>
+                        <p><strong>Method:</strong> Track everything, learn, adapt</p>
+                        <p><strong>Tools:</strong> MyFitnessPal, Google Fit</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Success Tips -->
+        <div class="row g-4 mb-5">
+            <div class="col-lg-6" data-aos="fade-right">
+                <div class="card shadow-lg border-0 rounded-4 border-success">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">✅ DO</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="mb-0">
+                            <li>💧 Drink 8-10 glasses water/day</li>
+                            <li>😴 Sleep 7-8 hours (10 PM - 6 AM)</li>
+                            <li>🍽️ Eat at same time daily</li>
+                            <li>🥗 Eat salad before meals</li>
+                            <li>🚶 Walk 10,000 steps/day</li>
+                            <li>📊 Track weight weekly</li>
+                            <li>🧘 Manage stress (yoga, meditation)</li>
+                            <li>🙏 Continue Hanuman Chalisa (discipline)</li>
+                            <li>💪 Be patient (Saturn rewards patience)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="card shadow-lg border-0 rounded-4 border-danger">
+                    <div class="card-header bg-danger text-white">
+                        <h5 class="mb-0">❌ DON'T</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="mb-0">
+                            <li>Skip meals</li>
+                            <li>Eat junk food</li>
+                            <li>Sleep late (after 11 PM)</li>
+                            <li>Weigh daily (only weekly)</li>
+                            <li>Compare with others</li>
+                            <li>Give up (consistency is key)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final Goal -->
+        <div class="card shadow-lg border-0 rounded-4 mb-5" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;" data-aos="fade-up">
+            <div class="card-body p-5 text-center">
+                <h2 class="h2 fw-bold mb-4">🏆 Final Goal - By Nov 2026</h2>
+                <div class="row g-4">
+                    <div class="col-md-3">
+                        <div class="p-3 bg-white text-dark rounded">
+                            <div class="h4 fw-bold">68 kg</div>
+                            <small>Weight (from 91 kg)</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="p-3 bg-white text-dark rounded">
+                            <div class="h4 fw-bold">32"</div>
+                            <small>Waist (from 38"+)</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="p-3 bg-white text-dark rounded">
+                            <div class="h4 fw-bold">15%</div>
+                            <small>Body Fat (from 30%+)</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="p-3 bg-white text-dark rounded">
+                            <div class="h4 fw-bold">High</div>
+                            <small>Energy & Confidence</small>
+                        </div>
+                    </div>
+                </div>
+                <p class="mt-4 mb-0 h5">🎯 Ready for marriage (2027-2028)</p>
+            </div>
+        </div>
+
+        <!-- Back Button -->
+        <div class="text-center mt-5">
+            <a href="../home.html" class="btn btn-primary btn-lg px-5">
+                <i class="fas fa-arrow-left me-2"></i>Back to Home
+            </a>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-2"><strong>🪐 Saturn:</strong> "Discipline + Patience = Permanent transformation!"</p>
+            <p class="mb-0"><strong>Start:</strong> November 21, 2025 (Auspicious date) 🚀</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        // Weight Loss Chart
+        const weightCtx = document.getElementById('weightChart').getContext('2d');
+        new Chart(weightCtx, {
+            type: 'line',
+            data: {
+                labels: ['Nov 2025', 'Jan 2026', 'Apr 2026', 'Jul 2026', 'Nov 2026'],
+                datasets: [{
+                    label: 'Weight (kg)',
+                    data: [91, 84, 76, 71, 68],
+                    borderColor: '#dc3545',
+                    backgroundColor: 'rgba(220, 53, 69, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 60,
+                        max: 95,
+                        title: { display: true, text: 'Weight (kg)' }
+                    }
+                },
+                plugins: {
+                    legend: { display: true },
+                    title: { display: true, text: 'Weight Loss Progress (12 Months)' }
+                }
+            }
+        });
+
+        // Cost Chart
+        const costCtx = document.getElementById('costChart').getContext('2d');
+        new Chart(costCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Healthy Food', 'Gym', 'Supplements', 'Apps', 'Clothes'],
+                datasets: [{
+                    data: [2000, 1500, 1000, 200, 1000],
+                    backgroundColor: ['#28a745', '#17a2b8', '#ffc107', '#6c757d', '#dc3545'],
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: true, position: 'right' },
+                    title: { display: true, text: 'Monthly Health Budget (₹5,700)' }
+                }
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", async function() {
+            await PageInit.init();
+            AOS.init({ duration: 1000, once: true });
+        });
+    </script>
+</body>
+</html>

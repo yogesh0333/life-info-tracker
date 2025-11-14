@@ -1,0 +1,1888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lifestyle & Brands | <span data-user-name>Life</span> Blueprint</title>
+    
+    <!-- Auth Guard -->
+    <script src="auth-guard.js"></script>
+    <script src="../config.js"></script>
+    <script src="../js/userData.js"></script>
+    <script src="../js/pageInit.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <style>
+        .gradient-text { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .brand-card { transition: all 0.3s ease; }
+        .brand-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.2) !important; }
+        .score-badge { font-size: 1.2rem; font-weight: bold; }
+        .chart-container { position: relative; height: 300px; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background: rgba(30, 41, 59, 0.95); backdrop-filter: blur(10px);">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="../home.html"><i class="fas fa-rocket me-2"></i><span data-user-name>Life</span> Blueprint</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../home.html">🏠 Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="career.html">💼 Career</a></li>
+                    <li class="nav-item"><a class="nav-link" href="business.html">💰 Business</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="lifestyle.html">👔 Lifestyle</a></li>
+                    <li class="nav-item"><a class="nav-link" href="health.html">💪 Health</a></li>
+                    <li class="nav-item"><a class="nav-link" href="family.html">👨‍👩‍👧‍👦 Family</a></li>
+                    <li class="nav-item"><a class="nav-link" href="finance.html">💎 Finance</a></li>
+                    <li class="nav-item"><a class="nav-link" href="spiritual.html">🙏 Spiritual</a></li>
+                    <li class="nav-item"><a class="btn btn-warning text-dark ms-2" href="action.html">✅ Start Now</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="padding-top: 100px; padding-bottom: 50px;">
+        <h1 class="display-3 fw-bold text-center mb-3 gradient-text" data-aos="fade-up">✨ Practical Lifestyle Premium Lifestyle & Magnetic Aura Magnetic Aura</h1>
+        <p class="lead text-center text-muted mb-5" data-aos="fade-up">Affordable Brands + Occult Practices for Maximum Impact</p>
+
+        <div class="alert alert-dark mx-auto mb-5" style="max-width: 900px;" data-aos="fade-up">
+            <h5 class="fw-bold mb-2">🔥 Your Goal: Magnetic, Attractive, Unforgettable Presence</h5>
+            <p class="mb-2"><strong>Budget:</strong> ₹2L/month (₹24 LPA) | <strong>Lifestyle Investment: ₹5k-10k/month</p>
+            <p class="mb-0"><strong>Rule:</strong> Quality over quantity. Strategic purchases that work with your astrological energy!</p>
+        </div>
+
+        <!-- FRAGRANCE TYPES EXPLAINED -->
+        <h2 class="h2 fw-bold text-center mb-4 mt-5" data-aos="fade-up">👑 FRAGRANCE TYPES - EDP, EDT & ATTAR</h2>
+        <p class="text-center text-muted mb-5" data-aos="fade-up">Understanding fragrance types for maximum impact</p>
+
+        <div class="card shadow-lg border-0 rounded-4 mb-5 border-info" style="border-width: 3px !important;" data-aos="fade-up">
+            <div class="card-header bg-info text-white py-3">
+                <h3 class="h4 mb-0">📚 Fragrance Types Explained</h3>
+            </div>
+            <div class="card-body p-4">
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="card border-primary h-100">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0">💧 EDP (Eau de Parfum)</h5>
+                            </div>
+                            <div class="card-body">
+                                <ul class="small">
+                                    <li><strong>Concentration:</strong> 15-20% perfume oil</li>
+                                    <li><strong>Longevity:</strong> 6-8 hours</li>
+                                    <li><strong>Projection:</strong> Strong, noticeable</li>
+                                    <li><strong>Best For:</strong> Parties, events, special occasions</li>
+                                    <li><strong>Price Range:</strong> ₹500-2,500</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card border-success h-100">
+                            <div class="card-header bg-success text-white">
+                                <h5 class="mb-0">💨 EDT (Eau de Toilette)</h5>
+                            </div>
+                            <div class="card-body">
+                                <ul class="small">
+                                    <li><strong>Concentration:</strong> 5-15% perfume oil</li>
+                                    <li><strong>Longevity:</strong> 3-5 hours</li>
+                                    <li><strong>Projection:</strong> Moderate, fresh</li>
+                                    <li><strong>Best For:</strong> Office, daily wear, gym</li>
+                                    <li><strong>Price Range:</strong> ₹300-1,500</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card border-warning h-100">
+                            <div class="card-header bg-warning text-dark">
+                                <h5 class="mb-0">🕉️ ATTAR (Traditional)</h5>
+                            </div>
+                            <div class="card-body">
+                                <ul class="small">
+                                    <li><strong>Concentration:</strong> Pure, no alcohol</li>
+                                    <li><strong>Longevity:</strong> 8-24 hours (longest!)</li>
+                                    <li><strong>Projection:</strong> Subtle, intimate</li>
+                                    <li><strong>Best For:</strong> Spiritual, traditional events, daily</li>
+                                    <li><strong>Price Range:</strong> ₹500-3,000</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EDP BRANDS -->
+        <h2 class="h2 fw-bold text-center mb-4 mt-5" data-aos="fade-up">💧 EDP (Eau de Parfum) - Quality Brands That Actually Work</h2>
+        <p class="text-center text-muted mb-5" data-aos="fade-up">Real fragrances for a powerful identity - not chemical cocktails</p>
+
+        <div class="card shadow-lg border-0 rounded-4 mb-5 border-primary" style="border-width: 3px !important;" data-aos="fade-up">
+            <div class="card-header bg-primary text-white py-3">
+                <h3 class="h4 mb-0">💧 Top EDP Brands (₹1,200-3,500) - Ground-Tested Quality</h3>
+            </div>
+            <div class="card-body p-4">
+                <div class="alert alert-warning mb-4">
+                    <strong>⚠️ NO CHEAP SYNTHETICS:</strong> These are real fragrances that work on the ground. Reviews prove they create the "calm, classy, grounded" energy you need - not "college boy" or "taxi driver" vibes.
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="card border-danger h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0">🔥 Lattafa Asad EDP</h5>
+                                <span class="badge bg-danger">10/10 ⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Price:</strong> ₹1,500-2,500 (100ml EDP)</p>
+                                <p><strong>Type:</strong> EDP - Warm, spicy, animalic</p>
+                                <ul class="small">
+                                    <li><strong>Longevity:</strong> 8-10 hours (beast mode!)</li>
+                                    <li><strong>Projection:</strong> Strong, magnetic presence</li>
+                                    <li><strong>Best For:</strong> Parties, nightlife, dates - Your "dark" scent</li>
+                                    <li><strong>Reviews:</strong> Compliment-puller, stands out</li>
+                                    <li><strong>Astro:</strong> Mars 10/10, Saturn 9/10</li>
+                                    <li><strong>Numerology:</strong> 8 (Saturn) ✅</li>
+                                </ul>
+                                <div class="alert alert-danger mt-3 mb-0">
+                                    <strong>Ground Truth:</strong> This is your "powerful, confident aura" scent. Works!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card border-dark h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0">⚡ Club de Nuit Intense Man EDP</h5>
+                                <span class="badge bg-dark">10/10 ⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Price:</strong> ₹2,000-3,500 (105ml EDP)</p>
+                                <p><strong>Type:</strong> EDP - Strong, masculine, powerful</p>
+                                <ul class="small">
+                                    <li><strong>Longevity:</strong> 10-12 hours (nuclear!)</li>
+                                    <li><strong>Projection:</strong> Immense presence, projects authority</li>
+                                    <li><strong>Best For:</strong> Parties, nightlife, special events</li>
+                                    <li><strong>Reviews:</strong> "Best clone ever", massive compliments</li>
+                                    <li><strong>Astro:</strong> Sun 10/10, Jupiter 10/10</li>
+                                    <li><strong>Numerology:</strong> 1 (Sun) ✅</li>
+                                </ul>
+                                <div class="alert alert-dark mt-3 mb-0">
+                                    <strong>Ground Truth:</strong> Projects immense presence. This is your "invisible armor"!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EDT BRANDS -->
+        <h2 class="h2 fw-bold text-center mb-4 mt-5" data-aos="fade-up">💨 EDT (Eau de Toilette) - Quality Brands That Actually Work</h2>
+        <p class="text-center text-muted mb-5" data-aos="fade-up">Clean, trustworthy, sophisticated - for your Jupiter-ruled energy</p>
+
+        <div class="card shadow-lg border-0 rounded-4 mb-5 border-success" style="border-width: 3px !important;" data-aos="fade-up">
+            <div class="card-header bg-success text-white py-3">
+                <h3 class="h4 mb-0">💨 Top EDT Brands (₹1,200-2,500) - Ground-Tested Quality</h3>
+            </div>
+            <div class="card-body p-4">
+                <div class="alert alert-success mb-4">
+                    <strong>✅ REAL QUALITY:</strong> These create "calm, classy, grounded" energy. Perfect for office, professional settings, and daily wear. No synthetic chemical bombs!
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="card border-primary h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0">💼 Skinn by Titan Raw EDT</h5>
+                                <span class="badge bg-primary">10/10 ⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Price:</strong> ₹1,200-1,800 (100ml EDT)</p>
+                                <p><strong>Type:</strong> EDT - Clean, sophisticated, non-offensive</p>
+                                <ul class="small">
+                                    <li><strong>Longevity:</strong> 5-7 hours</li>
+                                    <li><strong>Projection:</strong> Moderate, professional</li>
+                                    <li><strong>Best For:</strong> Office, professional settings - THE ultimate professional scent</li>
+                                    <li><strong>Reviews:</strong> "Clean, trustworthy aura", universally loved</li>
+                                    <li><strong>Astro:</strong> Mercury 10/10, Jupiter 9/10</li>
+                                    <li><strong>Energetic:</strong> ✅ Amplifies Jupiter's calm authority - professional, grounded</li>
+                                </ul>
+                                <div class="alert alert-primary mt-3 mb-0">
+                                    <strong>Ground Truth:</strong> This is your "clean, trustworthy aura" scent. Works perfectly for office!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card border-info h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0">🌊 Ajmal Silver Shade EDT</h5>
+                                <span class="badge bg-info">9.5/10 ⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Price:</strong> ₹1,500-2,200 (100ml EDT)</p>
+                                <p><strong>Type:</strong> EDT - Soft, aquatic, intelligent</p>
+                                <ul class="small">
+                                    <li><strong>Longevity:</strong> 6-8 hours</li>
+                                    <li><strong>Projection:</strong> Calm competence, projects intelligence</li>
+                                    <li><strong>Best For:</strong> Office, business meetings, professional</li>
+                                    <li><strong>Reviews:</strong> "Soft, intelligent scent", projects calm competence</li>
+                                    <li><strong>Astro:</strong> Mercury 10/10, Moon 9/10</li>
+                                    <li><strong>Numerology:</strong> 3 (Jupiter) ✅ YOUR BIRTH DATE!</li>
+                                </ul>
+                                <div class="alert alert-info mt-3 mb-0">
+                                    <strong>Ground Truth:</strong> Projects calm competence. Perfect for your Virgo intellect!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card border-success h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0">🌊 Skinn by Titan Amalfi Bleu EDT</h5>
+                                <span class="badge bg-success">9.5/10 ⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Price:</strong> ₹1,200-1,800 (100ml EDT)</p>
+                                <p><strong>Type:</strong> EDT - Fresh, sophisticated, universally appealing</p>
+                                <ul class="small">
+                                    <li><strong>Longevity:</strong> 5-7 hours</li>
+                                    <li><strong>Projection:</strong> Fresh, magnetic, attractive</li>
+                                    <li><strong>Best For:</strong> Social events, dates, casual outings</li>
+                                    <li><strong>Reviews:</strong> "Fresh, sophisticated", universally appealing</li>
+                                    <li><strong>Astro:</strong> Venus 10/10, Jupiter 9/10</li>
+                                    <li><strong>Numerology:</strong> 3 (Jupiter) ✅</li>
+                                </ul>
+                                <div class="alert alert-success mt-3 mb-0">
+                                    <strong>Ground Truth:</strong> Your "magnetic, attractive aura" scent. Works for social settings!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card border-warning h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0">💎 Davidoff Cool Water EDT</h5>
+                                <span class="badge bg-warning text-dark">9/10 ⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Price:</strong> ₹1,800-2,500 (125ml EDT)</p>
+                                <p><strong>Type:</strong> EDT - Classic, fresh, masculine, reliable</p>
+                                <ul class="small">
+                                    <li><strong>Longevity:</strong> 6-8 hours</li>
+                                    <li><strong>Projection:</strong> Fresh, masculine, reliable</li>
+                                    <li><strong>Best For:</strong> Social events, dates, daily wear</li>
+                                    <li><strong>Reviews:</strong> "A classic for a reason", fresh, masculine, reliable</li>
+                                    <li><strong>Astro:</strong> Sun 9/10, Jupiter 9/10</li>
+                                    <li><strong>Numerology:</strong> 1 (Sun) ✅</li>
+                                </ul>
+                                <div class="alert alert-warning mt-3 mb-0">
+                                    <strong>Ground Truth:</strong> A timeless classic. Fresh, masculine, never fails!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ATTAR BRANDS -->
+        <h2 class="h2 fw-bold text-center mb-4 mt-5" data-aos="fade-up">🕉️ ATTAR (Traditional Indian) - Best Brands</h2>
+        <p class="text-center text-muted mb-5" data-aos="fade-up">Alcohol-free, long-lasting, spiritual fragrances</p>
+
+        <div class="card shadow-lg border-0 rounded-4 mb-5 border-warning" style="border-width: 3px !important;" data-aos="fade-up">
+            <div class="card-header bg-warning text-dark py-3">
+                <h3 class="h4 mb-0">🕉️ Top Attar Brands (₹500-3,000)</h3>
+            </div>
+            <div class="card-body p-4">
+                <div class="alert alert-info mb-4">
+                    <strong>Why Attars:</strong> Natural, alcohol-free, long-lasting (8-24 hours!), spiritual significance, prayer-friendly, deeply attractive to Indian women!
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="card border-dark h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0">🖤 Ajmal Oudh Attar</h5>
+                                <span class="badge bg-dark">10/10 ⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Price:</strong> ₹1,500-3,000 (12ml)</p>
+                                <p><strong>Type:</strong> Pure Oudh Attar</p>
+                                <ul class="small">
+                                    <li><strong>Longevity:</strong> 12-24 hours (longest!)</li>
+                                    <li><strong>Projection:</strong> Subtle, intimate</li>
+                                    <li><strong>Best For:</strong> Weddings, religious events, special occasions</li>
+                                    <li><strong>Astro:</strong> Jupiter 10/10, Saturn 9/10</li>
+                                    <li><strong>Energetic:</strong> ✅ Spiritual protection, divine connection (Jupiter expansion)</li>
+                                </ul>
+                                <div class="alert alert-dark mt-3 mb-0">
+                                    <strong>Occult Benefit:</strong> Activates root chakra, spiritual protection!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card border-danger h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0">🔥 Swiss Arabian Musk Attar</h5>
+                                <span class="badge bg-danger">9.5/10 ⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Price:</strong> ₹800-1,500 (12ml)</p>
+                                <p><strong>Type:</strong> Musk Attar</p>
+                                <ul class="small">
+                                    <li><strong>Longevity:</strong> 10-18 hours</li>
+                                    <li><strong>Projection:</strong> Subtle, sensual</li>
+                                    <li><strong>Best For:</strong> Dates, romantic evenings, daily wear</li>
+                                    <li><strong>Astro:</strong> Venus 10/10, Moon 9/10</li>
+                                    <li><strong>Numerology:</strong> 6 (Venus) ✅</li>
+                                </ul>
+                                <div class="alert alert-danger mt-3 mb-0">
+                                    <strong>Occult Secret:</strong> Natural pheromone amplifier! Creates attraction!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card border-success h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0">🌳 Kannauj Sandalwood Attar</h5>
+                                <span class="badge bg-success">9/10 ⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Price:</strong> ₹1,000-2,500 (12ml)</p>
+                                <p><strong>Type:</strong> Pure Sandalwood Attar</p>
+                                <ul class="small">
+                                    <li><strong>Longevity:</strong> 8-16 hours</li>
+                                    <li><strong>Projection:</strong> Calming, peaceful</li>
+                                    <li><strong>Best For:</strong> Office, meditation, spiritual practices</li>
+                                    <li><strong>Astro:</strong> Mercury 10/10, Jupiter 9/10</li>
+                                    <li><strong>Numerology:</strong> 3 (Jupiter) ✅ YOUR BIRTH DATE!</li>
+                                </ul>
+                                <div class="alert alert-success mt-3 mb-0">
+                                    <strong>Ayurvedic Benefit:</strong> Calms mind, enhances focus!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card border-primary h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0">🌹 Al Rehab Rose Attar</h5>
+                                <span class="badge bg-primary">8.5/10 ⭐⭐⭐⭐</span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Price:</strong> ₹500-1,200 (12ml)</p>
+                                <p><strong>Type:</strong> Rose Attar</p>
+                                <ul class="small">
+                                    <li><strong>Longevity:</strong> 8-12 hours</li>
+                                    <li><strong>Projection:</strong> Romantic, floral</li>
+                                    <li><strong>Best For:</strong> Romantic dates, home use, wife's family</li>
+                                    <li><strong>Astro:</strong> Venus 10/10, Moon 9/10</li>
+                                    <li><strong>Numerology:</strong> 6 (Venus) ✅</li>
+                                </ul>
+                                <div class="alert alert-primary mt-3 mb-0">
+                                    <strong>Spiritual Benefit:</strong> Opens heart chakra, creates loving environment!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card border-info h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0">💫 Meena Perfumery Attar</h5>
+                                <span class="badge bg-info">8/10 ⭐⭐⭐⭐</span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Price:</strong> ₹600-1,500 (12ml)</p>
+                                <p><strong>Type:</strong> Traditional Kannauj Attar</p>
+                                <ul class="small">
+                                    <li><strong>Longevity:</strong> 10-20 hours</li>
+                                    <li><strong>Projection:</strong> Authentic, traditional</li>
+                                    <li><strong>Best For:</strong> Traditional events, spiritual practices</li>
+                                    <li><strong>Astro:</strong> Jupiter 9/10, Saturn 8/10</li>
+                                    <li><strong>Numerology:</strong> 3 (Jupiter) ✅</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card border-warning h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0">🌟 Gulabsingh Johrimal Attar</h5>
+                                <span class="badge bg-warning text-dark">8/10 ⭐⭐⭐⭐</span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Price:</strong> ₹700-1,800 (12ml)</p>
+                                <p><strong>Type:</strong> Traditional Rose/Musk blends</p>
+                                <ul class="small">
+                                    <li><strong>Longevity:</strong> 8-15 hours</li>
+                                    <li><strong>Projection:</strong> Classic, elegant</li>
+                                    <li><strong>Best For:</strong> Weddings, traditional occasions</li>
+                                    <li><strong>Astro:</strong> Venus 9/10, Jupiter 8/10</li>
+                                    <li><strong>Numerology:</strong> 6 (Venus) ✅</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert alert-success mt-4">
+                    <h5 class="fw-bold mb-2">🎯 How to Apply Attars:</h5>
+                    <ul class="mb-0">
+                        <li><strong>Amount:</strong> 1-2 tiny dabs (attars are CONCENTRATED!)</li>
+                        <li><strong>Where:</strong> Behind ears, inside wrists, behind knees</li>
+                        <li><strong>When:</strong> After shower, on clean skin (lasts longer)</li>
+                        <li><strong>Layering:</strong> Can layer with EDP/EDT (oud + EDP = powerful!)</li>
+                        <li><strong>Storage:</strong> Keep in cool, dark place (lasts years!)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- FRAGRANCES BY OCCASION -->
+        <h2 class="h2 fw-bold text-center mb-4 mt-5" data-aos="fade-up">👑 FRAGRANCES BY OCCASION - Quality That Works</h2>
+        <p class="text-center text-muted mb-5" data-aos="fade-up">Strategic scent selection for your "Sovereign Magician" archetype</p>
+
+        <!-- FOR PARTIES & NIGHTLIFE -->
+        <div class="card shadow-lg border-0 rounded-4 mb-5 border-danger" style="border-width: 3px !important;" data-aos="fade-up">
+            <div class="card-header bg-danger text-white py-3">
+                <h3 class="h4 mb-0">🎉 FOR PARTIES & NIGHTLIFE - Powerful, Confident Aura</h3>
+            </div>
+            <div class="card-body p-4">
+                <div class="alert alert-danger mb-4">
+                    <strong>Goal:</strong> Powerful, confident aura. These scents project immense presence - your "invisible armor"!
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="card border-danger h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0">🔥 Lattafa Asad EDP</h5>
+                                <span class="badge bg-danger">10/10 ⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Price:</strong> ₹1,500-2,500 (100ml EDP)</p>
+                                <p><strong>Type:</strong> EDP - Warm, spicy, animalic</p>
+                                <ul class="small">
+                                    <li><strong>Longevity:</strong> 8-10 hours (beast mode!)</li>
+                                    <li><strong>Projection:</strong> Strong, magnetic presence</li>
+                                    <li><strong>Best For:</strong> Parties, nightlife, dates - Your "dark" scent</li>
+                                    <li><strong>Reviews:</strong> Compliment-puller, stands out</li>
+                                    <li><strong>Astro:</strong> Mars 10/10, Saturn 9/10</li>
+                                    <li><strong>Numerology:</strong> 8 (Saturn) ✅</li>
+                                </ul>
+                                <div class="alert alert-danger mt-3 mb-0">
+                                    <strong>Ground Truth:</strong> This is your "powerful, confident aura" scent. Works!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="card border-dark h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0">⚡ Club de Nuit Intense Man EDP</h5>
+                                <span class="badge bg-dark">10/10 ⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Price:</strong> ₹2,000-3,500 (105ml EDP)</p>
+                                <p><strong>Type:</strong> EDP - Strong, masculine, powerful</p>
+                                <ul class="small">
+                                    <li><strong>Longevity:</strong> 10-12 hours (nuclear!)</li>
+                                    <li><strong>Projection:</strong> Immense presence, projects authority</li>
+                                    <li><strong>Best For:</strong> Parties, nightlife, special events</li>
+                                    <li><strong>Reviews:</strong> "Best clone ever", massive compliments</li>
+                                    <li><strong>Astro:</strong> Sun 10/10, Jupiter 10/10</li>
+                                    <li><strong>Numerology:</strong> 1 (Sun) ✅</li>
+                                </ul>
+                                <div class="alert alert-dark mt-3 mb-0">
+                                    <strong>Ground Truth:</strong> Projects immense presence. This is your "invisible armor"!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOR WEDDINGS & FORMAL EVENTS -->
+        <div class="card shadow-lg border-0 rounded-4 mb-5 border-warning" style="border-width: 3px !important;" data-aos="fade-up">
+            <div class="card-header bg-warning text-dark py-3">
+                <h3 class="h4 mb-0">💍 FOR WEDDINGS & FORMAL EVENTS - Elegant Sophistication</h3>
+            </div>
+            <div class="card-body p-4">
+                <div class="alert alert-warning mb-4">
+                    <strong>Goal:</strong> Sophisticated, elegant, memorable but not overpowering. Should say "successful, cultured gentleman."
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="card border-warning h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0">👔 Skinn by Titan Raw EDT</h5>
+                                <span class="badge bg-warning text-dark">10/10 ⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Price:</strong> ₹1,200-1,800 (100ml EDT)</p>
+                                <ul class="small">
+                                    <li><strong>Perfect:</strong> Weddings, receptions, formal dinners</li>
+                                    <li><strong>Clean, Sophisticated:</strong> Non-offensive, professional</li>
+                                    <li><strong>Respect:</strong> People perceive you as trustworthy</li>
+                                    <li><strong>Occasions:</strong> When meeting in-laws, important relatives</li>
+                                    <li><strong>Reviews:</strong> "Clean, trustworthy aura", universally loved</li>
+                                </ul>
+                                <p class="small mb-0"><strong>Astro:</strong> ☿ Mercury 10/10, ♄ Saturn 9/10 - Professional energy</p>
+                                <div class="alert alert-warning mt-2 mb-0">
+                                    <strong>Ground Truth:</strong> THE ultimate professional scent. Works perfectly!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="card border-primary h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0">🎩 Ajmal Silver Shade EDT</h5>
+                                <span class="badge bg-primary">9.5/10 ⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Price:</strong> ₹1,500-2,200 (100ml EDT)</p>
+                                <ul class="small">
+                                    <li><strong>Soft, Aquatic:</strong> Intelligent, calm competence</li>
+                                    <li><strong>Best For:</strong> Indian weddings (works with traditional wear)</li>
+                                    <li><strong>Elders Love:</strong> Sophisticated, not loud</li>
+                                    <li><strong>Safe Choice:</strong> Works everywhere, never fails</li>
+                                    <li><strong>Reviews:</strong> "Soft, intelligent scent", projects calm competence</li>
+                                </ul>
+                                <p class="small mb-0"><strong>Astro:</strong> ☿ Mercury 10/10, ☽ Moon 9/10</p>
+                                <div class="alert alert-primary mt-2 mb-0">
+                                    <strong>Ground Truth:</strong> Projects calm competence. Perfect for your Virgo intellect!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOR OFFICE & DAILY WEAR -->
+        <div class="card shadow-lg border-0 rounded-4 mb-5 border-primary" style="border-width: 3px !important;" data-aos="fade-up">
+            <div class="card-header bg-primary text-white py-3">
+                <h3 class="h4 mb-0">💼 FOR OFFICE & PROFESSIONAL - Clean, Trustworthy Aura</h3>
+            </div>
+            <div class="card-body p-4">
+                <div class="alert alert-primary mb-4">
+                    <strong>Goal:</strong> Professional, clean, inoffensive but memorable. Should project competence, success, reliability - "calm, classy, grounded" energy.
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="card border-primary h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0">💼 Skinn by Titan Raw EDT</h5>
+                                <span class="badge bg-primary">10/10 ⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Price:</strong> ₹1,200-1,800 (100ml EDT)</p>
+                                <ul class="small">
+                                    <li><strong>Clean, Sophisticated:</strong> Non-offensive, professional</li>
+                                    <li><strong>Universal Appeal:</strong> Universally loved, trustworthy aura</li>
+                                    <li><strong>Professional:</strong> Not too loud, just right</li>
+                                    <li><strong>Longevity:</strong> 5-7 hours (survives AC offices!)</li>
+                                    <li><strong>Reviews:</strong> "Clean, trustworthy aura", THE ultimate professional scent</li>
+                                </ul>
+                                <p class="small mb-0"><strong>Astro:</strong> 🌟 Jupiter 10/10 (YOUR Life Path 3!), ☿ Mercury 9/10</p>
+                                <div class="alert alert-success mt-2 mb-0">
+                                    <strong>YOUR Daily Driver!</strong> Jupiter 3 energy perfect for calm authority! Ground-tested quality!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="card border-info h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0">🌊 Ajmal Silver Shade EDT</h5>
+                                <span class="badge bg-info">9.5/10 ⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Price:</strong> ₹1,500-2,200 (100ml EDT)</p>
+                                <ul class="small">
+                                    <li><strong>Soft, Aquatic:</strong> Intelligent, calm competence</li>
+                                    <li><strong>Office Perfect:</strong> Projects intelligence, never overwhelming</li>
+                                    <li><strong>Professional Image:</strong> Success, sophistication</li>
+                                    <li><strong>Longevity:</strong> 6-8 hours</li>
+                                    <li><strong>Reviews:</strong> "Soft, intelligent scent", projects calm competence</li>
+                                </ul>
+                                <p class="small mb-0"><strong>Astro:</strong> ☿ Mercury 10/10, ☽ Moon 9/10</p>
+                                <div class="alert alert-info mt-2 mb-0">
+                                    <strong>Ground Truth:</strong> Perfect for your Virgo intellect! Projects calm competence!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOR SOCIAL & DATES -->
+        <div class="card shadow-lg border-0 rounded-4 mb-5 border-success" style="border-width: 3px !important;" data-aos="fade-up">
+            <div class="card-header bg-success text-white py-3">
+                <h3 class="h4 mb-0">🌊 FOR SOCIAL & DATES - Magnetic, Attractive Aura</h3>
+            </div>
+            <div class="card-body p-4">
+                <div class="alert alert-success mb-4">
+                    <strong>Goal:</strong> Magnetic, attractive aura. Fresh, sophisticated, universally appealing.
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="card border-success h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0">🌊 Skinn by Titan Amalfi Bleu EDT</h5>
+                                <span class="badge bg-success">9.5/10 ⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Price:</strong> ₹1,200-1,800 (100ml EDT)</p>
+                                <ul class="small">
+                                    <li><strong>Fresh, Sophisticated:</strong> Universally appealing</li>
+                                    <li><strong>Best For:</strong> Social events, dates, casual outings</li>
+                                    <li><strong>Longevity:</strong> 5-7 hours</li>
+                                    <li><strong>Reviews:</strong> "Fresh, sophisticated", universally appealing</li>
+                                    <li><strong>Astro:</strong> Venus 10/10, Jupiter 9/10</li>
+                                    <li><strong>Numerology:</strong> 3 (Jupiter) ✅</li>
+                                </ul>
+                                <div class="alert alert-success mt-3 mb-0">
+                                    <strong>Ground Truth:</strong> Your "magnetic, attractive aura" scent. Works for social settings!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="card border-warning h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0">💎 Davidoff Cool Water EDT</h5>
+                                <span class="badge bg-warning text-dark">9/10 ⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Price:</strong> ₹1,800-2,500 (125ml EDT)</p>
+                                <ul class="small">
+                                    <li><strong>Classic, Fresh:</strong> Masculine, reliable</li>
+                                    <li><strong>Best For:</strong> Social events, dates, daily wear</li>
+                                    <li><strong>Longevity:</strong> 6-8 hours</li>
+                                    <li><strong>Reviews:</strong> "A classic for a reason", fresh, masculine, reliable</li>
+                                    <li><strong>Astro:</strong> Sun 9/10, Jupiter 9/10</li>
+                                    <li><strong>Numerology:</strong> 1 (Sun) ✅</li>
+                                </ul>
+                                <div class="alert alert-warning mt-3 mb-0">
+                                    <strong>Ground Truth:</strong> A timeless classic. Fresh, masculine, never fails!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOR GYM & SPORTS -->
+        <div class="card shadow-lg border-0 rounded-4 mb-5 border-success" style="border-width: 3px !important;" data-aos="fade-up">
+            <div class="card-header bg-success text-white py-3">
+                <h3 class="h4 mb-0">💪 FOR GYM & SPORTS - Fresh & Energetic</h3>
+            </div>
+            <div class="card-body p-4">
+                <div class="alert alert-success mb-4">
+                    <strong>Goal:</strong> Fresh, clean, energetic. Should mask sweat, boost confidence, last through workout.
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="card border-success h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0">🌊 Skinn by Titan Amalfi Bleu EDT</h5>
+                                <span class="badge bg-success">9/10 ⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Price:</strong> ₹1,200-1,800 (100ml EDT)</p>
+                                <ul class="small">
+                                    <li><strong>Fresh, Clean:</strong> Perfect for gym, post-shower</li>
+                                    <li><strong>Gym Perfect:</strong> Light, fresh, not overwhelming</li>
+                                    <li><strong>Longevity:</strong> 5-7 hours</li>
+                                    <li><strong>Best For:</strong> Gym, post-workout, casual</li>
+                                    <li><strong>Reviews:</strong> "Fresh, sophisticated", universally appealing</li>
+                                </ul>
+                                <p class="small mb-0"><strong>Astro:</strong> Venus 9/10, Jupiter 9/10</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="card border-primary h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0">💎 Davidoff Cool Water EDT</h5>
+                                <span class="badge bg-primary">8.5/10 ⭐⭐⭐⭐</span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Price:</strong> ₹1,800-2,500 (125ml EDT)</p>
+                                <ul class="small">
+                                    <li><strong>Aquatic, Fresh:</strong> Very clean, energizing</li>
+                                    <li><strong>Sports Perfect:</strong> Fresh, masculine</li>
+                                    <li><strong>Longevity:</strong> 6-8 hours</li>
+                                    <li><strong>Best For:</strong> Post-gym, casual, daily</li>
+                                    <li><strong>Reviews:</strong> "A classic for a reason", reliable</li>
+                                </ul>
+                                <p class="small mb-0"><strong>Astro:</strong> Sun 9/10, Jupiter 8/10</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12">
+                        <div class="alert alert-warning">
+                            <h6 class="fw-bold mb-2">🚫 AVOID at Gym:</h6>
+                            <p class="mb-0">Heavy oud fragrances, sweet gourmands, loud designer scents. Use LIGHT EDT fragrances only - 1-2 sprays max! Best: Apply EDT POST-shower for fresh, clean scent.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- THE LAYERING RITUAL (The "Dark" Hack) -->
+        <div class="card shadow-lg border-0 rounded-4 mb-5 border-dark" style="border-width: 3px !important;" data-aos="fade-up">
+            <div class="card-header bg-dark text-white py-3">
+                <h3 class="h4 mb-0">🔮 THE LAYERING RITUAL - The "Dark" Hack</h3>
+            </div>
+            <div class="card-body p-4">
+                <div class="alert alert-dark mb-4">
+                    <strong>🎯 This is the SECRET:</strong> Layering creates a multi-dimensional scent that works on a primal level. This is your "invisible armor" protocol.
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="card border-danger h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0 text-danger">Step 1: Base Layer</h5>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>1 Drop of Attar:</strong></p>
+                                <ul class="small">
+                                    <li><strong>Amber Attar</strong> OR <strong>Musk Attar</strong></li>
+                                    <li><strong>Where:</strong> On chest/jawline (pulse points)</li>
+                                    <li><strong>Why:</strong> Primal, intimate scent base</li>
+                                    <li><strong>Occult:</strong> Creates subconscious attraction</li>
+                                </ul>
+                                <p class="small mb-0"><strong>Best Attars:</strong> Ajmal Musk, Swiss Arabian Musk, Amber Attar</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card border-primary h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0 text-primary">Step 2: Deodorant</h5>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Unscented Deodorant:</strong></p>
+                                <ul class="small">
+                                    <li><strong>Type:</strong> Unscented, natural</li>
+                                    <li><strong>Why:</strong> Doesn't interfere with fragrance</li>
+                                    <li><strong>Where:</strong> Underarms only</li>
+                                    <li><strong>Result:</strong> Clean base for fragrance</li>
+                                </ul>
+                                <p class="small mb-0"><strong>Brands:</strong> Nivea, Dove, or natural deodorant</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card border-success h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0 text-success">Step 3: Main Fragrance</h5>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>3 Sprays of EDP/EDT:</strong></p>
+                                <ul class="small">
+                                    <li><strong>Where:</strong> On clothes (chest, collar)</li>
+                                    <li><strong>Why:</strong> Lasts longer on fabric</li>
+                                    <li><strong>Result:</strong> Multi-dimensional scent</li>
+                                    <li><strong>Power:</strong> Attar base + EDP/EDT = NUCLEAR!</li>
+                                </ul>
+                                <p class="small mb-0"><strong>Best Combo:</strong> Musk Attar + Lattafa Asad EDP = Unforgettable!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert alert-success mt-4">
+                    <h5 class="fw-bold mb-2">🎯 Example Layering Combinations:</h5>
+                    <ul class="mb-0">
+                        <li><strong>For Parties:</strong> 1 drop Musk Attar (chest) + 3 sprays Lattafa Asad EDP (clothes) = POWERFUL!</li>
+                        <li><strong>For Office:</strong> 1 drop Sandalwood Attar (wrist) + 3 sprays Skinn Raw EDT (clothes) = Professional + Spiritual!</li>
+                        <li><strong>For Dates:</strong> 1 drop Rose Attar (jawline) + 3 sprays Amalfi Bleu EDT (clothes) = Magnetic!</li>
+                        <li><strong>For Weddings:</strong> 1 drop Oudh Attar (chest) + 3 sprays Ajmal Silver Shade EDT (clothes) = Sophisticated!</li>
+                    </ul>
+                </div>
+
+                <div class="alert alert-dark mt-3">
+                    <h5 class="fw-bold mb-2">🔥 Why This Works:</h5>
+                    <ul class="mb-0">
+                        <li><strong>Attar Base:</strong> Creates intimate, primal scent layer (works on subconscious level)</li>
+                        <li><strong>EDP/EDT Layer:</strong> Projects your presence, creates memorable impression</li>
+                        <li><strong>Result:</strong> Multi-dimensional scent that works on both conscious and subconscious levels</li>
+                        <li><strong>Occult Benefit:</strong> Attar (spiritual) + EDP/EDT (material) = Complete aura enhancement!</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOR HOME & RELAXATION -->
+        <div class="card shadow-lg border-0 rounded-4 mb-5" data-aos="fade-up">
+            <div class="card-header bg-info text-white py-3">
+                <h3 class="h4 mb-0">🏠 FOR HOME & RELAXATION - Comfort & Peace</h3>
+            </div>
+            <div class="card-body p-4">
+                <div class="alert alert-info mb-4">
+                    <strong>Goal:</strong> Calm, relaxing, comforting. Should create peaceful environment, aid meditation, help sleep.
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="card h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0">🌙 Sandalwood Attar (Best!)</h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="small">Perfect for meditation, yoga, spiritual practices. Calms mind, enhances focus. Apply before Hanuman Chalisa!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="card h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0">🌺 Kewra/Mogra Attar</h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="small">Floral, peaceful, romantic. Perfect for home ambiance. Use when wife is around (creates romantic mood!)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Your Astrological Profile -->
+        <div class="row mb-5" data-aos="fade-up">
+            <div class="col-lg-10 mx-auto">
+                <div class="card shadow-lg border-0 rounded-4 bg-light border-warning" style="border-width: 3px !important;">
+                    <div class="card-body p-4">
+                        <h3 class="h4 fw-bold mb-4 text-center">🌟 Your Astrological Blueprint - "The Sovereign Magician"</h3>
+                        <div class="alert alert-warning mb-4">
+                            <strong>Birth Data:</strong> 12 March 1996 | <strong>Life Path 3 (Jupiter)</strong> | <strong>Archetype:</strong> Calm, Classy, Grounded, Minimalist, Authentic
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-md-3 text-center">
+                                <div class="p-3 bg-white rounded-3">
+                                    <div class="h5 fw-bold text-primary">♍ Virgo</div>
+                                    <small>Clean, organized, quality, minimal</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center">
+                                <div class="p-3 bg-white rounded-3 border-warning" style="border-width: 3px !important;">
+                                    <div class="h5 fw-bold text-warning">🌟 Jupiter (3)</div>
+                                    <small><strong>PRIMARY RULER</strong><br>Expansion, wisdom, calm authority, masterful expression</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center">
+                                <div class="p-3 bg-white rounded-3">
+                                    <div class="h5 fw-bold text-success">🔮 Sovereign Magician</div>
+                                    <small>Quiet luxury, minimalist sophistication, authentic confidence</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center">
+                                <div class="p-3 bg-white rounded-3">
+                                    <div class="h5 fw-bold text-info">☿ Mercury</div>
+                                    <small>Modern, smart, functional</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alert alert-info mt-4 mb-0">
+                            <strong>Brand Analysis Framework:</strong> Design Philosophy (quiet luxury?) → Quality & Craftsmanship (substance & longevity?) → Aura & Subconscious Impact (what does it communicate?) → Energetic Alignment (amplifies or weakens Jupiter's calm authority?)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MOBILE PHONES -->
+        <h2 class="h2 fw-bold text-center mb-4 mt-5" data-aos="fade-up">📱 Mobile Phones - Deep Analysis</h2>
+        
+        <div class="row g-4 mb-5">
+            <!-- OnePlus -->
+            <div class="col-lg-6" data-aos="fade-right">
+                <div class="card shadow-lg border-0 rounded-4 brand-card border-success" style="border-width: 3px !important;">
+                    <div class="card-header bg-success text-white py-3">
+                        <h4 class="mb-1">🏆 OnePlus - BEST FOR YOU!</h4>
+                        <span class="badge bg-light text-success score-badge">9.5/10 ⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-success mb-3">
+                            <strong>Numerology:</strong> 3 (Jupiter - YOUR birth date!) ✅✅✅
+                        </div>
+                        
+                        <h5 class="h6 fw-bold mb-2">Why PERFECT:</h5>
+                        <ul class="list-unstyled ms-2 mb-3">
+                            <li><strong>♍ Virgo (9/10):</strong> OxygenOS = Clean like iOS</li>
+                            <li><strong>🌟 Jupiter (10/10):</strong> Numerology 3 (YOUR Life Path!) - Perfect match ✅✅✅</li>
+                            <li><strong>💰 Energy Investment:</strong> ₹35-50k expands aura vs iPhone ₹80k+ drains resources</li>
+                            <li><strong>☿ Mercury (9/10):</strong> Fast Snapdragon chips, smooth</li>
+                        </ul>
+
+                        <h5 class="h6 fw-bold mb-2">Best Models:</h5>
+                        <ul class="list-unstyled ms-2 mb-3">
+                            <li>• <strong>OnePlus 12R (₹40k)</strong> - BEST VALUE 🏆</li>
+                            <li>• OnePlus 12 (₹65k) - Flagship</li>
+                            <li>• OnePlus Nord 3 (₹30k) - Budget option</li>
+                        </ul>
+
+                        <div class="alert alert-warning">
+                            <strong>💰 Save ₹40,000</strong> vs iPhone (use for health, gym, supplements)
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span class="badge bg-success fs-6">₹35,000-50,000</span>
+                            <span class="badge bg-warning text-dark fs-6">Buy NOW!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- iPhone Analysis -->
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="card shadow-lg border-0 rounded-4 brand-card border-danger">
+                    <div class="card-header bg-danger text-white py-3">
+                        <h4 class="mb-1">⚠️ iPhone - Current Status</h4>
+                        <span class="badge bg-light text-danger score-badge">7/10 ⚠️</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-danger mb-3">
+                            <strong>Verdict:</strong> Keep if owned, DON'T buy new ❌
+                        </div>
+                        
+                        <h5 class="h6 fw-bold mb-2">Astrological Breakdown:</h5>
+                        <ul class="list-unstyled ms-2 mb-3">
+                            <li><strong>♍ Virgo (9/10):</strong> Cleanest interface ✅</li>
+                            <li><strong>☿ Mercury (8/10):</strong> Fast, smooth ✅</li>
+                            <li><strong>🌟 Jupiter (9/10):</strong> Premium brand ✅</li>
+                            <li><strong>🪐 Saturn (3/10):</strong> VERY expensive ❌❌</li>
+                        </ul>
+
+                        <div class="alert alert-info">
+                            <strong>Why Wrong for You NOW:</strong>
+                            <ul class="mb-0">
+                                <li>You need ₹30k for health (weight loss)</li>
+                                <li>You need ₹50k-1L for side business</li>
+                                <li>You need savings for home (₹25L by 2028)</li>
+                                <li>iPhone = Luxury you can't afford</li>
+                            </ul>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span class="badge bg-danger fs-6">₹80,000-1,50,000</span>
+                            <span class="badge bg-dark fs-6">Don't Buy New</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Comparison Chart -->
+        <div class="card shadow-lg border-0 rounded-4 mb-5" data-aos="fade-up">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0"><i class="fas fa-chart-bar me-2"></i>Mobile Phone Comparison</h4>
+            </div>
+            <div class="card-body">
+                <div class="chart-container">
+                    <canvas id="mobileChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- LAPTOP -->
+        <h2 class="h2 fw-bold text-center mb-4 mt-5" data-aos="fade-up">💻 Laptop - Deep Analysis</h2>
+        
+        <div class="row g-4 mb-5">
+            <!-- ThinkPad E14 -->
+            <div class="col-lg-6" data-aos="fade-right">
+                <div class="card shadow-lg border-0 rounded-4 brand-card border-success" style="border-width: 3px !important;">
+                    <div class="card-header bg-success text-white py-3">
+                        <h4 class="mb-1">🏆 ThinkPad E14 - BEST FOR NOW</h4>
+                        <span class="badge bg-light text-success score-badge">8.5/10 ⭐⭐⭐⭐</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-success mb-3">
+                            <strong>Price:</strong> ₹55,000 (i5, 16GB, 512GB SSD)
+                        </div>
+                        
+                        <h5 class="h6 fw-bold mb-2">Why Perfect for NOW:</h5>
+                        <ul class="list-unstyled ms-2 mb-3">
+                            <li><strong>🌟 Jupiter (9/10):</strong> Energy investment - saves ₹60k for expansion goals ✅✅✅</li>
+                            <li><strong>♍ Virgo (7/10):</strong> Reliable, durable</li>
+                            <li><strong>☿ Mercury (9/10):</strong> BEST keyboard, fast processor</li>
+                            <li><strong>🌟 Jupiter (5/10):</strong> Not premium (but practical)</li>
+                        </ul>
+
+                        <div class="alert alert-info">
+                            <strong>Recommendation:</strong> Buy ThinkPad E14 NOW, upgrade to MacBook in 2027-2028
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span class="badge bg-success fs-6">₹55,000</span>
+                            <span class="badge bg-warning text-dark fs-6">Buy NOW!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MacBook Air M2 -->
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="card shadow-lg border-0 rounded-4 brand-card">
+                    <div class="card-header bg-warning text-dark py-3">
+                        <h4 class="mb-1">💎 MacBook Air M2 - LATER</h4>
+                        <span class="badge bg-dark score-badge">9.5/10 ⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-warning mb-3">
+                            <strong>Price:</strong> ₹1,15,000 (16GB, 512GB SSD)
+                        </div>
+                        
+                        <h5 class="h6 fw-bold mb-2">Why Excellent (But Later):</h5>
+                        <ul class="list-unstyled ms-2 mb-3">
+                            <li><strong>♍ Virgo (10/10):</strong> CLEANEST OS ✅✅✅</li>
+                            <li><strong>☿ Mercury (10/10):</strong> FASTEST for development ✅✅✅</li>
+                            <li><strong>🌟 Jupiter (10/10):</strong> Premium brand ✅✅✅</li>
+                            <li><strong>🪐 Saturn (8/10):</strong> Expensive NOW, but best long-term value</li>
+                        </ul>
+
+                        <div class="alert alert-info">
+                            <strong>When to Buy:</strong> 2027-2028 (when earning ₹25L+)
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span class="badge bg-danger fs-6">₹1,15,000</span>
+                            <span class="badge bg-info fs-6">Later (₹25L+)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CLOTHING -->
+        <h2 class="h2 fw-bold text-center mb-4 mt-5" data-aos="fade-up">👔 Clothing - Astrological Analysis</h2>
+        
+        <div class="row g-4 mb-5">
+            <!-- Office Shirts -->
+            <div class="col-lg-4" data-aos="fade-up">
+                <div class="card shadow-lg border-0 rounded-4 brand-card border-success" style="border-width: 3px !important;">
+                    <div class="card-header bg-success text-white py-3">
+                        <h4 class="mb-1">🏆 Peter England</h4>
+                        <span class="badge bg-light text-success score-badge">9/10 ⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-success mb-3">
+                            <strong>Jupiter Alignment:</strong> Professional, quality brand that amplifies calm authority ✅✅✅
+                        </div>
+                        <p><strong>Type:</strong> Office Shirts</p>
+                        <p><strong>Price:</strong> ₹1,000-1,800/shirt</p>
+                        <p><strong>Buy:</strong> 5-7 shirts for rotation</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span class="badge bg-success">₹1,000-1,800</span>
+                            <span class="badge bg-warning text-dark">Buy NOW!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Casual T-Shirts -->
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="card shadow-lg border-0 rounded-4 brand-card border-warning" style="border-width: 3px !important;">
+                    <div class="card-header bg-warning text-dark py-3">
+                        <h4 class="mb-1">🏆 Nike</h4>
+                        <span class="badge bg-dark score-badge">9/10 ⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-warning mb-3">
+                            <strong>Numerology:</strong> 3 (Jupiter - YOUR birth date!) ✅✅✅
+                        </div>
+                        <p><strong>Type:</strong> Casual T-Shirts</p>
+                        <p><strong>Price:</strong> ₹1,500-2,500</p>
+                        <p><strong>Why:</strong> Global brand, quality, status</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span class="badge bg-warning text-dark">₹1,500-2,500</span>
+                            <span class="badge bg-success">Perfect Match!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jeans -->
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="card shadow-lg border-0 rounded-4 brand-card border-info" style="border-width: 3px !important;">
+                    <div class="card-header bg-info text-white py-3">
+                        <h4 class="mb-1">🏆 Levi's</h4>
+                        <span class="badge bg-light text-info score-badge">9.5/10 ⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-info mb-3">
+                            <strong>Jupiter Alignment:</strong> Premium quality, original brand, lasts 5-7 years (Jupiter expansion) ✅✅✅
+                        </div>
+                        <p><strong>Type:</strong> Jeans</p>
+                        <p><strong>Price:</strong> ₹3,000-5,000</p>
+                        <p><strong>Why:</strong> Lasts 5-7 years, best fit (511 slim)</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span class="badge bg-info">₹3,000-5,000</span>
+                            <span class="badge bg-warning text-dark">Buy NOW!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SHOES & SOCKS -->
+        <h2 class="h2 fw-bold text-center mb-4 mt-5" data-aos="fade-up">👟 Shoes & Socks</h2>
+        
+        <div class="row g-4 mb-5">
+            <div class="col-lg-6" data-aos="fade-right">
+                <div class="card shadow-lg border-0 rounded-4 brand-card">
+                    <div class="card-header bg-primary text-white py-3">
+                        <h4 class="mb-1">👟 Formal Shoes</h4>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>🏆 Bata/Paragon:</strong> Numerology 4 (Saturn) ✅</p>
+                        <p><strong>Price:</strong> ₹2,000-4,000</p>
+                        <p><strong>Why:</strong> Best value, durable, professional</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="card shadow-lg border-0 rounded-4 brand-card">
+                    <div class="card-header bg-success text-white py-3">
+                        <h4 class="mb-1">🧦 Socks</h4>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>🏆 Nike/Adidas:</strong> Numerology 3 (Jupiter) ✅</p>
+                        <p><strong>Price:</strong> ₹300-600/pair</p>
+                        <p><strong>Why:</strong> Quality, comfort, moisture-wicking</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ACCESSORIES - JUPITER-ALIGNED QUIET LUXURY -->
+        <h2 class="h2 fw-bold text-center mb-4 mt-5" data-aos="fade-up">👜 Accessories - Quiet Luxury for the Sovereign Magician</h2>
+        <p class="text-center text-muted mb-5" data-aos="fade-up">Brands that amplify calm authority, not "trying too hard" energy</p>
+        
+        <div class="row g-4 mb-5">
+            <!-- Wallets -->
+            <div class="col-lg-6" data-aos="fade-up">
+                <div class="card shadow-lg border-0 rounded-4 brand-card border-warning" style="border-width: 3px !important;">
+                    <div class="card-header bg-warning text-dark py-3">
+                        <h4 class="mb-1">💼 Hidesign Wallet</h4>
+                        <span class="badge bg-dark score-badge">10/10 ⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-warning mb-3">
+                            <strong>Energy Investment:</strong> ₹3,000-6,000 (not "value" - this is SUBSTANCE that expands your aura)
+                        </div>
+                        <h5 class="h6 fw-bold mb-2">Why PERFECT for Jupiter:</h5>
+                        <ul class="list-unstyled ms-2 mb-3">
+                            <li><strong>Design Philosophy:</strong> ✅ Quiet luxury - no logos, minimalist, authentic</li>
+                            <li><strong>Quality & Craftsmanship:</strong> ✅ Premium leather, lasts 10+ years (Jupiter expansion)</li>
+                            <li><strong>Aura Impact:</strong> ✅ "I have inherent value" - not "I need validation through logos"</li>
+                            <li><strong>Energetic Alignment:</strong> ✅ Amplifies Jupiter's calm authority - sophisticated, grounded</li>
+                        </ul>
+                        <p class="small mb-0"><strong>Why NOT Wildhorn:</strong> ₹1,000 wallet = "cheap practicality" that WEAKENS your aura. Hidesign = energy investment that EXPANDS your presence.</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span class="badge bg-warning text-dark">₹3,000-6,000</span>
+                            <span class="badge bg-success">Jupiter-Aligned!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Belts -->
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="card shadow-lg border-0 rounded-4 brand-card border-primary" style="border-width: 3px !important;">
+                    <div class="card-header bg-primary text-white py-3">
+                        <h4 class="mb-1">🪐 Titan / Hidesign Belt</h4>
+                        <span class="badge bg-light text-primary score-badge">9.5/10 ⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-primary mb-3">
+                            <strong>Why NOT Woodland:</strong> Martian "outdoor adventurer" energy conflicts with your "urban sophistication" Jupiter vibe.
+                        </div>
+                        <h5 class="h6 fw-bold mb-2">Jupiter-Aligned Brands:</h5>
+                        <ul class="list-unstyled ms-2 mb-3">
+                            <li><strong>Titan:</strong> ₹2,000-4,000 - Heritage, quiet confidence (Jupiter energy) ✅</li>
+                            <li><strong>Hidesign:</strong> ₹3,000-5,000 - Premium, sophisticated, minimalist ✅</li>
+                            <li><strong>Louis Philippe:</strong> ₹2,500-4,500 - Classic, refined, professional ✅</li>
+                        </ul>
+                        <p class="small mb-0"><strong>Design Philosophy:</strong> Clean, professional, no "outdoor rugged" aesthetic. Urban sophistication that amplifies calm authority.</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span class="badge bg-primary">₹2,000-5,000</span>
+                            <span class="badge bg-success">Sovereign Magician!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Watches -->
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="card shadow-lg border-0 rounded-4 brand-card border-success" style="border-width: 3px !important;">
+                    <div class="card-header bg-success text-white py-3">
+                        <h4 class="mb-1">⌚ Titan Watch</h4>
+                        <span class="badge bg-light text-success score-badge">10/10 ⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-success mb-3">
+                            <strong>Why NOT Fastrack:</strong> Youthful, trendy Mercury energy WEAKENS Jupiter's calm authority. Fastrack = "college boy" vibe, not "Sovereign Magician."
+                        </div>
+                        <h5 class="h6 fw-bold mb-2">Why Titan PERFECTLY Aligns:</h5>
+                        <ul class="list-unstyled ms-2 mb-3">
+                            <li><strong>Heritage:</strong> ✅ Tata legacy = substance, longevity (Jupiter expansion)</li>
+                            <li><strong>Quiet Confidence:</strong> ✅ No loud branding, minimalist design</li>
+                            <li><strong>Aura:</strong> ✅ "I have inherent value" - professional, grounded</li>
+                            <li><strong>Energetic:</strong> ✅ Amplifies Jupiter's calm authority</li>
+                        </ul>
+                        <p class="small mb-0"><strong>Best Models:</strong> Titan Edge (ultra-slim, elegant), Titan Neo (modern, sophisticated). Price: ₹3,000-8,000</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span class="badge bg-success">₹3,000-8,000</span>
+                            <span class="badge bg-warning text-dark">Jupiter Heritage!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sunglasses -->
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="card shadow-lg border-0 rounded-4 brand-card border-info" style="border-width: 3px !important;">
+                    <div class="card-header bg-info text-white py-3">
+                        <h4 class="mb-1">🕶️ Titan / Ray-Ban Sunglasses</h4>
+                        <span class="badge bg-light text-info score-badge">9/10 ⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-info mb-3">
+                            <strong>Why NOT Fastrack:</strong> Trendy, youthful energy weakens your "calm, classy, grounded" Jupiter vibration.
+                        </div>
+                        <h5 class="h6 fw-bold mb-2">Jupiter-Aligned Options:</h5>
+                        <ul class="list-unstyled ms-2 mb-3">
+                            <li><strong>Titan:</strong> ₹2,000-4,000 - Heritage, quiet luxury ✅</li>
+                            <li><strong>Ray-Ban:</strong> ₹5,000-10,000 - Timeless, sophisticated (when earning ₹20L+) ✅</li>
+                            <li><strong>Oakley:</strong> ₹3,000-6,000 - Quality, professional (if needed for sports)</li>
+                        </ul>
+                        <p class="small mb-0"><strong>Design Philosophy:</strong> Classic, timeless designs. No "trendy" or "youthful" aesthetic. Projects sophistication, not "trying to look cool."</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span class="badge bg-info">₹2,000-10,000</span>
+                            <span class="badge bg-success">Quiet Luxury!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Office Bags -->
+            <div class="col-lg-12" data-aos="fade-up" data-aos-delay="400">
+                <div class="card shadow-lg border-0 rounded-4 brand-card border-warning" style="border-width: 3px !important;">
+                    <div class="card-header bg-warning text-dark py-3">
+                        <h4 class="mb-1">💼 Office Bags - Sophisticated Professional</h4>
+                        <span class="badge bg-dark score-badge">9.5/10 ⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-warning mb-3">
+                            <strong>Why NOT Wildcraft:</strong> Pure functional Saturn energy - acceptable for gym bags but lacks sophistication for office. Projects "practical" not "calm authority."
+                        </div>
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <h5 class="h6 fw-bold mb-2">Jupiter-Aligned Brands:</h5>
+                                <ul class="list-unstyled ms-2">
+                                    <li><strong>Hidesign:</strong> ₹4,000-8,000 - Premium leather, sophisticated ✅</li>
+                                    <li><strong>Titan:</strong> ₹3,000-6,000 - Heritage, professional, quiet luxury ✅</li>
+                                    <li><strong>American Tourister (Premium):</strong> ₹2,500-5,000 - Quality, organized (better than Wildcraft)</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h5 class="h6 fw-bold mb-2">Design Philosophy:</h5>
+                                <ul class="list-unstyled ms-2">
+                                    <li>✅ Clean, organized compartments (Virgo)</li>
+                                    <li>✅ Premium materials (Jupiter expansion)</li>
+                                    <li>✅ Sophisticated aesthetic (not "outdoor rugged")</li>
+                                    <li>✅ Projects "calm authority" not "practical functionality"</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="alert alert-success mt-3 mb-0">
+                            <strong>Energy Investment:</strong> ₹3,000-8,000 bag that lasts 10+ years and expands your professional aura = BETTER than ₹2,500 Wildcraft that weakens your sophisticated presence.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PENS -->
+        <h2 class="h2 fw-bold text-center mb-4 mt-5" data-aos="fade-up">✒️ Pens - Professional</h2>
+        
+        <div class="row g-4 mb-5">
+            <div class="col-lg-6" data-aos="fade-right">
+                <div class="card shadow-lg border-0 rounded-4 brand-card">
+                    <div class="card-header bg-primary text-white py-3">
+                        <h4 class="mb-1">✒️ Parker Pen</h4>
+                        <span class="badge bg-light text-primary score-badge">9/10 ⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Numerology:</strong> 5 (Mercury - your Mahadasha!) ✅✅✅</p>
+                        <p><strong>Price:</strong> ₹500-2,000</p>
+                        <p><strong>Why:</strong> Professional, reliable, status symbol</p>
+                        <p><strong>Best:</strong> Parker Vector, Parker Jotter</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="card shadow-lg border-0 rounded-4 brand-card">
+                    <div class="card-header bg-success text-white py-3">
+                        <h4 class="mb-1">✒️ Cello Pen</h4>
+                        <span class="badge bg-light text-success score-badge">8/10 ⭐⭐⭐⭐</span>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Price:</strong> ₹50-200</p>
+                        <p><strong>Why:</strong> Daily use, smooth writing</p>
+                        <p><strong>Best:</strong> Cello Gripper, Cello Maxwriter</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CLOTHING BY OCCASION -->
+        <h2 class="h2 fw-bold text-center mb-4 mt-5" data-aos="fade-up">👔 CLOTHING BY OCCASION - Astrologically Aligned</h2>
+        <p class="text-center text-muted mb-5" data-aos="fade-up">Strategic wardrobe that enhances your planetary energy</p>
+
+        <!-- FOR OFFICE & BUSINESS -->
+        <div class="card shadow-lg border-0 rounded-4 mb-5 border-primary" style="border-width: 3px !important;" data-aos="fade-up">
+            <div class="card-header bg-primary text-white py-3">
+                <h3 class="h4 mb-0">💼 FOR OFFICE & BUSINESS - Professional Excellence</h3>
+            </div>
+            <div class="card-body p-4">
+                <div class="alert alert-primary mb-4">
+                    <strong>Goal:</strong> Project competence, success, reliability. Colors and brands aligned with Mercury (communication) and Saturn (discipline).
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="card border-primary h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0">👔 Formal Shirts</h5>
+                                <span class="badge bg-primary">9/10 ⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="fw-bold mb-2">Top Brands (₹500-2,500):</h6>
+                                <ul class="small">
+                                    <li><strong>Van Heusen:</strong> ₹1,200-2,500 - Numerology 8 (Saturn) ✅</li>
+                                    <li><strong>Arrow:</strong> ₹800-1,800 - Numerology 4 (Saturn) ✅</li>
+                                    <li><strong>Allen Solly:</strong> ₹600-1,500 - Numerology 3 (Jupiter) ✅</li>
+                                    <li><strong>Peter England:</strong> ₹500-1,200 - Numerology 6 (Venus) ✅</li>
+                                </ul>
+                                <h6 class="fw-bold mt-3 mb-2">Best Colors (Astrology):</h6>
+                                <ul class="small mb-0">
+                                    <li><strong>White:</strong> Moon energy - Purity, clarity</li>
+                                    <li><strong>Light Blue:</strong> Mercury - Communication, intellect</li>
+                                    <li><strong>Grey:</strong> Saturn - Discipline, professionalism</li>
+                                    <li><strong>Light Green:</strong> Mercury - Growth, freshness</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="card border-success h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0">👖 Formal Trousers</h5>
+                                <span class="badge bg-success">9/10 ⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="fw-bold mb-2">Top Brands (₹800-2,500):</h6>
+                                <ul class="small">
+                                    <li><strong>Van Heusen:</strong> ₹1,500-2,500 - Premium quality</li>
+                                    <li><strong>Arrow:</strong> ₹1,000-2,000 - Durable, professional</li>
+                                    <li><strong>Louis Philippe:</strong> ₹1,200-2,200 - Sophisticated</li>
+                                    <li><strong>Allen Solly:</strong> ₹800-1,800 - Value for money</li>
+                                </ul>
+                                <h6 class="fw-bold mt-3 mb-2">Best Colors:</h6>
+                                <ul class="small mb-0">
+                                    <li><strong>Black:</strong> Saturn - Authority, power</li>
+                                    <li><strong>Navy Blue:</strong> Jupiter - Success, expansion</li>
+                                    <li><strong>Grey:</strong> Saturn - Professional, stable</li>
+                                    <li><strong>Charcoal:</strong> Saturn - Sophisticated</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOR PARTIES & WEDDINGS -->
+        <div class="card shadow-lg border-0 rounded-4 mb-5 border-danger" style="border-width: 3px !important;" data-aos="fade-up">
+            <div class="card-header bg-danger text-white py-3">
+                <h3 class="h4 mb-0">🎉 FOR PARTIES & WEDDINGS - Stand Out Elegantly</h3>
+            </div>
+            <div class="card-body p-4">
+                <div class="alert alert-danger mb-4">
+                    <strong>Goal:</strong> Attractive, memorable, sophisticated. Colors aligned with Venus (attraction) and Sun (leadership).
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="card border-danger h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0">🎩 Party Wear</h5>
+                                <span class="badge bg-danger">9/10 ⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="fw-bold mb-2">Brands (₹1,000-3,000):</h6>
+                                <ul class="small">
+                                    <li><strong>Zara:</strong> ₹1,500-3,000 - Numerology 5 (Mercury) ✅</li>
+                                    <li><strong>H&M:</strong> ₹800-2,000 - Numerology 4 (Saturn) ✅</li>
+                                    <li><strong>UCB:</strong> ₹1,200-2,500 - Numerology 3 (Jupiter) ✅</li>
+                                    <li><strong>Levi's:</strong> ₹1,000-2,500 - Numerology 6 (Venus) ✅</li>
+                                </ul>
+                                <h6 class="fw-bold mt-3 mb-2">Best Colors:</h6>
+                                <ul class="small mb-0">
+                                    <li><strong>Red:</strong> Mars - Energy, passion</li>
+                                    <li><strong>Royal Blue:</strong> Jupiter - Success, luxury</li>
+                                    <li><strong>Black:</strong> Saturn - Mysterious, elegant</li>
+                                    <li><strong>Burgundy:</strong> Mars - Sophisticated power</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="card border-warning h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0">💍 Wedding Wear</h5>
+                                <span class="badge bg-warning text-dark">9.5/10 ⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="fw-bold mb-2">Brands (₹2,000-5,000):</h6>
+                                <ul class="small">
+                                    <li><strong>Manyavar:</strong> ₹2,500-5,000 - Traditional, elegant</li>
+                                    <li><strong>Fabindia:</strong> ₹2,000-4,000 - Handcrafted, premium</li>
+                                    <li><strong>Raymond:</strong> ₹2,000-4,500 - Sophisticated</li>
+                                    <li><strong>Allen Solly:</strong> ₹1,500-3,000 - Modern traditional</li>
+                                </ul>
+                                <h6 class="fw-bold mt-3 mb-2">Best Colors:</h6>
+                                <ul class="small mb-0">
+                                    <li><strong>Gold/Yellow:</strong> Jupiter - Auspicious, prosperity</li>
+                                    <li><strong>White:</strong> Moon - Purity, peace</li>
+                                    <li><strong>Maroon:</strong> Mars - Traditional, powerful</li>
+                                    <li><strong>Navy Blue:</strong> Jupiter - Royal, respected</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOR CASUAL & DAILY -->
+        <div class="card shadow-lg border-0 rounded-4 mb-5 border-success" style="border-width: 3px !important;" data-aos="fade-up">
+            <div class="card-header bg-success text-white py-3">
+                <h3 class="h4 mb-0">🏠 FOR CASUAL & DAILY WEAR - Comfort & Style</h3>
+            </div>
+            <div class="card-body p-4">
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="card border-success h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0">👕 Casual T-Shirts</h5>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="fw-bold mb-2">Brands (₹300-1,500):</h6>
+                                <ul class="small">
+                                    <li><strong>H&M:</strong> ₹400-800 - Numerology 4 ✅</li>
+                                    <li><strong>Zara:</strong> ₹600-1,200 - Numerology 5 ✅</li>
+                                    <li><strong>UCB:</strong> ₹500-1,000 - Numerology 3 ✅</li>
+                                    <li><strong>Levi's:</strong> ₹800-1,500 - Numerology 6 ✅</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card border-info h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0">👖 Jeans</h5>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="fw-bold mb-2">Brands (₹800-2,500):</h6>
+                                <ul class="small">
+                                    <li><strong>Levi's:</strong> ₹1,500-2,500 - Numerology 6 ✅</li>
+                                    <li><strong>Wrangler:</strong> ₹1,000-2,000 - Numerology 4 ✅</li>
+                                    <li><strong>Pepe Jeans:</strong> ₹1,200-2,200 - Numerology 3 ✅</li>
+                                    <li><strong>Lee:</strong> ₹800-1,800 - Numerology 5 ✅</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LEATHER BRIEFCASE & BAGS -->
+        <h2 class="h2 fw-bold text-center mb-4 mt-5" data-aos="fade-up">💼 LEATHER BRIEFCASE & BAGS - Jupiter-Aligned Quiet Luxury</h2>
+        <p class="text-center text-muted mb-5" data-aos="fade-up">Professional bags that amplify your "Sovereign Magician" calm authority</p>
+
+        <div class="card shadow-lg border-0 rounded-4 mb-5 border-warning" style="border-width: 3px !important;" data-aos="fade-up">
+            <div class="card-header bg-warning text-dark py-3">
+                <h3 class="h4 mb-0">💼 Professional Briefcases & Laptop Bags</h3>
+            </div>
+            <div class="card-body p-4">
+                <div class="alert alert-warning mb-4">
+                    <strong>Why Leather:</strong> Premium leather briefcases embody Jupiter's expansion principle - substance, longevity, sophistication. This is an ENERGY INVESTMENT that expands your professional aura, not "practical value."
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="card border-warning h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0">👜 Hidesign Briefcase</h5>
+                                <span class="badge bg-warning text-dark">10/10 ⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Price:</strong> ₹4,000-8,000</p>
+                                <h6 class="fw-bold mb-2">Jupiter Alignment:</h6>
+                                <ul class="small">
+                                    <li><strong>Design Philosophy:</strong> ✅ Quiet luxury - no logos, minimalist, sophisticated</li>
+                                    <li><strong>Quality:</strong> ✅ Premium leather, lasts 10+ years (Jupiter expansion)</li>
+                                    <li><strong>Aura:</strong> ✅ "I have inherent value" - calm authority</li>
+                                    <li><strong>Energetic:</strong> ✅ Amplifies Jupiter's sophisticated presence</li>
+                                </ul>
+                                <div class="alert alert-success mt-3 mb-0">
+                                    <strong>TOP CHOICE!</strong> Perfect "Sovereign Magician" energy investment!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="card border-primary h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0">👜 Titan Professional Bag</h5>
+                                <span class="badge bg-primary">9.5/10 ⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Price:</strong> ₹3,000-6,000</p>
+                                <h6 class="fw-bold mb-2">Jupiter Alignment:</h6>
+                                <ul class="small">
+                                    <li><strong>Heritage:</strong> ✅ Tata legacy = substance, longevity</li>
+                                    <li><strong>Design:</strong> ✅ Clean, professional, quiet confidence</li>
+                                    <li><strong>Quality:</strong> ✅ Premium materials, organized compartments</li>
+                                    <li><strong>Energetic:</strong> ✅ Amplifies calm authority</li>
+                                </ul>
+                                <div class="alert alert-primary mt-3 mb-0">
+                                    <strong>Excellent Choice!</strong> Heritage brand with Jupiter energy!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="card border-success h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0">👜 American Tourister (Premium)</h5>
+                                <span class="badge bg-success">8.5/10 ⭐⭐⭐⭐</span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Price:</strong> ₹2,500-5,000</p>
+                                <h6 class="fw-bold mb-2">Why Better Than Wildcraft:</h6>
+                                <ul class="small">
+                                    <li><strong>Design:</strong> ✅ More sophisticated aesthetic (not "outdoor rugged")</li>
+                                    <li><strong>Quality:</strong> ✅ Better materials, organized compartments</li>
+                                    <li><strong>Aura:</strong> ✅ Projects "professional" not "practical functionality"</li>
+                                    <li><strong>Energetic:</strong> ✅ Better alignment with urban sophistication</li>
+                                </ul>
+                                <div class="alert alert-warning mt-3 mb-0">
+                                    <strong>Why NOT Wildcraft:</strong> Pure functional Saturn energy weakens your sophisticated Jupiter presence.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="card border-info h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0">👜 Louis Philippe Briefcase</h5>
+                                <span class="badge bg-info">9/10 ⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Price:</strong> ₹3,500-6,500</p>
+                                <h6 class="fw-bold mb-2">Jupiter Alignment:</h6>
+                                <ul class="small">
+                                    <li><strong>Design:</strong> ✅ Classic, refined, professional</li>
+                                    <li><strong>Quality:</strong> ✅ Premium leather, sophisticated</li>
+                                    <li><strong>Aura:</strong> ✅ "Calm authority" - not "trying too hard"</li>
+                                    <li><strong>Energetic:</strong> ✅ Amplifies Jupiter's masterful expression</li>
+                                </ul>
+                                <div class="alert alert-info mt-3 mb-0">
+                                    <strong>Premium Option!</strong> Perfect for when earning ₹20L+!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert alert-info mt-4">
+                    <h5 class="fw-bold mb-2">🎯 Best Color for Briefcase (Jupiter Alignment):</h5>
+                    <ul class="mb-0">
+                        <li><strong>Black:</strong> Authority, sophistication, professionalism (Jupiter + Saturn balance)</li>
+                        <li><strong>Brown:</strong> Earth element, stability, grounded confidence (Jupiter expansion)</li>
+                        <li><strong>Navy Blue:</strong> Jupiter - Success, expansion, growth, calm authority</li>
+                        <li><strong>Avoid:</strong> Red (Mars - too aggressive), White (too casual), Bright colors (weakens sophistication)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- TRIMMER -->
+        <h2 class="h2 fw-bold text-center mb-4 mt-5" data-aos="fade-up">✂️ Grooming Essentials</h2>
+        
+        <div class="row g-4 mb-5">
+            <div class="col-lg-6 mx-auto" data-aos="fade-up">
+                <div class="card shadow-lg border-0 rounded-4 brand-card border-success" style="border-width: 3px !important;">
+                    <div class="card-header bg-success text-white py-3">
+                        <h4 class="mb-1">🏆 Philips Trimmer</h4>
+                        <span class="badge bg-light text-success score-badge">9/10 ⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Numerology:</strong> 8 (Saturn - durable, reliable) ✅</p>
+                        <p><strong>Price:</strong> ₹1,500-2,500</p>
+                        <p><strong>Models:</strong> BT3221, MG3710</p>
+                        <p><strong>Why:</strong> Clean cuts, lasts 5-7 years, hygienic</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span class="badge bg-success">₹1,500-2,500</span>
+                            <span class="badge bg-warning text-dark">Essential!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Shopping Plan Chart -->
+        <div class="card shadow-lg border-0 rounded-4 mb-5 border-warning" style="border-width: 3px !important;" data-aos="fade-up">
+            <div class="card-header bg-warning text-dark">
+                <h4 class="mb-0"><i class="fas fa-shopping-cart me-2"></i>Complete Shopping Plan - Energy Investment Strategy</h4>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-warning mb-4">
+                    <strong>Jupiter Principle:</strong> Budget = Energy Investment vs Energy Drain. Invest in quality that EXPANDS your aura, not "cheap practicality" that weakens your presence.
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <h5 class="fw-bold mb-3">Immediate (Nov 2025) - Essential Energy Investments</h5>
+                        <ul class="list-unstyled">
+                            <li>✅ Wallet: <strong>Hidesign</strong> (₹3,000-4,000) - Quiet luxury, expands aura ✅</li>
+                            <li>✅ Belt: <strong>Titan</strong> (₹2,500) - Heritage, calm authority ✅</li>
+                            <li>✅ Watch: <strong>Titan Edge</strong> (₹5,000) - Jupiter-aligned, professional ✅</li>
+                            <li>✅ Sunglasses: <strong>Titan</strong> (₹2,500) - Sophisticated, not trendy ✅</li>
+                            <li>✅ Office Bag: <strong>Titan / Hidesign</strong> (₹4,000) - Sophisticated professional ✅</li>
+                            <li>✅ Trimmer: Philips (₹2,000) - Quality grooming</li>
+                            <li><strong>Total: ₹19,000-20,000</strong> (Energy Investment, not "value")</li>
+                        </ul>
+                        <div class="alert alert-success mt-3 mb-0">
+                            <strong>Why This Plan:</strong> Every item amplifies "Sovereign Magician" aura. No "cheap practicality" that weakens your presence.
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h5 class="fw-bold mb-3">Later (2026-2027) - Premium Expansion</h5>
+                        <ul class="list-unstyled">
+                            <li>💎 Watch (Special): <strong>Fossil</strong> (₹12,000) - Premium occasions</li>
+                            <li>💎 Mobile: OnePlus 12R (₹40,000) - Jupiter numerology 3 ✅</li>
+                            <li>💎 Laptop: ThinkPad E14 (₹55,000) - Professional development</li>
+                            <li>💎 Clothes: Premium brands (₹20,000) - Quiet luxury wardrobe</li>
+                            <li>💎 Sunglasses: <strong>Ray-Ban</strong> (₹8,000) - Timeless sophistication</li>
+                            <li><strong>Total: ₹1,35,000</strong></li>
+                        </ul>
+                        <div class="alert alert-info mt-3 mb-0">
+                            <strong>Jupiter Expansion:</strong> As income grows, invest in items that expand your "calm authority" presence. Quality over quantity.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Brand Energy Alignment Framework -->
+        <div class="card shadow-lg border-0 rounded-4 mb-5 border-warning" style="border-width: 3px !important;" data-aos="fade-up">
+            <div class="card-header bg-warning text-dark">
+                <h4 class="mb-0"><i class="fas fa-magic me-2"></i>Brand Analysis Framework - "Sovereign Magician" Alignment</h4>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-warning mb-4">
+                    <strong>CRITICAL:</strong> Simple numerology is meaningless. Analyze brands through these filters:
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card border-primary h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0 text-primary">1. Design Philosophy</h5>
+                            </div>
+                            <div class="card-body">
+                                <ul class="small mb-0">
+                                    <li>✅ Does it embody "quiet luxury"?</li>
+                                    <li>✅ Is it minimalist, authentic, classy?</li>
+                                    <li>❌ Or is it loud, trendy, try-hard?</li>
+                                    <li><strong>Example:</strong> Titan = Quiet confidence ✅ | Fastrack = Trendy, weakens authority ❌</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border-success h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0 text-success">2. Quality & Craftsmanship</h5>
+                            </div>
+                            <div class="card-body">
+                                <ul class="small mb-0">
+                                    <li>✅ Does it reflect substance and longevity?</li>
+                                    <li>✅ Jupiter values: expansion and quality</li>
+                                    <li>❌ Or is it cheap, disposable?</li>
+                                    <li><strong>Example:</strong> Hidesign = 10+ years ✅ | Wildhorn = 3-5 years, weakens aura ❌</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border-info h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0 text-info">3. Aura & Subconscious Impact</h5>
+                            </div>
+                            <div class="card-body">
+                                <ul class="small mb-0">
+                                    <li>✅ "I have inherent value"</li>
+                                    <li>❌ "I need validation through logos"</li>
+                                    <li><strong>Example:</strong> Titan = Inherent value ✅ | Fastrack = Trying to look cool ❌</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border-warning h-100">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0 text-warning">4. Energetic Alignment</h5>
+                            </div>
+                            <div class="card-body">
+                                <ul class="small mb-0">
+                                    <li>✅ Amplifies Jupiter's calm authority?</li>
+                                    <li>❌ Weakens into "trying too hard"?</li>
+                                    <li><strong>Example:</strong> Titan = Calm authority ✅ | Woodland = Outdoor energy, conflicts ❌</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back Button -->
+        <div class="text-center mt-5">
+            <a href="../home.html" class="btn btn-primary btn-lg px-5">
+                <i class="fas fa-arrow-left me-2"></i>Back to Home
+            </a>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-2"><strong>🌟 Jupiter (Life Path 3):</strong> "Invest in quality that EXPANDS your aura. Energy Investment over Energy Drain."</p>
+            <p class="mb-0"><strong>🔮 Sovereign Magician:</strong> "Quiet luxury, minimalist sophistication, authentic confidence. Amplify calm authority, not 'trying too hard'."</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        // Mobile Comparison Chart
+        const mobileCtx = document.getElementById('mobileChart').getContext('2d');
+        new Chart(mobileCtx, {
+            type: 'bar',
+            data: {
+                labels: ['OnePlus 12R', 'Samsung S23 FE', 'iPhone 15'],
+                datasets: [{
+                    label: 'Astrological Score',
+                    data: [9.5, 9.0, 7.0],
+                    backgroundColor: ['#28a745', '#17a2b8', '#dc3545'],
+                    borderColor: ['#1e7e34', '#117a8b', '#c82333'],
+                    borderWidth: 2
+                }, {
+                    label: 'Price (₹ in thousands)',
+                    data: [40, 50, 80],
+                    backgroundColor: ['rgba(40, 167, 69, 0.3)', 'rgba(23, 162, 184, 0.3)', 'rgba(220, 53, 69, 0.3)'],
+                    borderColor: ['#28a745', '#17a2b8', '#dc3545'],
+                    borderWidth: 2,
+                    yAxisID: 'y1'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 10,
+                        title: { display: true, text: 'Astrological Score' }
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        title: { display: true, text: 'Price (₹ thousands)' },
+                        grid: { drawOnChartArea: false }
+                    }
+                },
+                plugins: {
+                    legend: { display: true, position: 'top' },
+                    title: { display: true, text: 'Mobile Phone Comparison - Score vs Price' }
+                }
+            }
+        });
+
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", async function() {
+            await PageInit.init();
+            
+            // Update astrological references dynamically
+            const lifePath = UserDataService.getLifePath();
+            const planet = UserDataService.getPlanetaryRuler().planet;
+            const archetype = UserDataService.getArchetype();
+            
+            // Replace hardcoded references
+            document.body.innerHTML = document.body.innerHTML
+                .replace(/Life Path 3/g, `Life Path ${lifePath}`)
+                .replace(/Jupiter-ruled/g, `${planet}-ruled`)
+                .replace(/Sovereign Magician/g, archetype)
+                .replace(/Jupiter 10\/10 \(YOUR Life Path 3!\)/g, `${planet} 10/10 (YOUR Life Path ${lifePath}!)`)
+                .replace(/YOUR Life Path 3!/g, `YOUR Life Path ${lifePath}!`)
+                .replace(/Jupiter 3 energy/g, `${planet} ${lifePath} energy`)
+                .replace(/Numerology: 3 \(Jupiter\)/g, `Numerology: ${lifePath} (${planet})`);
+            
+            AOS.init({ duration: 1000, once: true });
+        });
+    </script>
+</body>
+</html>

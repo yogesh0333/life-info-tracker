@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career - Life Blueprint</title>
+    
+    <!-- Config & Auth -->
+    <script src="../config.js"></script>
+    <script src="auth-guard.js"></script>
+    <script src="../js/userData.js"></script>
+    <script src="../js/pageInit.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <style>
+        .gradient-text { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .timeline-item { position: relative; padding-left: 40px; margin-bottom: 30px; }
+        .timeline-item::before { content: ''; position: absolute; left: 0; top: 5px; width: 20px; height: 20px; background: #6366f1; border-radius: 50%; }
+        .timeline-item::after { content: ''; position: absolute; left: 9px; top: 25px; width: 2px; height: calc(100% + 10px); background: #e5e7eb; }
+        .timeline-item:last-child::after { display: none; }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background: rgba(30, 41, 59, 0.95); backdrop-filter: blur(10px);">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="../home.html"><i class="fas fa-rocket me-2"></i><span data-user-name>Life</span> Blueprint</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../home.html">🏠 Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="career.html">💼 Career</a></li>
+                    <li class="nav-item"><a class="nav-link" href="business.html">💰 Business</a></li>
+                    <li class="nav-item"><a class="nav-link" href="lifestyle.html">👔 Lifestyle</a></li>
+                    <li class="nav-item"><a class="nav-link" href="health.html">💪 Health</a></li>
+                    <li class="nav-item"><a class="nav-link" href="family.html">👨‍👩‍👧‍👦 Family</a></li>
+                    <li class="nav-item"><a class="nav-link" href="finance.html">💎 Finance</a></li>
+                    <li class="nav-item"><a class="nav-link" href="spiritual.html">🙏 Spiritual</a></li>
+                    <li class="nav-item"><a class="btn btn-warning text-dark ms-2" href="action.html">✅ Start Now</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="padding-top: 100px; padding-bottom: 50px;">
+        <h1 class="display-3 fw-bold text-center mb-3 gradient-text" data-aos="fade-up">💼 Career Path to ₹2 CR</h1>
+        <p class="lead text-center text-muted mb-5" data-aos="fade-up" data-aos-delay="100">From ₹24 LPA to ₹2 Crores in 12-24 Months</p>
+
+        <!-- Current Status -->
+        <div class="row mb-5" data-aos="fade-up">
+            <div class="col-lg-10 mx-auto">
+                <div class="card shadow-lg border-0 rounded-4">
+                    <div class="card-body p-4">
+                        <h2 class="h3 fw-bold mb-4">📊 Current Status</h2>
+                        <div class="row g-3">
+                            <div class="col-md-3">
+                                <div class="text-center p-3 bg-light rounded-3">
+                                    <div class="h4 fw-bold text-primary">₹24 LPA</div>
+                                    <small class="text-muted">Current Salary</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="text-center p-3 bg-light rounded-3">
+                                    <div class="h4 fw-bold text-success">₹2 CR</div>
+                                    <small class="text-muted">Target (2027)</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="text-center p-3 bg-light rounded-3">
+                                    <div class="h4 fw-bold text-warning">8.3x</div>
+                                    <small class="text-muted">Growth Needed</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="text-center p-3 bg-light rounded-3">
+                                    <div class="h4 fw-bold text-danger">12-24mo</div>
+                                    <small class="text-muted">Timeline</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3 Paths -->
+        <h2 class="h2 fw-bold text-center mb-4" data-aos="fade-up">🚀 Three Paths to ₹2 CR</h2>
+        <p class="text-center text-muted mb-5" data-aos="fade-up">Choose one or combine multiple paths</p>
+
+        <div class="row g-4 mb-5">
+            <!-- Path 1: FAANG -->
+            <div class="col-lg-4" data-aos="fade-right">
+                <div class="card h-100 shadow-lg border-0 rounded-4">
+                    <div class="card-header bg-primary text-white py-3">
+                        <h3 class="h4 mb-1"><i class="fas fa-code"></i> Path 1: FAANG</h3>
+                        <span class="badge bg-light text-primary">5-10% Success Rate</span>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="h5 fw-bold text-primary mb-3">Staff/Principal Engineer</h4>
+                        <div class="mb-3">
+                            <strong>💰 Salary:</strong> ₹1.5-2.5 Cr<br>
+                            <strong>⏱️ Timeline:</strong> 18-24 months<br>
+                            <strong>🎯 Difficulty:</strong> Very Hard
+                        </div>
+                        
+                        <h5 class="h6 fw-bold mt-4 mb-2">Target Companies:</h5>
+                        <ul class="list-unstyled ms-3">
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Google (₹1.8-2.5 Cr)</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Meta (₹2-3 Cr)</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Amazon (₹1.5-2 Cr)</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Microsoft (₹1.5-2.2 Cr)</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Apple (₹1.8-2.5 Cr)</li>
+                        </ul>
+
+                        <h5 class="h6 fw-bold mt-4 mb-2">Requirements:</h5>
+                        <ul class="list-unstyled ms-3">
+                            <li class="mb-2"><i class="fas fa-laptop-code text-primary me-2"></i>500+ LeetCode problems</li>
+                            <li class="mb-2"><i class="fas fa-project-diagram text-primary me-2"></i>20+ System designs</li>
+                            <li class="mb-2"><i class="fas fa-folder text-primary me-2"></i>3 impressive projects</li>
+                            <li class="mb-2"><i class="fas fa-paper-plane text-primary me-2"></i>100+ applications</li>
+                            <li class="mb-2"><i class="fas fa-comments text-primary me-2"></i>50+ mock interviews</li>
+                        </ul>
+
+                        <div class="alert alert-info mt-4 mb-0">
+                            <small><strong>🪐 Saturn says:</strong> Extreme discipline required. 80 hours/week for 12 months.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Path 2: Freelancing -->
+            <div class="col-lg-4" data-aos="fade-up">
+                <div class="card h-100 shadow-lg border-0 rounded-4 border-success" style="border-width: 3px !important;">
+                    <div class="card-header bg-success text-white py-3">
+                        <h3 class="h4 mb-1"><i class="fas fa-laptop-code"></i> Path 2: Freelancing ⭐</h3>
+                        <span class="badge bg-light text-success">10-20% Success (MOST REALISTIC)</span>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="h5 fw-bold text-success mb-3">High-Ticket Consulting</h4>
+                        <div class="mb-3">
+                            <strong>💰 Income:</strong> ₹1.5 Cr/month<br>
+                            <strong>⏱️ Timeline:</strong> 6-12 months<br>
+                            <strong>🎯 Difficulty:</strong> Hard but Realistic
+                        </div>
+                        
+                        <h5 class="h6 fw-bold mt-4 mb-2">Pricing Strategy:</h5>
+                        <ul class="list-unstyled ms-3">
+                            <li class="mb-2"><i class="fas fa-dollar-sign text-success me-2"></i>Hourly: $200-400/hr</li>
+                            <li class="mb-2"><i class="fas fa-briefcase text-success me-2"></i>Project: $50k-200k</li>
+                            <li class="mb-2"><i class="fas fa-calendar text-success me-2"></i>Retainer: $20k-50k/mo</li>
+                        </ul>
+
+                        <h5 class="h6 fw-bold mt-4 mb-2">Math to ₹2 CR:</h5>
+                        <ul class="list-unstyled ms-3">
+                            <li class="mb-2"><strong>Option 1:</strong> 5 clients × $40k/mo = ₹1.66 Cr/mo</li>
+                            <li class="mb-2"><strong>Option 2:</strong> 10 projects × $100k = ₹8.3 Cr/yr</li>
+                            <li class="mb-2"><strong>Option 3:</strong> 2 retainers × $50k/mo = ₹83L/mo</li>
+                        </ul>
+
+                        <h5 class="h6 fw-bold mt-4 mb-2">Client Acquisition:</h5>
+                        <ul class="list-unstyled ms-3">
+                            <li class="mb-2"><i class="fas fa-globe text-success me-2"></i>Upwork (build 5-star rating)</li>
+                            <li class="mb-2"><i class="fas fa-star text-success me-2"></i>Toptal (top 3% only)</li>
+                            <li class="mb-2"><i class="fas fa-envelope text-success me-2"></i>Cold outreach (50/day)</li>
+                            <li class="mb-2"><i class="fas fa-users text-success me-2"></i>Referrals (2 per client)</li>
+                        </ul>
+
+                        <div class="alert alert-success mt-4 mb-0">
+                            <small><strong>☿ Mercury says:</strong> This is your BEST path. Start immediately!</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Path 3: Startup -->
+            <div class="col-lg-4" data-aos="fade-left">
+                <div class="card h-100 shadow-lg border-0 rounded-4">
+                    <div class="card-header bg-warning text-dark py-3">
+                        <h3 class="h4 mb-1"><i class="fas fa-rocket"></i> Path 3: Startup</h3>
+                        <span class="badge bg-dark">1-3% Success Rate</span>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="h5 fw-bold text-warning mb-3">Build & Sell SaaS</h4>
+                        <div class="mb-3">
+                            <strong>💰 Payout:</strong> ₹2-10 Cr<br>
+                            <strong>⏱️ Timeline:</strong> 12-18 months<br>
+                            <strong>🎯 Difficulty:</strong> Extremely Hard
+                        </div>
+                        
+                        <h5 class="h6 fw-bold mt-4 mb-2">Validated Ideas:</h5>
+                        <ul class="list-unstyled ms-3">
+                            <li class="mb-2"><i class="fas fa-chart-line text-warning me-2"></i>API Monitoring Tool</li>
+                            <li class="mb-2"><i class="fas fa-database text-warning me-2"></i>No-Code Backend Builder</li>
+                            <li class="mb-2"><i class="fas fa-analytics text-warning me-2"></i>Developer Dashboard</li>
+                        </ul>
+
+                        <h5 class="h6 fw-bold mt-4 mb-2">Growth Targets:</h5>
+                        <ul class="list-unstyled ms-3">
+                            <li class="mb-2">Month 4: $500 MRR</li>
+                            <li class="mb-2">Month 6: $8,000 MRR</li>
+                            <li class="mb-2">Month 9: $100,000 MRR</li>
+                        </ul>
+
+                        <h5 class="h6 fw-bold mt-4 mb-2">Exit Options:</h5>
+                        <ul class="list-unstyled ms-3">
+                            <li class="mb-2"><strong>Funding:</strong> $1-3M seed round</li>
+                            <li class="mb-2"><strong>Acquisition:</strong> $5-10M exit</li>
+                            <li class="mb-2"><strong>Bootstrap:</strong> $200k MRR</li>
+                        </ul>
+
+                        <div class="alert alert-warning mt-4 mb-0">
+                            <small><strong>🌟 Jupiter says:</strong> Highest risk, highest reward. Think BIG!</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Daily Schedule -->
+        <div class="row mb-5" data-aos="fade-up">
+            <div class="col-lg-10 mx-auto">
+                <div class="card shadow-lg border-0 rounded-4">
+                    <div class="card-header bg-dark text-white py-3">
+                        <h3 class="h4 mb-0"><i class="fas fa-calendar-alt"></i> Daily Schedule (80 Hours/Week)</h3>
+                    </div>
+                    <div class="card-body p-4">
+                        <h4 class="h5 fw-bold mb-3">Weekdays (Mon-Fri)</h4>
+                        <div class="timeline-item">
+                            <strong>5:30 AM - 6:00 AM:</strong> 🙏 Hanuman Chalisa + Meditation
+                        </div>
+                        <div class="timeline-item">
+                            <strong>6:00 AM - 7:00 AM:</strong> 💪 Exercise (health is wealth)
+                        </div>
+                        <div class="timeline-item">
+                            <strong>7:00 AM - 8:00 AM:</strong> 🍳 Breakfast + Planning
+                        </div>
+                        <div class="timeline-item">
+                            <strong>8:00 AM - 9:00 AM:</strong> 📚 Learning (System Design/Algorithms)
+                        </div>
+                        <div class="timeline-item">
+                            <strong>9:00 AM - 6:00 PM:</strong> 💼 Current Job (₹24 LPA)
+                        </div>
+                        <div class="timeline-item">
+                            <strong>6:00 PM - 7:00 PM:</strong> 🍽️ Dinner + Rest
+                        </div>
+                        <div class="timeline-item">
+                            <strong>7:00 PM - 11:00 PM:</strong> 🚀 AGGRESSIVE WORK (4 hours)
+                            <ul class="mt-2 ms-3">
+                                <li>Mon/Wed/Fri: LeetCode + System Design</li>
+                                <li>Tue/Thu: Freelance projects</li>
+                                <li>Daily: Apply to 10-20 jobs</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-item">
+                            <strong>11:00 PM - 11:30 PM:</strong> 🙏 Hanuman Chalisa + Review
+                        </div>
+                        <div class="timeline-item">
+                            <strong>11:30 PM:</strong> 😴 Sleep (6 hours)
+                        </div>
+
+                        <h4 class="h5 fw-bold mt-5 mb-3">Weekends (Sat-Sun)</h4>
+                        <div class="alert alert-danger">
+                            <strong>🔥 DEEP WORK:</strong> 20 hours total (10 hours/day)<br>
+                            <strong>Focus:</strong> Build projects, Mock interviews, Content creation<br>
+                            <strong>Rule:</strong> Phone off, no distractions
+                        </div>
+
+                        <div class="alert alert-warning mt-3">
+                            <strong>Total:</strong> 40 hours/week job + 40 hours/week extra = <strong>80 HOURS/WEEK</strong><br>
+                            <small>This is EXTREME but necessary for ₹2 CR</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- What to Sacrifice -->
+        <div class="row mb-5" data-aos="fade-up">
+            <div class="col-lg-10 mx-auto">
+                <div class="card shadow-lg border-0 rounded-4 border-danger" style="border-width: 3px !important;">
+                    <div class="card-header bg-danger text-white py-3">
+                        <h3 class="h4 mb-0"><i class="fas fa-exclamation-triangle"></i> What You Must Sacrifice (12 Months)</h3>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5 class="h6 fw-bold text-danger mb-3">❌ GIVE UP:</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-times-circle text-danger me-2"></i>Social life (parties, hangouts)</li>
+                                    <li class="mb-2"><i class="fas fa-times-circle text-danger me-2"></i>Entertainment (movies, shows, games)</li>
+                                    <li class="mb-2"><i class="fas fa-times-circle text-danger me-2"></i>Dating (unless she supports)</li>
+                                    <li class="mb-2"><i class="fas fa-times-circle text-danger me-2"></i>Sleep (6 hours max, not 8)</li>
+                                    <li class="mb-2"><i class="fas fa-times-circle text-danger me-2"></i>Weekends (work 7 days/week)</li>
+                                    <li class="mb-2"><i class="fas fa-times-circle text-danger me-2"></i>Comfort (this will be HARD)</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h5 class="h6 fw-bold text-success mb-3">✅ KEEP (NON-NEGOTIABLE):</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>🙏 Hanuman Chalisa (2x daily)</li>
+                                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>💪 Exercise (1 hour daily)</li>
+                                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>🍽️ Healthy food (brain fuel)</li>
+                                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>👨‍👩‍👦 Parents time (1 hour/week)</li>
+                                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>😴 Sleep (6 hours minimum)</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="alert alert-dark mt-4 mb-0">
+                            <strong>🪐 Saturn says:</strong> "Sacrifice now, enjoy for 50 years later. 12 months of pain = Lifetime of wealth."
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Immediate Actions -->
+        <div class="row mb-5" data-aos="fade-up">
+            <div class="col-lg-10 mx-auto">
+                <div class="card shadow-lg border-0 rounded-4 bg-warning">
+                    <div class="card-body p-4">
+                        <h3 class="h4 fw-bold mb-4"><i class="fas fa-bolt"></i> Start THIS WEEK!</h3>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="choose-path">
+                                    <label class="form-check-label fw-bold" for="choose-path">
+                                        Choose your path (FAANG/Freelancing/Startup)
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="leetcode-setup">
+                                    <label class="form-check-label fw-bold" for="leetcode-setup">
+                                        Set up LeetCode account (start daily practice)
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="upwork-profile">
+                                    <label class="form-check-label fw-bold" for="upwork-profile">
+                                        Create Upwork/Toptal profile
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="buy-courses">
+                                    <label class="form-check-label fw-bold" for="buy-courses">
+                                        Buy system design courses
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <a href="../home.html" class="btn btn-primary btn-lg px-5 me-3">
+                <i class="fas fa-arrow-left me-2"></i>Back to Home
+            </a>
+            <a href="action.html" class="btn btn-warning btn-lg px-5">
+                <i class="fas fa-bolt me-2"></i>View Full Checklist
+            </a>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-2"><strong>🪐 Saturn:</strong> "Discipline + Patience = ₹2 Crores"</p>
+            <p class="mb-0"><strong>🙏 Hanuman:</strong> "I will protect you. Worship me daily. Success is guaranteed."</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        // Initialize page with user data
+        document.addEventListener('DOMContentLoaded', async function() {
+            await PageInit.init();
+            PageInit.updatePageTitle('Career');
+            AOS.init({ duration: 1000, once: true });
+        });
+    </script>
+</body>
+</html>
