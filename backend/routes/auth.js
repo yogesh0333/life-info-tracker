@@ -3,6 +3,7 @@ const router = express.Router();
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const { generateAstrologicalProfile } = require("../utils/astrology");
+const { validateLogin, validateRegister } = require("../middleware/validate");
 
 // Generate JWT Token
 const generateToken = (userId) => {
@@ -14,19 +15,23 @@ const generateToken = (userId) => {
 // @route   POST /api/auth/register
 // @desc    Register new user and generate blueprint
 // @access  Public
-router.post("/register", async (req, res) => {
+router.post("/register", validateRegister, async (req, res) => {
   try {
     const { name, email, password, dob, tob, pob, gender } = req.body;
 
     // Validate required fields
     if (!name || !email || !password || !dob) {
-      return res.status(400).json({ error: "Please provide all required fields" });
+      return res
+        .status(400)
+        .json({ error: "Please provide all required fields" });
     }
 
     // Check if user exists
     let user = await User.findOne({ email });
     if (user) {
-      return res.status(400).json({ error: "User already exists with this email" });
+      return res
+        .status(400)
+        .json({ error: "User already exists with this email" });
     }
 
     // Generate astrological profile
@@ -69,16 +74,21 @@ router.post("/register", async (req, res) => {
 
     // Generate AI blueprint content asynchronously (don't wait)
     const blueprintGenerator = require("../services/blueprintGenerator");
-    blueprintGenerator.generateBlueprint(user).then((content) => {
-      user.blueprint.content = content;
-      user.blueprint.generated = true;
-      user.save().catch((err) => console.error("Error saving blueprint:", err));
-    }).catch((err) => {
-      console.error("Error generating blueprint:", err);
-      // Mark as generated even if AI fails (user can regenerate)
-      user.blueprint.generated = true;
-      user.save().catch((saveErr) => console.error("Error saving:", saveErr));
-    });
+    blueprintGenerator
+      .generateBlueprint(user)
+      .then((content) => {
+        user.blueprint.content = content;
+        user.blueprint.generated = true;
+        user
+          .save()
+          .catch((err) => console.error("Error saving blueprint:", err));
+      })
+      .catch((err) => {
+        console.error("Error generating blueprint:", err);
+        // Mark as generated even if AI fails (user can regenerate)
+        user.blueprint.generated = true;
+        user.save().catch((saveErr) => console.error("Error saving:", saveErr));
+      });
 
     // Generate token
     const token = generateToken(user._id);
@@ -98,12 +108,14 @@ router.post("/register", async (req, res) => {
 // @route   POST /api/auth/login
 // @desc    Login user
 // @access  Public
-router.post("/login", async (req, res) => {
+router.post("/login", validateLogin, async (req, res) => {
   try {
     const { email, password } = req.body;
 
     if (!email || !password) {
-      return res.status(400).json({ error: "Please provide email and password" });
+      return res
+        .status(400)
+        .json({ error: "Please provide email and password" });
     }
 
     // Find user
@@ -152,4 +164,3 @@ router.get("/me", require("../middleware/auth"), async (req, res) => {
 });
 
 module.exports = router;
-

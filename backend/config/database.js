@@ -7,7 +7,8 @@ const connectDB = async (retries = 5, delay = 5000) => {
   for (let i = 0; i < retries; i++) {
     try {
       let mongoUri =
-        process.env.MONGODB_URI || "mongodb://localhost:27017/life_info_tracker";
+        process.env.MONGODB_URI ||
+        "mongodb://localhost:27017/life_info_tracker";
 
       // Add authSource for Railway MongoDB if not present
       if (mongoUri.includes("railway") || mongoUri.includes("rlwy.net")) {
@@ -54,7 +55,9 @@ const connectDB = async (retries = 5, delay = 5000) => {
       return conn;
     } catch (error) {
       console.error(
-        `❌ MongoDB Connection Error (Attempt ${i + 1}/${retries}): ${error.message}`
+        `❌ MongoDB Connection Error (Attempt ${i + 1}/${retries}): ${
+          error.message
+        }`
       );
 
       if (i < retries - 1) {

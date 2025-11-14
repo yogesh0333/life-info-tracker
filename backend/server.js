@@ -22,10 +22,30 @@ const limiter = rateLimit({
 
 // Middleware
 app.use(helmet());
+
+// CORS configuration - Allow Netlify frontend
+const allowedOrigins = [
+  process.env.FRONTEND_URL,
+  "https://life-info-tracker.netlify.app",
+  "http://localhost:3000",
+  "http://localhost:8080",
+].filter(Boolean); // Remove undefined values
+
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || "*",
+    origin: (origin, callback) => {
+      // Allow requests with no origin (mobile apps, Postman, etc.)
+      if (!origin) return callback(null, true);
+      
+      if (allowedOrigins.length === 0 || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 app.use(compression());
