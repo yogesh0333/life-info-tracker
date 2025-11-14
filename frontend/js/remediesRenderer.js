@@ -9,7 +9,8 @@ const RemediesRenderer = {
    */
   renderContent(container, content) {
     if (!content) {
-      container.innerHTML = '<div class="alert alert-warning">No content available</div>';
+      container.innerHTML =
+        '<div class="alert alert-warning">No content available</div>';
       return;
     }
 
@@ -26,7 +27,7 @@ const RemediesRenderer = {
       return;
     }
 
-    let html = '';
+    let html = "";
 
     // Regenerate Button (Top Right)
     html += `
@@ -124,9 +125,13 @@ const RemediesRenderer = {
               <div class="card border-${planetColor} mb-3 remedy-card">
                 <div class="card-body">
                   <div class="d-flex align-items-start">
-                    <span class="badge bg-${planetColor} me-3" style="font-size: 1.1rem; padding: 8px 12px;">${index + 1}</span>
+                    <span class="badge bg-${planetColor} me-3" style="font-size: 1.1rem; padding: 8px 12px;">${
+            index + 1
+          }</span>
                     <div class="flex-grow-1">
-                      <p class="mb-0" style="font-size: 1.05rem; line-height: 1.6;">${this.formatMantra(remedy)}</p>
+                      <p class="mb-0" style="font-size: 1.05rem; line-height: 1.6;">${this.formatMantra(
+                        remedy
+                      )}</p>
                     </div>
                   </div>
                 </div>
@@ -156,27 +161,27 @@ const RemediesRenderer = {
     `;
 
     const areaIcons = {
-      'Money': '💰',
-      'Wealth': '💰',
-      'Finance': '💰',
-      'Career': '💼',
-      'Job': '💼',
-      'Health': '💚',
-      'Love': '❤️',
-      'Marriage': '💑',
-      'Relationships': '👥',
-      'Family': '👨‍👩‍👧‍👦',
-      'Children': '👶',
-      'Education': '📚',
-      'Success': '🎯',
-      'Peace': '🕊️',
-      'Happiness': '😊',
-      'Spiritual': '🕉️',
-      'Protection': '🛡️'
+      Money: "💰",
+      Wealth: "💰",
+      Finance: "💰",
+      Career: "💼",
+      Job: "💼",
+      Health: "💚",
+      Love: "❤️",
+      Marriage: "💑",
+      Relationships: "👥",
+      Family: "👨‍👩‍👧‍👦",
+      Children: "👶",
+      Education: "📚",
+      Success: "🎯",
+      Peace: "🕊️",
+      Happiness: "😊",
+      Spiritual: "🕉️",
+      Protection: "🛡️",
     };
 
     for (const [areaName, remedies] of Object.entries(lifeAreaRemedies)) {
-      const icon = areaIcons[areaName] || '✨';
+      const icon = areaIcons[areaName] || "✨";
       const areaColor = this.getAreaColor(areaName);
 
       html += `
@@ -196,7 +201,9 @@ const RemediesRenderer = {
                 <div class="card-body">
                   <div class="d-flex align-items-start">
                     <span class="badge bg-${areaColor} me-2">${index + 1}</span>
-                    <p class="mb-0 flex-grow-1" style="font-size: 1rem; line-height: 1.6;">${this.formatMantra(remedy)}</p>
+                    <p class="mb-0 flex-grow-1" style="font-size: 1rem; line-height: 1.6;">${this.formatMantra(
+                      remedy
+                    )}</p>
                   </div>
                 </div>
               </div>
@@ -237,16 +244,22 @@ const RemediesRenderer = {
             <div class="card border-warning h-100">
               <div class="card-body">
                 <div class="d-flex align-items-start">
-                  <span class="badge bg-warning text-dark me-2">${index + 1}</span>
-                  <p class="mb-0 flex-grow-1">${typeof gift === 'string' ? gift : (gift.name || gift.item || JSON.stringify(gift))}</p>
+                  <span class="badge bg-warning text-dark me-2">${
+                    index + 1
+                  }</span>
+                  <p class="mb-0 flex-grow-1">${
+                    typeof gift === "string"
+                      ? gift
+                      : gift.name || gift.item || JSON.stringify(gift)
+                  }</p>
                 </div>
               </div>
             </div>
           </div>
         `;
       });
-      html += '</div>';
-    } else if (typeof gifts === 'object') {
+      html += "</div>";
+    } else if (typeof gifts === "object") {
       html += this.renderStructuredContent(gifts);
     }
 
@@ -277,8 +290,12 @@ const RemediesRenderer = {
           <div class="card border-success mb-3">
             <div class="card-body">
               <div class="d-flex align-items-start">
-                <span class="badge bg-success me-3" style="font-size: 1.1rem; padding: 8px 12px;">${index + 1}</span>
-                <p class="mb-0 flex-grow-1" style="font-size: 1.05rem; line-height: 1.6;">${this.formatMantra(practice)}</p>
+                <span class="badge bg-success me-3" style="font-size: 1.1rem; padding: 8px 12px;">${
+                  index + 1
+                }</span>
+                <p class="mb-0 flex-grow-1" style="font-size: 1.05rem; line-height: 1.6;">${this.formatMantra(
+                  practice
+                )}</p>
               </div>
             </div>
           </div>
@@ -315,8 +332,12 @@ const RemediesRenderer = {
           <div class="card border-info mb-3">
             <div class="card-body">
               <div class="d-flex align-items-start">
-                <span class="badge bg-info me-3" style="font-size: 1.1rem; padding: 8px 12px;">${index + 1}</span>
-                <p class="mb-0 flex-grow-1" style="font-size: 1.05rem; line-height: 1.6;">${this.formatMantra(practice)}</p>
+                <span class="badge bg-info me-3" style="font-size: 1.1rem; padding: 8px 12px;">${
+                  index + 1
+                }</span>
+                <p class="mb-0 flex-grow-1" style="font-size: 1.05rem; line-height: 1.6;">${this.formatMantra(
+                  practice
+                )}</p>
               </div>
             </div>
           </div>
@@ -353,9 +374,13 @@ const RemediesRenderer = {
           <div class="card border-primary mb-3">
             <div class="card-body">
               <div class="d-flex align-items-start">
-                <span class="badge bg-primary me-3" style="font-size: 1.1rem; padding: 8px 12px;">${index + 1}</span>
+                <span class="badge bg-primary me-3" style="font-size: 1.1rem; padding: 8px 12px;">${
+                  index + 1
+                }</span>
                 <div class="flex-grow-1">
-                  <p class="mb-0" style="font-size: 1.1rem; line-height: 1.8; font-family: 'Times New Roman', serif;">${this.formatMantra(mantra)}</p>
+                  <p class="mb-0" style="font-size: 1.1rem; line-height: 1.8; font-family: 'Times New Roman', serif;">${this.formatMantra(
+                    mantra
+                  )}</p>
                 </div>
               </div>
             </div>
@@ -390,15 +415,28 @@ const RemediesRenderer = {
 
     if (Array.isArray(gemstones)) {
       gemstones.forEach((gemstone) => {
-        const name = typeof gemstone === 'string' ? gemstone : (gemstone.name || gemstone);
+        const name =
+          typeof gemstone === "string" ? gemstone : gemstone.name || gemstone;
         html += `
           <div class="col-md-6">
             <div class="card border-dark h-100">
               <div class="card-body">
                 <h5>${name}</h5>
-                ${typeof gemstone === 'object' && gemstone.description ? `<p>${gemstone.description}</p>` : ''}
-                ${typeof gemstone === 'object' && gemstone.finger ? `<p><strong>Wear on:</strong> ${gemstone.finger}</p>` : ''}
-                ${typeof gemstone === 'object' && gemstone.day ? `<p><strong>Best day:</strong> ${gemstone.day}</p>` : ''}
+                ${
+                  typeof gemstone === "object" && gemstone.description
+                    ? `<p>${gemstone.description}</p>`
+                    : ""
+                }
+                ${
+                  typeof gemstone === "object" && gemstone.finger
+                    ? `<p><strong>Wear on:</strong> ${gemstone.finger}</p>`
+                    : ""
+                }
+                ${
+                  typeof gemstone === "object" && gemstone.day
+                    ? `<p><strong>Best day:</strong> ${gemstone.day}</p>`
+                    : ""
+                }
               </div>
             </div>
           </div>
@@ -433,15 +471,28 @@ const RemediesRenderer = {
 
     if (Array.isArray(yantras)) {
       yantras.forEach((yantra) => {
-        const name = typeof yantra === 'string' ? yantra : (yantra.name || yantra);
+        const name =
+          typeof yantra === "string" ? yantra : yantra.name || yantra;
         html += `
           <div class="col-md-6">
             <div class="card border-secondary h-100">
               <div class="card-body">
                 <h5>${name}</h5>
-                ${typeof yantra === 'object' && yantra.description ? `<p>${yantra.description}</p>` : ''}
-                ${typeof yantra === 'object' && yantra.direction ? `<p><strong>Place in:</strong> ${yantra.direction}</p>` : ''}
-                ${typeof yantra === 'object' && yantra.puja ? `<p><strong>Puja:</strong> ${yantra.puja}</p>` : ''}
+                ${
+                  typeof yantra === "object" && yantra.description
+                    ? `<p>${yantra.description}</p>`
+                    : ""
+                }
+                ${
+                  typeof yantra === "object" && yantra.direction
+                    ? `<p><strong>Place in:</strong> ${yantra.direction}</p>`
+                    : ""
+                }
+                ${
+                  typeof yantra === "object" && yantra.puja
+                    ? `<p><strong>Puja:</strong> ${yantra.puja}</p>`
+                    : ""
+                }
               </div>
             </div>
           </div>
@@ -464,13 +515,13 @@ const RemediesRenderer = {
    * Format mantra text (preserve Sanskrit/Devanagari)
    */
   formatMantra(text) {
-    if (!text) return '';
+    if (!text) return "";
     // Preserve the text as-is, just escape HTML
     return text
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/\n/g, '<br>');
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/\n/g, "<br>");
   },
 
   /**
@@ -478,15 +529,15 @@ const RemediesRenderer = {
    */
   getPlanetEmoji(dashaName) {
     const planetMap = {
-      'Sun': '☀️',
-      'Moon': '🌙',
-      'Mars': '♂️',
-      'Mercury': '☿️',
-      'Jupiter': '♃',
-      'Venus': '♀️',
-      'Saturn': '🪐',
-      'Rahu': '☊',
-      'Ketu': '☋'
+      Sun: "☀️",
+      Moon: "🌙",
+      Mars: "♂️",
+      Mercury: "☿️",
+      Jupiter: "♃",
+      Venus: "♀️",
+      Saturn: "🪐",
+      Rahu: "☊",
+      Ketu: "☋",
     };
 
     for (const [planet, emoji] of Object.entries(planetMap)) {
@@ -494,63 +545,79 @@ const RemediesRenderer = {
         return emoji;
       }
     }
-    return '🕉️';
+    return "🕉️";
   },
 
   /**
    * Get planet color
    */
   getPlanetColor(dashaName) {
-    if (dashaName.includes('Sun')) return 'warning';
-    if (dashaName.includes('Moon')) return 'info';
-    if (dashaName.includes('Mars')) return 'danger';
-    if (dashaName.includes('Mercury')) return 'success';
-    if (dashaName.includes('Jupiter')) return 'primary';
-    if (dashaName.includes('Venus')) return 'primary';
-    if (dashaName.includes('Saturn')) return 'dark';
-    if (dashaName.includes('Rahu')) return 'secondary';
-    if (dashaName.includes('Ketu')) return 'secondary';
-    return 'primary';
+    if (dashaName.includes("Sun")) return "warning";
+    if (dashaName.includes("Moon")) return "info";
+    if (dashaName.includes("Mars")) return "danger";
+    if (dashaName.includes("Mercury")) return "success";
+    if (dashaName.includes("Jupiter")) return "primary";
+    if (dashaName.includes("Venus")) return "primary";
+    if (dashaName.includes("Saturn")) return "dark";
+    if (dashaName.includes("Rahu")) return "secondary";
+    if (dashaName.includes("Ketu")) return "secondary";
+    return "primary";
   },
 
   /**
    * Get area color
    */
   getAreaColor(areaName) {
-    if (areaName.includes('Money') || areaName.includes('Wealth') || areaName.includes('Finance')) return 'warning';
-    if (areaName.includes('Career') || areaName.includes('Job')) return 'primary';
-    if (areaName.includes('Health')) return 'success';
-    if (areaName.includes('Love') || areaName.includes('Marriage') || areaName.includes('Relationships')) return 'danger';
-    if (areaName.includes('Family') || areaName.includes('Children')) return 'info';
-    if (areaName.includes('Education')) return 'primary';
-    if (areaName.includes('Spiritual')) return 'secondary';
-    return 'primary';
+    if (
+      areaName.includes("Money") ||
+      areaName.includes("Wealth") ||
+      areaName.includes("Finance")
+    )
+      return "warning";
+    if (areaName.includes("Career") || areaName.includes("Job"))
+      return "primary";
+    if (areaName.includes("Health")) return "success";
+    if (
+      areaName.includes("Love") ||
+      areaName.includes("Marriage") ||
+      areaName.includes("Relationships")
+    )
+      return "danger";
+    if (areaName.includes("Family") || areaName.includes("Children"))
+      return "info";
+    if (areaName.includes("Education")) return "primary";
+    if (areaName.includes("Spiritual")) return "secondary";
+    return "primary";
   },
 
   /**
    * Render structured content recursively
    */
   renderStructuredContent(obj) {
-    let html = '';
+    let html = "";
     for (const [key, value] of Object.entries(obj)) {
-      const formattedKey = key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
-      
+      const formattedKey = key
+        .replace(/([A-Z])/g, " $1")
+        .replace(/^./, (str) => str.toUpperCase());
+
       if (Array.isArray(value)) {
         html += `<h5 class="mt-3">${formattedKey}</h5>`;
-        html += '<ul>';
-        value.forEach(item => {
-          if (typeof item === 'object') {
-            html += '<li>' + this.renderStructuredContent(item) + '</li>';
+        html += "<ul>";
+        value.forEach((item) => {
+          if (typeof item === "object") {
+            html += "<li>" + this.renderStructuredContent(item) + "</li>";
           } else {
             html += `<li>${this.formatMantra(item)}</li>`;
           }
         });
-        html += '</ul>';
-      } else if (typeof value === 'object' && value !== null) {
+        html += "</ul>";
+      } else if (typeof value === "object" && value !== null) {
         html += `<h5 class="mt-3">${formattedKey}</h5>`;
         html += this.renderStructuredContent(value);
       } else {
-        html += `<p><strong>${formattedKey}:</strong> ${this.formatMantra(value)}</p>`;
+        html += `<p><strong>${formattedKey}:</strong> ${this.formatMantra(
+          value
+        )}</p>`;
       }
     }
     return html;
@@ -560,28 +627,41 @@ const RemediesRenderer = {
    * Format markdown
    */
   formatMarkdown(text) {
-    if (!text) return '';
+    if (!text) return "";
     return text
-      .split('\n\n')
-      .map(para => {
-        if (para.startsWith('#')) {
+      .split("\n\n")
+      .map((para) => {
+        if (para.startsWith("#")) {
           const level = para.match(/^#+/)[0].length;
-          const text = para.replace(/^#+\s*/, '');
+          const text = para.replace(/^#+\s*/, "");
           return `<h${level}>${text}</h${level}>`;
         }
-        if (para.startsWith('- ') || para.startsWith('* ')) {
-          const items = para.split('\n').filter(l => l.trim());
-          return '<ul>' + items.map(item => `<li>${this.formatMantra(item.replace(/^[-*]\s*/, ''))}</li>`).join('') + '</ul>';
+        if (para.startsWith("- ") || para.startsWith("* ")) {
+          const items = para.split("\n").filter((l) => l.trim());
+          return (
+            "<ul>" +
+            items
+              .map(
+                (item) =>
+                  `<li>${this.formatMantra(item.replace(/^[-*]\s*/, ""))}</li>`
+              )
+              .join("") +
+            "</ul>"
+          );
         }
-        return `<p>${this.formatMantra(para.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\*(.+?)\*/g, '<em>$1</em>'))}</p>`;
+        return `<p>${this.formatMantra(
+          para
+            .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+            .replace(/\*(.+?)\*/g, "<em>$1</em>")
+        )}</p>`;
       })
-      .join('');
-  }
+      .join("");
+  },
 };
 
 // Global function for regenerate button
 async function regenerateRemedies() {
-  const btn = document.getElementById('regenerate-btn');
+  const btn = document.getElementById("regenerate-btn");
   if (!btn) return;
 
   const originalHtml = btn.innerHTML;
@@ -589,39 +669,38 @@ async function regenerateRemedies() {
   btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Regenerating...';
 
   try {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     if (!token) {
-      window.location.href = '../login.html';
+      window.location.href = "../login.html";
       return;
     }
 
     const response = await fetch(`${API_URL}/blueprint/generate/remedies`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json'
-      }
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
     });
 
     if (!response.ok) {
       const error = await response.json();
-      throw new Error(error.message || 'Failed to regenerate');
+      throw new Error(error.message || "Failed to regenerate");
     }
 
     const data = await response.json();
-    
+
     // Reload the page content
-    const contentContainer = document.getElementById('ai-remedies-content');
+    const contentContainer = document.getElementById("ai-remedies-content");
     if (contentContainer && data.content) {
       RemediesRenderer.renderContent(contentContainer, data.content);
     }
 
-    alert('Remedies content regenerated successfully!');
+    alert("Remedies content regenerated successfully!");
   } catch (error) {
-    console.error('Regeneration error:', error);
+    console.error("Regeneration error:", error);
     alert(`Failed to regenerate: ${error.message}`);
     btn.disabled = false;
     btn.innerHTML = originalHtml;
   }
 }
-
