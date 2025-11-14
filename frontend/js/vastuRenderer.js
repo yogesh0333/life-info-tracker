@@ -117,9 +117,20 @@ const VastuRenderer = {
           <div class="vastu-grid mx-auto mb-4" style="max-width: 500px;">
             ${directions.map(dir => {
               const data = getDirectionData(dir.key);
-              if (!data) return '';
+              if (!data) {
+                // Center cell
+                return `
+                  <div class="vastu-cell bg-warning text-dark" style="grid-column: 2; grid-row: 2;">
+                    <strong>CENTER</strong><br>
+                    <small>Brahma</small><br>
+                    <small>Empty</small>
+                  </div>
+                `;
+              }
+              const row = Math.floor(dir.pos / 3) + 1;
+              const col = (dir.pos % 3) + 1;
               return `
-                <div class="vastu-cell bg-${data.color} text-white" style="grid-column: ${(dir.pos % 3) + 1}; grid-row: ${Math.floor(dir.pos / 3) + 1};">
+                <div class="vastu-cell bg-${data.color} text-white" style="grid-column: ${col}; grid-row: ${row};">
                   <strong>${dir.label}</strong><br>
                   <small>${data.element}</small><br>
                   <small>${data.planet}</small>
