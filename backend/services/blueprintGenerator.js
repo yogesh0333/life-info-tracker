@@ -19,18 +19,33 @@ class BlueprintGenerator {
     };
 
     const blueprint = new Map();
-    
-    blueprint.set('career', await this.generateCareerContent(userProfile));
-    blueprint.set('lifestyle', await this.generateLifestyleContent(userProfile));
-    blueprint.set('health', await this.generateHealthContent(userProfile));
-    blueprint.set('family', await this.generateFamilyContent(userProfile));
-    blueprint.set('finance', await this.generateFinanceContent(userProfile));
-    blueprint.set('spiritual', await this.generateSpiritualContent(userProfile));
-    blueprint.set('remedies', await this.generateRemediesContent(userProfile));
-    blueprint.set('vastu', await this.generateVastuContent(userProfile));
-    blueprint.set('past-karma', await this.generatePastKarmaContent(userProfile));
-    blueprint.set('medical-astrology', await this.generateMedicalAstrologyContent(userProfile));
-    blueprint.set('pilgrimage', await this.generatePilgrimageContent(userProfile));
+
+    blueprint.set("career", await this.generateCareerContent(userProfile));
+    blueprint.set(
+      "lifestyle",
+      await this.generateLifestyleContent(userProfile)
+    );
+    blueprint.set("health", await this.generateHealthContent(userProfile));
+    blueprint.set("family", await this.generateFamilyContent(userProfile));
+    blueprint.set("finance", await this.generateFinanceContent(userProfile));
+    blueprint.set(
+      "spiritual",
+      await this.generateSpiritualContent(userProfile)
+    );
+    blueprint.set("remedies", await this.generateRemediesContent(userProfile));
+    blueprint.set("vastu", await this.generateVastuContent(userProfile));
+    blueprint.set(
+      "past-karma",
+      await this.generatePastKarmaContent(userProfile)
+    );
+    blueprint.set(
+      "medical-astrology",
+      await this.generateMedicalAstrologyContent(userProfile)
+    );
+    blueprint.set(
+      "pilgrimage",
+      await this.generatePilgrimageContent(userProfile)
+    );
 
     return blueprint;
   }
@@ -336,10 +351,23 @@ Format as structured JSON with sections: dashaRemedies, lifeAreaRemedies, daanSc
         temperature: 0.7,
         maxTokens: 3000,
       });
-      return JSON.parse(response.content);
+
+      // Try to parse JSON, if fails return as text
+      try {
+        return JSON.parse(response.content);
+      } catch (parseError) {
+        // If not JSON, return as structured text
+        return {
+          raw: response.content,
+          formatted: true,
+        };
+      }
     } catch (error) {
       console.error("Error generating remedies content:", error);
-      return { error: "Failed to generate remedies content" };
+      return {
+        error: "Failed to generate remedies content",
+        message: error.message,
+      };
     }
   }
 
@@ -373,10 +401,23 @@ Format as structured JSON with sections: wealthVastu, childrenVastu, peaceVastu,
         temperature: 0.7,
         maxTokens: 3000,
       });
-      return JSON.parse(response.content);
+
+      // Try to parse JSON, if fails return as text
+      try {
+        return JSON.parse(response.content);
+      } catch (parseError) {
+        // If not JSON, return as structured text
+        return {
+          raw: response.content,
+          formatted: true,
+        };
+      }
     } catch (error) {
       console.error("Error generating vastu content:", error);
-      return { error: "Failed to generate vastu content" };
+      return {
+        error: "Failed to generate vastu content",
+        message: error.message,
+      };
     }
   }
 
@@ -410,10 +451,23 @@ Format as structured JSON with sections: planetaryInfluences, criticalPeriods, t
         temperature: 0.7,
         maxTokens: 3000,
       });
-      return JSON.parse(response.content);
+
+      // Try to parse JSON, if fails return as text
+      try {
+        return JSON.parse(response.content);
+      } catch (parseError) {
+        // If not JSON, return as structured text
+        return {
+          raw: response.content,
+          formatted: true,
+        };
+      }
     } catch (error) {
       console.error("Error generating medical astrology content:", error);
-      return { error: "Failed to generate medical astrology content" };
+      return {
+        error: "Failed to generate medical astrology content",
+        message: error.message,
+      };
     }
   }
 
@@ -447,7 +501,7 @@ Format as structured JSON with sections: strategicGifting, serviceActivities, pi
         temperature: 0.7,
         maxTokens: 3000,
       });
-      
+
       // Try to parse JSON, if fails return as text
       try {
         return JSON.parse(response.content);
@@ -459,7 +513,10 @@ Format as structured JSON with sections: strategicGifting, serviceActivities, pi
       }
     } catch (error) {
       console.error("Error generating past karma content:", error);
-      return { error: "Failed to generate past karma content", message: error.message };
+      return {
+        error: "Failed to generate past karma content",
+        message: error.message,
+      };
     }
   }
 
