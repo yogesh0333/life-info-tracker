@@ -153,24 +153,39 @@ router.post("/generate/:pageName", auth, async (req, res) => {
           .json({ error: "Page not found", page: pageName });
     }
 
-    console.log(`[GENERATE] Content generated successfully for ${pageName}`);
+    // Check if content has an error
+    const hasError = generatedContent && typeof generatedContent === 'object' && generatedContent.error;
+    
+    if (hasError) {
+      console.log(`[GENERATE] Content generation failed for ${pageName}:`, generatedContent.error);
+    } else {
+      console.log(`[GENERATE] Content generated successfully for ${pageName}`);
+    }
 
-    // Save generated content
+    // Save generated content (even if it has an error, so we know it was attempted)
     if (!user.blueprint.content) {
       user.blueprint.content = new Map();
     }
     user.blueprint.content.set(pageName, generatedContent);
-    user.blueprint.generated = true;
+    
+    // Only mark as generated if there's no error
+    if (!hasError) {
+      user.blueprint.generated = true;
+    }
+    
     await user.save();
 
     const duration = ((Date.now() - startTime) / 1000).toFixed(2);
     console.log(`[GENERATE] Completed ${pageName} in ${duration}s`);
 
     res.json({
-      success: true,
-      message: `${pageName} content generated successfully`,
+      success: !hasError,
+      message: hasError 
+        ? `${pageName} generation failed: ${generatedContent.error || generatedContent.message || 'Unknown error'}`
+        : `${pageName} content generated successfully`,
       page: pageName,
       content: generatedContent,
+      generated: !hasError,
       duration: `${duration}s`,
     });
   } catch (error) {
