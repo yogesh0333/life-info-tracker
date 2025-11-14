@@ -7,24 +7,24 @@ function parseAIResponse(content) {
   try {
     // Clean the response content - remove markdown code blocks if present
     let cleanedContent = content.trim();
-    
+
     // Remove markdown code blocks (```json ... ``` or ``` ... ```)
-    if (cleanedContent.startsWith('```')) {
+    if (cleanedContent.startsWith("```")) {
       // Find the first newline after opening ```
-      const firstNewline = cleanedContent.indexOf('\n');
+      const firstNewline = cleanedContent.indexOf("\n");
       if (firstNewline !== -1) {
         cleanedContent = cleanedContent.substring(firstNewline + 1);
       } else {
         cleanedContent = cleanedContent.substring(3); // Remove ``` if no newline
       }
-      
+
       // Remove closing ```
-      const lastBacktick = cleanedContent.lastIndexOf('```');
+      const lastBacktick = cleanedContent.lastIndexOf("```");
       if (lastBacktick !== -1) {
         cleanedContent = cleanedContent.substring(0, lastBacktick).trim();
       }
     }
-    
+
     return JSON.parse(cleanedContent);
   } catch (parseError) {
     // If not JSON, return as structured text
@@ -174,7 +174,7 @@ Focus on brands that amplify their "${userProfile.astrology.archetype}" aura.`;
         maxTokens: 4000,
         provider: process.env.DEFAULT_AI_PROVIDER || "openai",
       });
-      
+
       return parseAIResponse(response.content);
     } catch (error) {
       console.error("Error generating lifestyle content:", error);
@@ -218,7 +218,7 @@ Format as structured JSON with sections: mealPlan, exercisePlan, supplements, he
         maxTokens: 3000,
         provider: process.env.DEFAULT_AI_PROVIDER || "openai",
       });
-      
+
       return parseAIResponse(response.content);
     } catch (error) {
       console.error("Error generating health content:", error);
@@ -262,7 +262,7 @@ Format as structured JSON with sections: conceptionPlan, childrenPlan, remedies,
         maxTokens: 3000,
         provider: process.env.DEFAULT_AI_PROVIDER || "openai",
       });
-      
+
       return parseAIResponse(response.content);
     } catch (error) {
       console.error("Error generating family content:", error);
@@ -304,7 +304,7 @@ Format as structured JSON with sections: incomeTrajectory, investmentStrategy, m
         maxTokens: 3000,
         provider: process.env.DEFAULT_AI_PROVIDER || "openai",
       });
-      
+
       return parseAIResponse(response.content);
     } catch (error) {
       console.error("Error generating finance content:", error);
@@ -349,7 +349,7 @@ Format as structured JSON with sections: deityWorship, dailyPractices, mantras, 
         maxTokens: 3000,
         provider: process.env.DEFAULT_AI_PROVIDER || "openai",
       });
-      
+
       return parseAIResponse(response.content);
     } catch (error) {
       console.error("Error generating spiritual content:", error);
@@ -559,7 +559,7 @@ Format as structured JSON with sections: priorityVisits, templesByGoal, roadmap,
         maxTokens: 3000,
         provider: process.env.DEFAULT_AI_PROVIDER || "openai",
       });
-      
+
       return parseAIResponse(response.content);
     } catch (error) {
       console.error("Error generating pilgrimage content:", error);

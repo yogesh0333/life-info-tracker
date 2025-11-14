@@ -19,11 +19,13 @@ router.get("/", auth, async (req, res) => {
       ? Object.fromEntries(user.blueprint.content)
       : {};
 
-    // Check which pages have content
+    // Check which pages have content (exclude error responses)
     const pagesStatus = {};
     const allPages = user.blueprint.pages || [];
     allPages.forEach((page) => {
-      pagesStatus[page] = !!contentObj[page];
+      const pageContent = contentObj[page];
+      // Content exists AND doesn't have an error field
+      pagesStatus[page] = !!(pageContent && !pageContent.error);
     });
 
     res.json({
@@ -302,11 +304,15 @@ router.get("/page/:pageName", auth, async (req, res) => {
       });
     }
 
+    // Check if content has an error - if so, mark as not generated
+    const hasError = content && typeof content === 'object' && content.error;
+    const isGenerated = !hasError;
+
     res.json({
       success: true,
       page: pageName,
       content,
-      generated: true,
+      generated: isGenerated,
     });
   } catch (error) {
     console.error("Get page content error:", error);
