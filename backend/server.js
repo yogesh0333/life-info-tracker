@@ -6,7 +6,7 @@ const compression = require("compression");
 const rateLimit = require("express-rate-limit");
 require("dotenv").config();
 
-const connectDB = require("./config/database");
+const { connectDB, checkDatabaseHealth, getDatabaseStats } = require("./config/database");
 
 const app = express();
 
@@ -42,6 +42,27 @@ app.get("/", (req, res) => {
     version: "1.0.0",
     timestamp: new Date().toISOString(),
   });
+});
+
+// Health check endpoint
+app.get("/health", async (req, res) => {
+  try {
+    const dbHealth = await checkDatabaseHealth();
+    const dbStats = await getDatabaseStats();
+
+    res.json({
+      status: "OK",
+      database: dbHealth,
+      stats: dbStats,
+      timestamp: new Date().toISOString(),
+    });
+  } catch (error) {
+    res.status(503).json({
+      status: "ERROR",
+      error: error.message,
+      timestamp: new Date().toISOString(),
+    });
+  }
 });
 
 // Routes

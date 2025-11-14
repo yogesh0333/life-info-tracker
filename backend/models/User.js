@@ -73,6 +73,13 @@ const UserSchema = new mongoose.Schema(
   }
 );
 
+// Indexes for performance
+UserSchema.index({ email: 1 }); // Already unique, but explicit index
+UserSchema.index({ "astrology.lifePath": 1 });
+UserSchema.index({ "blueprint.generated": 1 });
+UserSchema.index({ createdAt: -1 });
+UserSchema.index({ lastLogin: -1 });
+
 // Hash password before saving
 UserSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {
@@ -110,4 +117,3 @@ UserSchema.methods.getPublicProfile = function () {
 };
 
 module.exports = mongoose.model("User", UserSchema);
-
