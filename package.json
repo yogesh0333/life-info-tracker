@@ -2,12 +2,15 @@
   "name": "life-info-tracker",
   "version": "1.0.0",
   "description": "Multi-user life tracking application",
+  "main": "backend/server.js",
   "scripts": {
     "install": "cd backend && npm install",
-    "start": "cd backend && npm start"
+    "start": "cd backend && npm start",
+    "build": "cd backend && npm install"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
   }
 }
 
