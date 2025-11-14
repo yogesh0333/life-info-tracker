@@ -154,6 +154,7 @@ Focus on brands that amplify their "${userProfile.astrology.archetype}" aura.`;
         systemPrompt,
         temperature: 0.8,
         maxTokens: 4000,
+        provider: process.env.DEFAULT_AI_PROVIDER || "openai",
       });
       return JSON.parse(response.content);
     } catch (error) {

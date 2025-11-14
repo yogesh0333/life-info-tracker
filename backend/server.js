@@ -10,6 +10,9 @@ const { connectDB, checkDatabaseHealth, getDatabaseStats } = require("./config/d
 
 const app = express();
 
+// Trust proxy for Railway (required for rate limiting behind proxy)
+app.set('trust proxy', 1);
+
 // Connect to MongoDB
 connectDB();
 

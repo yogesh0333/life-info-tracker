@@ -32,7 +32,7 @@ class AIService {
   /**
    * Generate AI completion with automatic provider fallback
    */
-  async generateCompletion(prompt, options = {}) {
+  async generateCompletion(prompt, options = {}, triedProviders = new Set()) {
     const {
       provider = process.env.DEFAULT_AI_PROVIDER || "openai",
       model = null,
@@ -40,6 +40,12 @@ class AIService {
       maxTokens = 4000,
       systemPrompt = null,
     } = options;
+
+    // Prevent infinite loops
+    if (triedProviders.has(provider)) {
+      throw new Error(`Provider ${provider} already tried. All providers failed.`);
+    }
+    triedProviders.add(provider);
 
     try {
       switch (provider) {
@@ -55,16 +61,20 @@ class AIService {
     } catch (error) {
       console.error(`Error with ${provider}:`, error.message);
 
-      // Try fallback providers
+      // Try fallback providers (only if we haven't tried them all)
       const availableProviders = getAvailableProviders();
-      for (const fallbackProvider of availableProviders) {
-        if (fallbackProvider.id !== provider) {
-          try {
-            console.log(`Trying fallback provider: ${fallbackProvider.name}`);
-            return await this.generateCompletion(prompt, { ...options, provider: fallbackProvider.id });
-          } catch (fallbackError) {
-            console.error(`Fallback provider ${fallbackProvider.name} also failed:`, fallbackError.message);
-          }
+      const untriedProviders = availableProviders.filter(p => !triedProviders.has(p.id));
+      
+      if (untriedProviders.length === 0) {
+        throw new Error("All AI providers failed");
+      }
+
+      for (const fallbackProvider of untriedProviders) {
+        try {
+          console.log(`Trying fallback provider: ${fallbackProvider.name}`);
+          return await this.generateCompletion(prompt, { ...options, provider: fallbackProvider.id }, triedProviders);
+        } catch (fallbackError) {
+          console.error(`Fallback provider ${fallbackProvider.name} also failed:`, fallbackError.message);
         }
       }
 
@@ -80,7 +90,9 @@ class AIService {
       throw new Error("OpenAI API key not configured");
     }
 
-    const { model = "gpt-3.5-turbo", temperature = 0.7, maxTokens = 4000, systemPrompt } = options;
+    // Ensure model is always set (never null or undefined)
+    const model = options.model || "gpt-3.5-turbo";
+    const { temperature = 0.7, maxTokens = 4000, systemPrompt } = options;
 
     const messages = [];
 
@@ -113,7 +125,9 @@ class AIService {
       throw new Error("Claude API key not configured");
     }
 
-    const { model = "claude-3-sonnet-20240229", temperature = 0.7, maxTokens = 4000, systemPrompt } = options;
+    // Ensure model is always set (never null or undefined)
+    const model = options.model || "claude-3-sonnet-20240229";
+    const { temperature = 0.7, maxTokens = 4000, systemPrompt } = options;
 
     const messages = [{ role: "user", content: prompt }];
 

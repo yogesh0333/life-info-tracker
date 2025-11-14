@@ -15,14 +15,14 @@ router.get("/", auth, async (req, res) => {
     }
 
     // Convert Map to Object for JSON response
-    const contentObj = user.blueprint.content 
-      ? Object.fromEntries(user.blueprint.content) 
+    const contentObj = user.blueprint.content
+      ? Object.fromEntries(user.blueprint.content)
       : {};
 
     // Check which pages have content
     const pagesStatus = {};
     const allPages = user.blueprint.pages || [];
-    allPages.forEach(page => {
+    allPages.forEach((page) => {
       pagesStatus[page] = !!contentObj[page];
     });
 
@@ -38,7 +38,7 @@ router.get("/", auth, async (req, res) => {
         userInfo: {
           name: user.name,
           email: user.email,
-          dob: user.dob ? user.dob.toISOString().split('T')[0] : null,
+          dob: user.dob ? user.dob.toISOString().split("T")[0] : null,
           gender: user.gender,
         },
       },
@@ -55,10 +55,10 @@ router.get("/", auth, async (req, res) => {
 router.post("/generate/:pageName", auth, async (req, res) => {
   const startTime = Date.now();
   const { pageName } = req.params;
-  
+
   try {
     console.log(`[GENERATE] Starting generation for page: ${pageName}`);
-    
+
     const user = await User.findById(req.user._id);
 
     if (!user) {
@@ -74,56 +74,81 @@ router.post("/generate/:pageName", auth, async (req, res) => {
       gender: user.gender,
     };
 
-    console.log(`[GENERATE] User profile: ${user.name}, Life Path: ${user.astrology?.lifePath}`);
+    console.log(
+      `[GENERATE] User profile: ${user.name}, Life Path: ${user.astrology?.lifePath}`
+    );
 
     let generatedContent;
     switch (pageName) {
       case "career":
         console.log(`[GENERATE] Calling generateCareerContent...`);
-        generatedContent = await blueprintGenerator.generateCareerContent(userProfile);
+        generatedContent = await blueprintGenerator.generateCareerContent(
+          userProfile
+        );
         break;
       case "lifestyle":
         console.log(`[GENERATE] Calling generateLifestyleContent...`);
-        generatedContent = await blueprintGenerator.generateLifestyleContent(userProfile);
+        generatedContent = await blueprintGenerator.generateLifestyleContent(
+          userProfile
+        );
         break;
       case "health":
         console.log(`[GENERATE] Calling generateHealthContent...`);
-        generatedContent = await blueprintGenerator.generateHealthContent(userProfile);
+        generatedContent = await blueprintGenerator.generateHealthContent(
+          userProfile
+        );
         break;
       case "family":
         console.log(`[GENERATE] Calling generateFamilyContent...`);
-        generatedContent = await blueprintGenerator.generateFamilyContent(userProfile);
+        generatedContent = await blueprintGenerator.generateFamilyContent(
+          userProfile
+        );
         break;
       case "finance":
         console.log(`[GENERATE] Calling generateFinanceContent...`);
-        generatedContent = await blueprintGenerator.generateFinanceContent(userProfile);
+        generatedContent = await blueprintGenerator.generateFinanceContent(
+          userProfile
+        );
         break;
       case "spiritual":
         console.log(`[GENERATE] Calling generateSpiritualContent...`);
-        generatedContent = await blueprintGenerator.generateSpiritualContent(userProfile);
+        generatedContent = await blueprintGenerator.generateSpiritualContent(
+          userProfile
+        );
         break;
       case "remedies":
         console.log(`[GENERATE] Calling generateRemediesContent...`);
-        generatedContent = await blueprintGenerator.generateRemediesContent(userProfile);
+        generatedContent = await blueprintGenerator.generateRemediesContent(
+          userProfile
+        );
         break;
       case "vastu":
         console.log(`[GENERATE] Calling generateVastuContent...`);
-        generatedContent = await blueprintGenerator.generateVastuContent(userProfile);
+        generatedContent = await blueprintGenerator.generateVastuContent(
+          userProfile
+        );
         break;
       case "past-karma":
         console.log(`[GENERATE] Calling generatePastKarmaContent...`);
-        generatedContent = await blueprintGenerator.generatePastKarmaContent(userProfile);
+        generatedContent = await blueprintGenerator.generatePastKarmaContent(
+          userProfile
+        );
         break;
       case "medical-astrology":
         console.log(`[GENERATE] Calling generateMedicalAstrologyContent...`);
-        generatedContent = await blueprintGenerator.generateMedicalAstrologyContent(userProfile);
+        generatedContent =
+          await blueprintGenerator.generateMedicalAstrologyContent(userProfile);
         break;
       case "pilgrimage":
         console.log(`[GENERATE] Calling generatePilgrimageContent...`);
-        generatedContent = await blueprintGenerator.generatePilgrimageContent(userProfile);
+        generatedContent = await blueprintGenerator.generatePilgrimageContent(
+          userProfile
+        );
         break;
       default:
-        return res.status(404).json({ error: "Page not found", page: pageName });
+        return res
+          .status(404)
+          .json({ error: "Page not found", page: pageName });
     }
 
     console.log(`[GENERATE] Content generated successfully for ${pageName}`);
@@ -148,14 +173,17 @@ router.post("/generate/:pageName", auth, async (req, res) => {
     });
   } catch (error) {
     const duration = ((Date.now() - startTime) / 1000).toFixed(2);
-    console.error(`[GENERATE] Error generating ${pageName} after ${duration}s:`, error);
+    console.error(
+      `[GENERATE] Error generating ${pageName} after ${duration}s:`,
+      error
+    );
     console.error(`[GENERATE] Error stack:`, error.stack);
-    
-    res.status(500).json({ 
-      error: "Server error", 
+
+    res.status(500).json({
+      error: "Server error",
       message: error.message,
       page: pageName,
-      details: process.env.NODE_ENV === "development" ? error.stack : undefined
+      details: process.env.NODE_ENV === "development" ? error.stack : undefined,
     });
   }
 });
@@ -173,19 +201,25 @@ router.post("/generate-all", auth, async (req, res) => {
 
     // Start generation in background (don't wait)
     const blueprintGenerator = require("../services/blueprintGenerator");
-    
+
     // Generate all content
-    blueprintGenerator.generateBlueprint(user).then((content) => {
-      user.blueprint.content = content;
-      user.blueprint.generated = true;
-      user.save().catch((err) => console.error("Error saving blueprint:", err));
-    }).catch((err) => {
-      console.error("Error generating blueprint:", err);
-    });
+    blueprintGenerator
+      .generateBlueprint(user)
+      .then((content) => {
+        user.blueprint.content = content;
+        user.blueprint.generated = true;
+        user
+          .save()
+          .catch((err) => console.error("Error saving blueprint:", err));
+      })
+      .catch((err) => {
+        console.error("Error generating blueprint:", err);
+      });
 
     res.json({
       success: true,
-      message: "Blueprint generation started. Content will be available shortly.",
+      message:
+        "Blueprint generation started. Content will be available shortly.",
       status: "generating",
     });
   } catch (error) {
@@ -261,10 +295,10 @@ router.get("/page/:pageName", auth, async (req, res) => {
     const content = user.blueprint.content?.get(pageName);
 
     if (!content) {
-      return res.status(404).json({ 
+      return res.status(404).json({
         error: "Content not generated yet",
         page: pageName,
-        generated: false
+        generated: false,
       });
     }
 
