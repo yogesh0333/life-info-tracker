@@ -53,9 +53,13 @@ router.get("/", auth, async (req, res) => {
 // @desc    Generate AI content for a specific page
 // @access  Private
 router.post("/generate/:pageName", auth, async (req, res) => {
+  const startTime = Date.now();
+  const { pageName } = req.params;
+  
   try {
+    console.log(`[GENERATE] Starting generation for page: ${pageName}`);
+    
     const user = await User.findById(req.user._id);
-    const { pageName } = req.params;
 
     if (!user) {
       return res.status(404).json({ error: "User not found" });
@@ -70,44 +74,59 @@ router.post("/generate/:pageName", auth, async (req, res) => {
       gender: user.gender,
     };
 
+    console.log(`[GENERATE] User profile: ${user.name}, Life Path: ${user.astrology?.lifePath}`);
+
     let generatedContent;
     switch (pageName) {
       case "career":
+        console.log(`[GENERATE] Calling generateCareerContent...`);
         generatedContent = await blueprintGenerator.generateCareerContent(userProfile);
         break;
       case "lifestyle":
+        console.log(`[GENERATE] Calling generateLifestyleContent...`);
         generatedContent = await blueprintGenerator.generateLifestyleContent(userProfile);
         break;
       case "health":
+        console.log(`[GENERATE] Calling generateHealthContent...`);
         generatedContent = await blueprintGenerator.generateHealthContent(userProfile);
         break;
       case "family":
+        console.log(`[GENERATE] Calling generateFamilyContent...`);
         generatedContent = await blueprintGenerator.generateFamilyContent(userProfile);
         break;
       case "finance":
+        console.log(`[GENERATE] Calling generateFinanceContent...`);
         generatedContent = await blueprintGenerator.generateFinanceContent(userProfile);
         break;
       case "spiritual":
+        console.log(`[GENERATE] Calling generateSpiritualContent...`);
         generatedContent = await blueprintGenerator.generateSpiritualContent(userProfile);
         break;
       case "remedies":
+        console.log(`[GENERATE] Calling generateRemediesContent...`);
         generatedContent = await blueprintGenerator.generateRemediesContent(userProfile);
         break;
       case "vastu":
+        console.log(`[GENERATE] Calling generateVastuContent...`);
         generatedContent = await blueprintGenerator.generateVastuContent(userProfile);
         break;
       case "past-karma":
+        console.log(`[GENERATE] Calling generatePastKarmaContent...`);
         generatedContent = await blueprintGenerator.generatePastKarmaContent(userProfile);
         break;
       case "medical-astrology":
+        console.log(`[GENERATE] Calling generateMedicalAstrologyContent...`);
         generatedContent = await blueprintGenerator.generateMedicalAstrologyContent(userProfile);
         break;
       case "pilgrimage":
+        console.log(`[GENERATE] Calling generatePilgrimageContent...`);
         generatedContent = await blueprintGenerator.generatePilgrimageContent(userProfile);
         break;
       default:
-        return res.status(404).json({ error: "Page not found" });
+        return res.status(404).json({ error: "Page not found", page: pageName });
     }
+
+    console.log(`[GENERATE] Content generated successfully for ${pageName}`);
 
     // Save generated content
     if (!user.blueprint.content) {
@@ -117,15 +136,27 @@ router.post("/generate/:pageName", auth, async (req, res) => {
     user.blueprint.generated = true;
     await user.save();
 
+    const duration = ((Date.now() - startTime) / 1000).toFixed(2);
+    console.log(`[GENERATE] Completed ${pageName} in ${duration}s`);
+
     res.json({
       success: true,
       message: `${pageName} content generated successfully`,
       page: pageName,
       content: generatedContent,
+      duration: `${duration}s`,
     });
   } catch (error) {
-    console.error("Generate page content error:", error);
-    res.status(500).json({ error: "Server error", message: error.message });
+    const duration = ((Date.now() - startTime) / 1000).toFixed(2);
+    console.error(`[GENERATE] Error generating ${pageName} after ${duration}s:`, error);
+    console.error(`[GENERATE] Error stack:`, error.stack);
+    
+    res.status(500).json({ 
+      error: "Server error", 
+      message: error.message,
+      page: pageName,
+      details: process.env.NODE_ENV === "development" ? error.stack : undefined
+    });
   }
 });
 

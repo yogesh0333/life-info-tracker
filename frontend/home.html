@@ -232,20 +232,36 @@
             btn.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i>Generating...';
 
             try {
+                console.log(`Generating ${pageName}...`, `${API_URL}/blueprint/generate/${pageKey}`);
+                
+                // Create AbortController for timeout (5 minutes for AI generation)
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 5 * 60 * 1000); // 5 minutes
+
                 const response = await fetch(`${API_URL}/blueprint/generate/${pageKey}`, {
                     method: 'POST',
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'
-                    }
+                    },
+                    signal: controller.signal
                 });
 
+                clearTimeout(timeoutId);
+
                 if (!response.ok) {
-                    const error = await response.json();
-                    throw new Error(error.message || 'Failed to generate content');
+                    let errorMessage = 'Failed to generate content';
+                    try {
+                        const error = await response.json();
+                        errorMessage = error.message || error.error || errorMessage;
+                    } catch (e) {
+                        errorMessage = `Server error: ${response.status} ${response.statusText}`;
+                    }
+                    throw new Error(errorMessage);
                 }
 
                 const data = await response.json();
+                console.log('Generation successful:', data);
                 
                 // Update status
                 pagesStatus[pageKey] = true;
@@ -256,8 +272,20 @@
                 // Show success message
                 alert(`${pageName} generated successfully! Click "Open" to view.`);
             } catch (error) {
-                console.error('Error:', error);
-                alert(`Failed to generate ${pageName}: ${error.message}`);
+                console.error('Generation error:', error);
+                
+                let errorMessage = error.message || 'Failed to generate content';
+                
+                // Handle specific error types
+                if (error.name === 'AbortError') {
+                    errorMessage = 'Request timed out. AI generation is taking longer than expected. Please try again.';
+                } else if (error.message.includes('Failed to fetch')) {
+                    errorMessage = 'Network error: Could not connect to server. Please check your internet connection and try again.';
+                } else if (error.message.includes('CORS')) {
+                    errorMessage = 'CORS error: Please check backend CORS configuration.';
+                }
+                
+                alert(`Failed to generate ${pageName}: ${errorMessage}`);
                 btn.disabled = false;
                 btn.innerHTML = originalHtml;
             }
