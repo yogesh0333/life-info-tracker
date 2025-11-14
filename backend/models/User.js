@@ -74,7 +74,7 @@ const UserSchema = new mongoose.Schema(
 );
 
 // Indexes for performance
-UserSchema.index({ email: 1 }); // Already unique, but explicit index
+// Note: email already has unique: true which creates an index automatically
 UserSchema.index({ "astrology.lifePath": 1 });
 UserSchema.index({ "blueprint.generated": 1 });
 UserSchema.index({ createdAt: -1 });

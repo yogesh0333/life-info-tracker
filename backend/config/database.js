@@ -22,8 +22,6 @@ const connectDB = async (retries = 5, delay = 5000) => {
         socketTimeoutMS: 45000,
         maxPoolSize: 10, // Maintain up to 10 socket connections
         minPoolSize: 2, // Maintain at least 2 socket connections
-        bufferMaxEntries: 0, // Disable mongoose buffering
-        bufferCommands: false, // Disable mongoose buffering
         heartbeatFrequencyMS: 10000, // Check connection health every 10 seconds
       };
 
