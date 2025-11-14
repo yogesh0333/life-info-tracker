@@ -1,13 +1,44 @@
-/**
- * AI-Powered Blueprint Generator
- * Generates personalized content for each user based on their astrological profile
- */
-
 const aiService = require("./aiService");
+
+/**
+ * Helper function to clean and parse JSON from AI response
+ */
+function parseAIResponse(content) {
+  try {
+    // Clean the response content - remove markdown code blocks if present
+    let cleanedContent = content.trim();
+    
+    // Remove markdown code blocks (```json ... ``` or ``` ... ```)
+    if (cleanedContent.startsWith('```')) {
+      // Find the first newline after opening ```
+      const firstNewline = cleanedContent.indexOf('\n');
+      if (firstNewline !== -1) {
+        cleanedContent = cleanedContent.substring(firstNewline + 1);
+      } else {
+        cleanedContent = cleanedContent.substring(3); // Remove ``` if no newline
+      }
+      
+      // Remove closing ```
+      const lastBacktick = cleanedContent.lastIndexOf('```');
+      if (lastBacktick !== -1) {
+        cleanedContent = cleanedContent.substring(0, lastBacktick).trim();
+      }
+    }
+    
+    return JSON.parse(cleanedContent);
+  } catch (parseError) {
+    // If not JSON, return as structured text
+    console.warn(`Failed to parse JSON:`, parseError.message);
+    return {
+      raw: content,
+      formatted: true,
+    };
+  }
+}
 
 class BlueprintGenerator {
   /**
-   * Generate complete blueprint content for a user
+   * Generate complete blueprint for user
    */
   async generateBlueprint(user) {
     const userProfile = {
@@ -74,21 +105,17 @@ ASTROLOGICAL PROFILE:
 - Life Path Number: ${userProfile.astrology.lifePath}
 - Planetary Ruler: ${userProfile.astrology.planetaryRuler.planet}
 - Archetype: ${userProfile.astrology.archetype}
-- Core Vibration: ${userProfile.astrology.coreVibration}
 - Zodiac Sign: ${userProfile.astrology.zodiacSign}
-- Current Age: ${userProfile.age}
+- Age: ${userProfile.age}
 
 REQUIREMENTS:
-1. Career paths aligned with their Life Path and Planetary energy
-2. Specific job roles and industries that match their astrological profile
-3. Career growth timeline (next 5 years)
-4. Skills to develop
-5. Best times for job changes or promotions
-6. Salary trajectory based on their planetary influences
-7. Work environment recommendations
-8. Daily/weekly career action plan
-
-Format as structured JSON with sections: careerPaths, timeline, skills, actionPlan, salaryProjection.
+1. Current Status (current salary, target salary, timeline)
+2. Three distinct career paths to achieve significant growth (e.g., FAANG, Freelancing, Startup), detailing pros, cons, and required skills for each.
+3. A recommended combined path.
+4. Daily and weekly schedules for skill development.
+5. Financial projections and sacrifices needed.
+6. Key success metrics and immediate actions.
+7. Astrological alignment for career choices.
 
 Be specific, practical, and aligned with Indian job market and astrological principles.`;
 
@@ -102,16 +129,7 @@ Be specific, practical, and aligned with Indian job market and astrological prin
         provider: process.env.DEFAULT_AI_PROVIDER || "openai",
       });
 
-      // Try to parse JSON, if fails return as text
-      try {
-        return JSON.parse(response.content);
-      } catch (parseError) {
-        // If not JSON, return as structured text
-        return {
-          raw: response.content,
-          formatted: true,
-        };
-      }
+      return parseAIResponse(response.content);
     } catch (error) {
       console.error("Error generating career content:", error);
       return {
@@ -125,7 +143,7 @@ Be specific, practical, and aligned with Indian job market and astrological prin
    * Generate Lifestyle Content
    */
   async generateLifestyleContent(userProfile) {
-    const prompt = `Generate a comprehensive lifestyle blueprint for ${userProfile.name}:
+    const prompt = `Generate comprehensive lifestyle recommendations for ${userProfile.name}:
 
 ASTROLOGICAL PROFILE:
 - Life Path Number: ${userProfile.astrology.lifePath}
@@ -141,8 +159,7 @@ REQUIREMENTS:
 4. Style guidelines (minimalist, classy, grounded - matching their core vibration)
 5. Budget-friendly options (under ₹3,000 for fragrances)
 6. Occasion-based recommendations (office, parties, weddings, gym, home)
-7. Brand analysis: Design Philosophy, Quality, Aura, Energetic Alignment
-8. Specific product recommendations with prices and astrological scores
+7. Leather briefcase recommendations aligned with astrology/numerology
 
 Format as structured JSON with sections: accessories, fragrances, clothing, colors, styleGuide.
 
@@ -157,10 +174,14 @@ Focus on brands that amplify their "${userProfile.astrology.archetype}" aura.`;
         maxTokens: 4000,
         provider: process.env.DEFAULT_AI_PROVIDER || "openai",
       });
-      return JSON.parse(response.content);
+      
+      return parseAIResponse(response.content);
     } catch (error) {
       console.error("Error generating lifestyle content:", error);
-      return { error: "Failed to generate lifestyle content" };
+      return {
+        error: "Failed to generate lifestyle content",
+        message: error.message,
+      };
     }
   }
 
@@ -174,15 +195,14 @@ ASTROLOGICAL PROFILE:
 - Life Path Number: ${userProfile.astrology.lifePath}
 - Planetary Ruler: ${userProfile.astrology.planetaryRuler.planet}
 - Zodiac Sign: ${userProfile.astrology.zodiacSign}
-- Current Age: ${userProfile.age}
-- Gender: ${userProfile.gender}
+- Age: ${userProfile.age}
 
 REQUIREMENTS:
-1. Weight loss/gain plan based on planetary influences
-2. Daily meal plan aligned with their zodiac sign
-3. Exercise routine matching their planetary energy
-4. Supplements and vitamins recommendations
-5. Health predictions based on their chart
+1. Weight loss/gain plan based on current and target weight
+2. Daily meal plans (breakfast, lunch, dinner, snacks)
+3. Exercise routines (cardio, strength, yoga)
+4. Supplements recommendations
+5. Health predictions based on astrological chart
 6. Best times for workouts and meals
 7. Foods to avoid based on astrological profile
 8. 90-day action plan
@@ -198,10 +218,14 @@ Format as structured JSON with sections: mealPlan, exercisePlan, supplements, he
         maxTokens: 3000,
         provider: process.env.DEFAULT_AI_PROVIDER || "openai",
       });
-      return JSON.parse(response.content);
+      
+      return parseAIResponse(response.content);
     } catch (error) {
       console.error("Error generating health content:", error);
-      return { error: "Failed to generate health content" };
+      return {
+        error: "Failed to generate health content",
+        message: error.message,
+      };
     }
   }
 
@@ -209,21 +233,20 @@ Format as structured JSON with sections: mealPlan, exercisePlan, supplements, he
    * Generate Family Content
    */
   async generateFamilyContent(userProfile) {
-    const prompt = `Generate a comprehensive family planning blueprint for ${userProfile.name}:
+    const prompt = `Generate family planning recommendations for ${userProfile.name}:
 
 ASTROLOGICAL PROFILE:
 - Life Path Number: ${userProfile.astrology.lifePath}
 - Planetary Ruler: ${userProfile.astrology.planetaryRuler.planet}
 - Zodiac Sign: ${userProfile.astrology.zodiacSign}
-- Current Age: ${userProfile.age}
-- Gender: ${userProfile.gender}
+- Mahadasha: ${userProfile.astrology.mahadasha}
 
 REQUIREMENTS:
-1. Best times for child conception based on their chart
-2. Number of children recommended astrologically
-3. Remedies for healthy pregnancy and children
-4. Partner compatibility insights
-5. Family planning timeline
+1. Child conception plan (best times, remedies)
+2. Children timeline (when to have children)
+3. Remedies for healthy children
+4. Astrological gifts for family members
+5. Family harmony recommendations
 6. Remedies for family harmony
 7. Vastu recommendations for bedroom (conception)
 8. Spiritual practices for family well-being
@@ -239,10 +262,14 @@ Format as structured JSON with sections: conceptionPlan, childrenPlan, remedies,
         maxTokens: 3000,
         provider: process.env.DEFAULT_AI_PROVIDER || "openai",
       });
-      return JSON.parse(response.content);
+      
+      return parseAIResponse(response.content);
     } catch (error) {
       console.error("Error generating family content:", error);
-      return { error: "Failed to generate family content" };
+      return {
+        error: "Failed to generate family content",
+        message: error.message,
+      };
     }
   }
 
@@ -250,23 +277,21 @@ Format as structured JSON with sections: conceptionPlan, childrenPlan, remedies,
    * Generate Finance Content
    */
   async generateFinanceContent(userProfile) {
-    const prompt = `Generate a comprehensive financial blueprint for ${userProfile.name}:
+    const prompt = `Generate financial planning recommendations for ${userProfile.name}:
 
 ASTROLOGICAL PROFILE:
 - Life Path Number: ${userProfile.astrology.lifePath}
 - Planetary Ruler: ${userProfile.astrology.planetaryRuler.planet}
 - Zodiac Sign: ${userProfile.astrology.zodiacSign}
-- Current Age: ${userProfile.age}
+- Mahadasha: ${userProfile.astrology.mahadasha}
 
 REQUIREMENTS:
-1. Income trajectory based on planetary influences
-2. Investment strategy aligned with their Life Path
-3. Best investment types (stocks, real estate, gold, etc.)
-4. Financial milestones and timeline
-5. Wealth-building plan
-6. Remedies for financial growth
-7. Best times for major financial decisions
-8. Monthly budget recommendations
+1. Income trajectory (current to target)
+2. Investment strategy (stocks, mutual funds, real estate, gold)
+3. Net worth milestones
+4. Financial remedies (Daan, puja, gemstones)
+5. Best times for major financial decisions
+6. Monthly budget recommendations
 
 Format as structured JSON with sections: incomeTrajectory, investmentStrategy, milestones, remedies, budgetPlan.`;
 
@@ -279,10 +304,14 @@ Format as structured JSON with sections: incomeTrajectory, investmentStrategy, m
         maxTokens: 3000,
         provider: process.env.DEFAULT_AI_PROVIDER || "openai",
       });
-      return JSON.parse(response.content);
+      
+      return parseAIResponse(response.content);
     } catch (error) {
       console.error("Error generating finance content:", error);
-      return { error: "Failed to generate finance content" };
+      return {
+        error: "Failed to generate finance content",
+        message: error.message,
+      };
     }
   }
 
@@ -320,10 +349,14 @@ Format as structured JSON with sections: deityWorship, dailyPractices, mantras, 
         maxTokens: 3000,
         provider: process.env.DEFAULT_AI_PROVIDER || "openai",
       });
-      return JSON.parse(response.content);
+      
+      return parseAIResponse(response.content);
     } catch (error) {
       console.error("Error generating spiritual content:", error);
-      return { error: "Failed to generate spiritual content" };
+      return {
+        error: "Failed to generate spiritual content",
+        message: error.message,
+      };
     }
   }
 
@@ -359,16 +392,7 @@ Format as structured JSON with sections: dashaRemedies, lifeAreaRemedies, daanSc
         provider: process.env.DEFAULT_AI_PROVIDER || "openai",
       });
 
-      // Try to parse JSON, if fails return as text
-      try {
-        return JSON.parse(response.content);
-      } catch (parseError) {
-        // If not JSON, return as structured text
-        return {
-          raw: response.content,
-          formatted: true,
-        };
-      }
+      return parseAIResponse(response.content);
     } catch (error) {
       console.error("Error generating remedies content:", error);
       return {
@@ -410,16 +434,7 @@ Format as structured JSON with sections: wealthVastu, childrenVastu, peaceVastu,
         provider: process.env.DEFAULT_AI_PROVIDER || "openai",
       });
 
-      // Try to parse JSON, if fails return as text
-      try {
-        return JSON.parse(response.content);
-      } catch (parseError) {
-        // If not JSON, return as structured text
-        return {
-          raw: response.content,
-          formatted: true,
-        };
-      }
+      return parseAIResponse(response.content);
     } catch (error) {
       console.error("Error generating vastu content:", error);
       return {
@@ -439,10 +454,10 @@ ASTROLOGICAL PROFILE:
 - Life Path Number: ${userProfile.astrology.lifePath}
 - Planetary Ruler: ${userProfile.astrology.planetaryRuler.planet}
 - Zodiac Sign: ${userProfile.astrology.zodiacSign}
-- Current Age: ${userProfile.age}
+- Mahadasha: ${userProfile.astrology.mahadasha}
 
 REQUIREMENTS:
-1. Planetary health influences
+1. Planetary influences on health
 2. Critical health periods by Dasha
 3. Medical test schedule
 4. Health predictions
@@ -461,16 +476,7 @@ Format as structured JSON with sections: planetaryInfluences, criticalPeriods, t
         provider: process.env.DEFAULT_AI_PROVIDER || "openai",
       });
 
-      // Try to parse JSON, if fails return as text
-      try {
-        return JSON.parse(response.content);
-      } catch (parseError) {
-        // If not JSON, return as structured text
-        return {
-          raw: response.content,
-          formatted: true,
-        };
-      }
+      return parseAIResponse(response.content);
     } catch (error) {
       console.error("Error generating medical astrology content:", error);
       return {
@@ -512,15 +518,7 @@ Format as structured JSON with sections: strategicGifting, serviceActivities, pi
         provider: process.env.DEFAULT_AI_PROVIDER || "openai",
       });
 
-      // Try to parse JSON, if fails return as text
-      try {
-        return JSON.parse(response.content);
-      } catch (parseError) {
-        return {
-          raw: response.content,
-          formatted: true,
-        };
-      }
+      return parseAIResponse(response.content);
     } catch (error) {
       console.error("Error generating past karma content:", error);
       return {
@@ -561,10 +559,14 @@ Format as structured JSON with sections: priorityVisits, templesByGoal, roadmap,
         maxTokens: 3000,
         provider: process.env.DEFAULT_AI_PROVIDER || "openai",
       });
-      return JSON.parse(response.content);
+      
+      return parseAIResponse(response.content);
     } catch (error) {
       console.error("Error generating pilgrimage content:", error);
-      return { error: "Failed to generate pilgrimage content" };
+      return {
+        error: "Failed to generate pilgrimage content",
+        message: error.message,
+      };
     }
   }
 }

@@ -5,7 +5,10 @@
 
 const OpenAI = require("openai");
 const Anthropic = require("@anthropic-ai/sdk");
-const { getAvailableProviders, isProviderAvailable } = require("../config/aiProviders");
+const {
+  getAvailableProviders,
+  isProviderAvailable,
+} = require("../config/aiProviders");
 
 class AIService {
   constructor() {
@@ -21,7 +24,8 @@ class AIService {
     }
 
     // Claude (check both CLAUDE_API_KEY and ANTHROPIC_API_KEY)
-    const claudeKey = process.env.CLAUDE_API_KEY || process.env.ANTHROPIC_API_KEY;
+    const claudeKey =
+      process.env.CLAUDE_API_KEY || process.env.ANTHROPIC_API_KEY;
     if (claudeKey) {
       this.anthropic = new Anthropic({
         apiKey: claudeKey,
@@ -43,17 +47,29 @@ class AIService {
 
     // Prevent infinite loops
     if (triedProviders.has(provider)) {
-      throw new Error(`Provider ${provider} already tried. All providers failed.`);
+      throw new Error(
+        `Provider ${provider} already tried. All providers failed.`
+      );
     }
     triedProviders.add(provider);
 
     try {
       switch (provider) {
         case "openai":
-          return await this.generateWithOpenAI(prompt, { model, temperature, maxTokens, systemPrompt });
+          return await this.generateWithOpenAI(prompt, {
+            model,
+            temperature,
+            maxTokens,
+            systemPrompt,
+          });
 
         case "claude":
-          return await this.generateWithClaude(prompt, { model, temperature, maxTokens, systemPrompt });
+          return await this.generateWithClaude(prompt, {
+            model,
+            temperature,
+            maxTokens,
+            systemPrompt,
+          });
 
         default:
           throw new Error(`Unsupported provider: ${provider}`);
@@ -63,8 +79,10 @@ class AIService {
 
       // Try fallback providers (only if we haven't tried them all)
       const availableProviders = getAvailableProviders();
-      const untriedProviders = availableProviders.filter(p => !triedProviders.has(p.id));
-      
+      const untriedProviders = availableProviders.filter(
+        (p) => !triedProviders.has(p.id)
+      );
+
       if (untriedProviders.length === 0) {
         throw new Error("All AI providers failed");
       }
@@ -72,9 +90,16 @@ class AIService {
       for (const fallbackProvider of untriedProviders) {
         try {
           console.log(`Trying fallback provider: ${fallbackProvider.name}`);
-          return await this.generateCompletion(prompt, { ...options, provider: fallbackProvider.id }, triedProviders);
+          return await this.generateCompletion(
+            prompt,
+            { ...options, provider: fallbackProvider.id },
+            triedProviders
+          );
         } catch (fallbackError) {
-          console.error(`Fallback provider ${fallbackProvider.name} also failed:`, fallbackError.message);
+          console.error(
+            `Fallback provider ${fallbackProvider.name} also failed:`,
+            fallbackError.message
+          );
         }
       }
 
@@ -149,4 +174,3 @@ class AIService {
 }
 
 module.exports = new AIService();
-
