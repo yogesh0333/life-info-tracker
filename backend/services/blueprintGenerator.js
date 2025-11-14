@@ -143,7 +143,13 @@ Be specific, practical, and aligned with Indian job market and astrological prin
    * Generate Lifestyle Content
    */
   async generateLifestyleContent(userProfile) {
+    const gender = userProfile.gender || "male";
+    const genderContext =
+      gender === "male" ? "MALE" : gender === "female" ? "FEMALE" : "UNISEX";
+
     const prompt = `Generate comprehensive lifestyle recommendations for ${userProfile.name}:
+
+CRITICAL: USER IS ${genderContext} - ALL RECOMMENDATIONS MUST BE FOR ${genderContext} PRODUCTS ONLY. DO NOT RECOMMEND PRODUCTS FOR THE OPPOSITE GENDER.
 
 ASTROLOGICAL PROFILE:
 - Life Path Number: ${userProfile.astrology.lifePath}
@@ -151,19 +157,25 @@ ASTROLOGICAL PROFILE:
 - Archetype: ${userProfile.astrology.archetype}
 - Core Vibration: ${userProfile.astrology.coreVibration}
 - Zodiac Sign: ${userProfile.astrology.zodiacSign}
+- Gender: ${genderContext}
 
 REQUIREMENTS:
-1. Brand recommendations (watches, accessories, clothing) aligned with their planetary energy
-2. Fragrance recommendations (EDP, EDT, Attar) based on their Life Path and archetype
+1. Brand recommendations (watches, accessories, clothing) aligned with their planetary energy - FOR ${genderContext} ONLY
+2. Fragrance recommendations (EDP, EDT, Attar) based on their Life Path and archetype - ${genderContext} FRAGRANCES ONLY (men's fragrances if male, women's if female)
 3. Color palette recommendations
 4. Style guidelines (minimalist, classy, grounded - matching their core vibration)
 5. Budget-friendly options (under ₹3,000 for fragrances)
 6. Occasion-based recommendations (office, parties, weddings, gym, home)
 7. Leather briefcase recommendations aligned with astrology/numerology
 
+IMPORTANT: 
+- If gender is MALE: Recommend men's fragrances, men's clothing, men's accessories
+- If gender is FEMALE: Recommend women's fragrances, women's clothing, women's accessories
+- NEVER mix genders in recommendations
+
 Format as structured JSON with sections: accessories, fragrances, clothing, colors, styleGuide.
 
-Focus on brands that amplify their "${userProfile.astrology.archetype}" aura.`;
+Focus on brands that amplify their "${userProfile.astrology.archetype}" aura for a ${genderContext} user.`;
 
     const systemPrompt = `You are a lifestyle consultant specializing in astrological brand alignment. Recommend brands and products that energetically align with the user's planetary ruler and archetype. Focus on quality, authenticity, and "quiet luxury" that matches their core vibration.`;
 
