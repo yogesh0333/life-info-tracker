@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Life Info Tracker</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+        }
+        body {
+            background: #f8fafc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .sidebar {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            position: fixed;
+            width: 260px;
+            padding: 2rem 0;
+        }
+        .main-content {
+            margin-left: 260px;
+            padding: 2rem;
+        }
+        .stat-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        .nav-link {
+            color: rgba(255,255,255,0.9);
+            padding: 0.8rem 2rem;
+            margin: 0.2rem 0;
+            border-radius: 8px;
+        }
+        .nav-link:hover, .nav-link.active {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+        .user-info-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="px-4 mb-4">
+            <h4 class="fw-bold"><i class="fas fa-chart-line me-2"></i>Life Info Tracker</h4>
+        </div>
+        <nav class="nav flex-column">
+            <a class="nav-link active" href="dashboard.html">
+                <i class="fas fa-home me-2"></i>Dashboard
+            </a>
+            <a class="nav-link" href="daily-tracker.html">
+                <i class="fas fa-calendar me-2"></i>Daily Tracker
+            </a>
+            <a class="nav-link" href="ai-assistant.html">
+                <i class="fas fa-robot me-2"></i>AI Assistant
+            </a>
+            <a class="nav-link" href="career.html">
+                <i class="fas fa-briefcase me-2"></i>Career
+            </a>
+            <a class="nav-link" href="lifestyle.html">
+                <i class="fas fa-tshirt me-2"></i>Lifestyle
+            </a>
+            <a class="nav-link" href="health.html">
+                <i class="fas fa-heartbeat me-2"></i>Health
+            </a>
+            <a class="nav-link" href="family.html">
+                <i class="fas fa-users me-2"></i>Family
+            </a>
+            <a class="nav-link" href="finance.html">
+                <i class="fas fa-wallet me-2"></i>Finance
+            </a>
+            <a class="nav-link" href="spiritual.html">
+                <i class="fas fa-om me-2"></i>Spiritual
+            </a>
+            <hr class="text-white">
+            <a class="nav-link" href="#" onclick="logout()">
+                <i class="fas fa-sign-out-alt me-2"></i>Logout
+            </a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- User Info Card -->
+        <div class="user-info-card mb-4" id="userInfoCard">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h2 class="fw-bold mb-2" id="userName">Loading...</h2>
+                    <p class="text-muted mb-0" id="userEmail">Loading...</p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <div class="badge bg-primary fs-6 p-2" id="lifePathBadge">Life Path: Loading...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Astrological Profile -->
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0"><i class="fas fa-star-and-crescent me-2"></i>Your Astrological Profile</h5>
+            </div>
+            <div class="card-body" id="astrologyProfile">
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <div class="text-center p-3 bg-light rounded">
+                            <div class="h5 fw-bold text-primary" id="lifePathNumber">-</div>
+                            <small>Life Path Number</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="text-center p-3 bg-light rounded">
+                            <div class="h5 fw-bold text-success" id="planetaryRuler">-</div>
+                            <small>Planetary Ruler</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="text-center p-3 bg-light rounded">
+                            <div class="h5 fw-bold text-warning" id="archetype">-</div>
+                            <small>Archetype</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="text-center p-3 bg-light rounded">
+                            <div class="h5 fw-bold text-info" id="zodiacSign">-</div>
+                            <small>Zodiac Sign</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="alert alert-info mt-3 mb-0" id="coreVibration">
+                    <strong>Core Vibration:</strong> Loading...
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-3">
+                <div class="stat-card">
+                    <div class="d-flex align-items-center">
+                        <div class="stat-icon bg-primary text-white me-3">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div>
+                            <h6 class="text-muted mb-0">Career</h6>
+                            <h4 class="fw-bold mb-0">Active</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card">
+                    <div class="d-flex align-items-center">
+                        <div class="stat-icon bg-success text-white me-3">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div>
+                            <h6 class="text-muted mb-0">Health</h6>
+                            <h4 class="fw-bold mb-0">Tracking</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card">
+                    <div class="d-flex align-items-center">
+                        <div class="stat-icon bg-warning text-white me-3">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <div>
+                            <h6 class="text-muted mb-0">Finance</h6>
+                            <h4 class="fw-bold mb-0">Planned</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card">
+                    <div class="d-flex align-items-center">
+                        <div class="stat-icon bg-info text-white me-3">
+                            <i class="fas fa-om"></i>
+                        </div>
+                        <div>
+                            <h6 class="text-muted mb-0">Spiritual</h6>
+                            <h4 class="fw-bold mb-0">Active</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="card">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0"><i class="fas fa-link me-2"></i>Quick Access</h5>
+            </div>
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <a href="daily-tracker.html" class="btn btn-outline-primary w-100">
+                            <i class="fas fa-calendar me-2"></i>Daily Tracker
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="ai-assistant.html" class="btn btn-outline-success w-100">
+                            <i class="fas fa-robot me-2"></i>AI Assistant
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="career.html" class="btn btn-outline-warning w-100">
+                            <i class="fas fa-briefcase me-2"></i>Career Plan
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="lifestyle.html" class="btn btn-outline-info w-100">
+                            <i class="fas fa-tshirt me-2"></i>Lifestyle
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="config.js"></script>
+    <script>
+
+        // Check authentication
+        const token = localStorage.getItem('token');
+        if (!token) {
+            window.location.href = 'login.html';
+        }
+
+        // Load user data
+        async function loadUserData() {
+            try {
+                const response = await fetch(`${API_URL}/auth/me`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to load user data');
+                }
+
+                const data = await response.json();
+                const user = data.user;
+
+                // Populate user info
+                document.getElementById('userName').textContent = user.name || 'User';
+                document.getElementById('userEmail').textContent = user.email;
+                document.getElementById('lifePathBadge').textContent = `Life Path: ${user.astrology?.lifePath || 'N/A'}`;
+
+                // Populate astrology
+                if (user.astrology) {
+                    document.getElementById('lifePathNumber').textContent = user.astrology.lifePath || '-';
+                    document.getElementById('planetaryRuler').textContent = user.astrology.planetaryRuler?.planet || '-';
+                    document.getElementById('archetype').textContent = user.astrology.archetype || '-';
+                    document.getElementById('zodiacSign').textContent = user.astrology.zodiacSign || '-';
+                    document.getElementById('coreVibration').innerHTML = `<strong>Core Vibration:</strong> ${user.astrology.coreVibration || user.astrology.planetaryRuler?.energy || 'N/A'}`;
+                }
+            } catch (error) {
+                console.error('Error loading user data:', error);
+                alert('Failed to load user data. Please login again.');
+                logout();
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            window.location.href = 'login.html';
+        }
+
+        // Load data on page load
+        loadUserData();
+    </script>
+</body>
+</html>
+

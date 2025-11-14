@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Info Tracker - Your Personalized Life Blueprint</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+            --success: #10b981;
+            --dark: #1f2937;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 0;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+        }
+        .feature-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            border-radius: 15px;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .cta-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            transition: transform 0.3s;
+        }
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+        }
+        .benefit-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <i class="fas fa-chart-line me-2"></i>Life Info Tracker
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#how-it-works">How It Works</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#benefits">Benefits</a></li>
+                    <li class="nav-item"><a class="nav-link" href="register.html" class="btn btn-primary ms-2">Get Started</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" data-aos="fade-up">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-3 fw-bold mb-4">Your Personalized Life Blueprint</h1>
+                    <p class="lead mb-4">Generate a complete, AI-powered life tracking system personalized to your birth chart. Track everything, make astrologically-aligned decisions, and achieve your life goals.</p>
+                    <div class="d-flex gap-3">
+                        <a href="register.html" class="btn btn-light btn-lg cta-button">
+                            <i class="fas fa-rocket me-2"></i>Create Your Blueprint
+                        </a>
+                        <a href="#how-it-works" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-info-circle me-2"></i>Learn More
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <i class="fas fa-chart-pie" style="font-size: 300px; opacity: 0.3;"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">What You'll Get</h2>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card feature-card h-100 shadow">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-calendar-alt benefit-icon"></i>
+                            <h4 class="fw-bold mb-3">Daily Tracker</h4>
+                            <p>Track all your daily activities, goals, and progress across every life area with a comprehensive calendar system.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card feature-card h-100 shadow">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-robot benefit-icon"></i>
+                            <h4 class="fw-bold mb-3">AI Assistant</h4>
+                            <p>Get AI-powered guidance for daily decisions, auspicious timings (muhurat), and life advice based on your birth chart.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card feature-card h-100 shadow">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-star-and-crescent benefit-icon"></i>
+                            <h4 class="fw-bold mb-3">Astrological Alignment</h4>
+                            <p>All recommendations aligned with your birth chart - Life Path Number, planetary influences, and remedies.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card feature-card h-100 shadow">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-briefcase benefit-icon"></i>
+                            <h4 class="fw-bold mb-3">Career Planning</h4>
+                            <p>Complete career roadmap with multiple paths, financial projections, and daily schedules to achieve your goals.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card feature-card h-100 shadow">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-heartbeat benefit-icon"></i>
+                            <h4 class="fw-bold mb-3">Health & Fitness</h4>
+                            <p>Personalized health plans, meal schedules, exercise routines, and astrological health support.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="card feature-card h-100 shadow">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-wallet benefit-icon"></i>
+                            <h4 class="fw-bold mb-3">Finance Tracker</h4>
+                            <p>Complete financial roadmap with income trajectory, budget planning, investment strategy, and net worth milestones.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">How It Works</h2>
+            <div class="row g-4">
+                <div class="col-md-4 text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="mb-4">
+                        <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                            <span class="fs-2 fw-bold">1</span>
+                        </div>
+                    </div>
+                    <h4 class="fw-bold mb-3">Enter Your Details</h4>
+                    <p>Provide your date of birth, name, and basic information. Our system calculates your Life Path Number and astrological profile.</p>
+                </div>
+                <div class="col-md-4 text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="mb-4">
+                        <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                            <span class="fs-2 fw-bold">2</span>
+                        </div>
+                    </div>
+                    <h4 class="fw-bold mb-3">Generate Your Blueprint</h4>
+                    <p>AI analyzes your birth chart and generates a personalized dashboard with all life areas - Career, Health, Finance, Family, Spiritual, and more.</p>
+                </div>
+                <div class="col-md-4 text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="mb-4">
+                        <div class="bg-warning text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                            <span class="fs-2 fw-bold">3</span>
+                        </div>
+                    </div>
+                    <h4 class="fw-bold mb-3">Start Tracking</h4>
+                    <p>Access your personalized dashboard, track daily activities, get AI guidance, and follow astrologically-aligned recommendations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">Why Life Info Tracker?</h2>
+            <div class="row g-4">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="d-flex mb-4">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-check-circle text-success fs-2"></i>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h5 class="fw-bold">15+ Comprehensive Pages</h5>
+                            <p>Complete coverage of all life areas - Career, Lifestyle, Health, Family, Finance, Spiritual, Remedies, Vastu, Medical Astrology, and more.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-4">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-check-circle text-success fs-2"></i>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h5 class="fw-bold">AI-Powered Guidance</h5>
+                            <p>Get daily AI recommendations for decisions, auspicious timings, and life advice based on your unique birth chart.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-4">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-check-circle text-success fs-2"></i>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h5 class="fw-bold">Astrological Alignment</h5>
+                            <p>All recommendations - from brand choices to remedies - are aligned with your Life Path Number and planetary influences.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="d-flex mb-4">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-check-circle text-success fs-2"></i>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h5 class="fw-bold">Data Persistence</h5>
+                            <p>All your data is saved securely in MongoDB. Track your progress over time and maintain complete history.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-4">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-check-circle text-success fs-2"></i>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h5 class="fw-bold">Personalized Brand Recommendations</h5>
+                            <p>Get lifestyle brand recommendations (fragrances, accessories, clothing) aligned with your astrological archetype.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-4">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-check-circle text-success fs-2"></i>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h5 class="fw-bold">Complete Life Management</h5>
+                            <p>One platform to track everything - daily activities, goals, finances, health, family planning, spiritual practices, and more.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container text-center">
+            <h2 class="display-4 fw-bold mb-4" data-aos="fade-up">Ready to Transform Your Life?</h2>
+            <p class="lead mb-4" data-aos="fade-up" data-aos-delay="100">Generate your personalized life blueprint in minutes. Start tracking, planning, and achieving your goals today.</p>
+            <a href="register.html" class="btn btn-light btn-lg cta-button" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-rocket me-2"></i>Create Your Blueprint Now
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2025 Life Info Tracker. Your personalized life management system.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
+</body>
+</html>
+

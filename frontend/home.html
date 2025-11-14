@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Life Blueprint - Life Info Tracker</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+        }
+        body {
+            background: #f8fafc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .navbar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .page-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+            transition: transform 0.3s;
+        }
+        .page-card:hover {
+            transform: translateY(-5px);
+        }
+        .user-profile-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="dashboard.html">
+                <i class="fas fa-chart-line me-2"></i>Life Info Tracker
+            </a>
+            <div>
+                <span class="text-white me-3" id="userNameNav">User</span>
+                <a href="dashboard.html" class="btn btn-light btn-sm me-2">
+                    <i class="fas fa-home me-1"></i>Dashboard
+                </a>
+                <a href="#" class="btn btn-outline-light btn-sm" onclick="logout()">
+                    <i class="fas fa-sign-out-alt me-1"></i>Logout
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <!-- User Profile Card -->
+        <div class="user-profile-card" id="userProfileCard">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h2 class="fw-bold mb-2" id="userName">Your Life Blueprint</h2>
+                    <p class="mb-0" id="userEmail">Loading...</p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <div class="bg-white text-primary rounded p-3 d-inline-block">
+                        <div class="h4 mb-0 fw-bold" id="lifePathDisplay">Life Path: -</div>
+                        <small class="text-muted" id="archetypeDisplay">Archetype</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- All Pages Grid -->
+        <div class="row g-4" id="pagesGrid">
+            <!-- Pages will be dynamically loaded here -->
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="config.js"></script>
+    <script>
+        const token = localStorage.getItem('token');
+
+        if (!token) {
+            window.location.href = 'login.html';
+        }
+
+        const pages = [
+            { name: 'Dashboard', icon: 'fas fa-chart-pie', link: 'dashboard.html', color: 'primary' },
+            { name: 'Daily Tracker', icon: 'fas fa-calendar-alt', link: 'daily-tracker.html', color: 'success' },
+            { name: 'AI Assistant', icon: 'fas fa-robot', link: 'ai-assistant.html', color: 'info' },
+            { name: 'Career', icon: 'fas fa-briefcase', link: 'career.html', color: 'warning' },
+            { name: 'Lifestyle', icon: 'fas fa-tshirt', link: 'lifestyle.html', color: 'primary' },
+            { name: 'Health', icon: 'fas fa-heartbeat', link: 'health.html', color: 'danger' },
+            { name: 'Family', icon: 'fas fa-users', link: 'family.html', color: 'success' },
+            { name: 'Finance', icon: 'fas fa-wallet', link: 'finance.html', color: 'warning' },
+            { name: 'Spiritual', icon: 'fas fa-om', link: 'spiritual.html', color: 'info' },
+            { name: 'Remedies & Daan', icon: 'fas fa-hands-praying', link: 'remedies.html', color: 'primary' },
+            { name: 'Vastu Shastra', icon: 'fas fa-home', link: 'vastu.html', color: 'success' },
+            { name: 'Past Karma', icon: 'fas fa-infinity', link: 'past-karma.html', color: 'warning' },
+            { name: 'Medical Astrology', icon: 'fas fa-user-md', link: 'medical-astrology.html', color: 'danger' },
+            { name: 'Pilgrimage Guide', icon: 'fas fa-mountain', link: 'pilgrimage.html', color: 'info' },
+        ];
+
+        async function loadUserData() {
+            try {
+                const response = await fetch(`${API_URL}/auth/me`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (!response.ok) throw new Error('Failed to load user data');
+
+                const data = await response.json();
+                const user = data.user;
+
+                // Update UI
+                document.getElementById('userName').textContent = `${user.name}'s Life Blueprint`;
+                document.getElementById('userNameNav').textContent = user.name;
+                document.getElementById('userEmail').textContent = user.email;
+                
+                if (user.astrology) {
+                    document.getElementById('lifePathDisplay').textContent = `Life Path: ${user.astrology.lifePath}`;
+                    document.getElementById('archetypeDisplay').textContent = user.astrology.archetype || user.astrology.planetaryRuler?.archetype || '';
+                }
+
+                // Render pages
+                const grid = document.getElementById('pagesGrid');
+                pages.forEach((page, index) => {
+                    const col = document.createElement('div');
+                    col.className = 'col-md-3';
+                    col.innerHTML = `
+                        <div class="page-card">
+                            <div class="text-center">
+                                <i class="${page.icon} fa-3x text-${page.color} mb-3"></i>
+                                <h5 class="fw-bold">${page.name}</h5>
+                                <a href="${page.link}" class="btn btn-${page.color} btn-sm mt-2">
+                                    <i class="fas fa-arrow-right me-1"></i>Open
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                    grid.appendChild(col);
+                });
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Failed to load data. Please login again.');
+                logout();
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            window.location.href = 'login.html';
+        }
+
+        loadUserData();
+        AOS.init();
+    </script>
+</body>
+</html>
+
