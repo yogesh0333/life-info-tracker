@@ -99,6 +99,7 @@ Be specific, practical, and aligned with Indian job market and astrological prin
         systemPrompt,
         temperature: 0.8,
         maxTokens: 3000,
+        provider: process.env.DEFAULT_AI_PROVIDER || "openai",
       });
 
       // Try to parse JSON, if fails return as text
@@ -195,6 +196,7 @@ Format as structured JSON with sections: mealPlan, exercisePlan, supplements, he
         systemPrompt,
         temperature: 0.7,
         maxTokens: 3000,
+        provider: process.env.DEFAULT_AI_PROVIDER || "openai",
       });
       return JSON.parse(response.content);
     } catch (error) {
@@ -235,6 +237,7 @@ Format as structured JSON with sections: conceptionPlan, childrenPlan, remedies,
         systemPrompt,
         temperature: 0.7,
         maxTokens: 3000,
+        provider: process.env.DEFAULT_AI_PROVIDER || "openai",
       });
       return JSON.parse(response.content);
     } catch (error) {
@@ -274,6 +277,7 @@ Format as structured JSON with sections: incomeTrajectory, investmentStrategy, m
         systemPrompt,
         temperature: 0.7,
         maxTokens: 3000,
+        provider: process.env.DEFAULT_AI_PROVIDER || "openai",
       });
       return JSON.parse(response.content);
     } catch (error) {
@@ -314,6 +318,7 @@ Format as structured JSON with sections: deityWorship, dailyPractices, mantras, 
         systemPrompt,
         temperature: 0.7,
         maxTokens: 3000,
+        provider: process.env.DEFAULT_AI_PROVIDER || "openai",
       });
       return JSON.parse(response.content);
     } catch (error) {
@@ -351,6 +356,7 @@ Format as structured JSON with sections: dashaRemedies, lifeAreaRemedies, daanSc
         systemPrompt,
         temperature: 0.7,
         maxTokens: 3000,
+        provider: process.env.DEFAULT_AI_PROVIDER || "openai",
       });
 
       // Try to parse JSON, if fails return as text
@@ -401,6 +407,7 @@ Format as structured JSON with sections: wealthVastu, childrenVastu, peaceVastu,
         systemPrompt,
         temperature: 0.7,
         maxTokens: 3000,
+        provider: process.env.DEFAULT_AI_PROVIDER || "openai",
       });
 
       // Try to parse JSON, if fails return as text
@@ -451,6 +458,7 @@ Format as structured JSON with sections: planetaryInfluences, criticalPeriods, t
         systemPrompt,
         temperature: 0.7,
         maxTokens: 3000,
+        provider: process.env.DEFAULT_AI_PROVIDER || "openai",
       });
 
       // Try to parse JSON, if fails return as text
@@ -501,6 +509,7 @@ Format as structured JSON with sections: strategicGifting, serviceActivities, pi
         systemPrompt,
         temperature: 0.7,
         maxTokens: 3000,
+        provider: process.env.DEFAULT_AI_PROVIDER || "openai",
       });
 
       // Try to parse JSON, if fails return as text
@@ -550,6 +559,7 @@ Format as structured JSON with sections: priorityVisits, templesByGoal, roadmap,
         systemPrompt,
         temperature: 0.7,
         maxTokens: 3000,
+        provider: process.env.DEFAULT_AI_PROVIDER || "openai",
       });
       return JSON.parse(response.content);
     } catch (error) {
