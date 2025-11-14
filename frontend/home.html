@@ -43,12 +43,12 @@
     <!-- Navigation -->
     <nav class="navbar navbar-dark">
         <div class="container-fluid">
-            <a class="navbar-brand fw-bold" href="dashboard.html">
+            <a class="navbar-brand fw-bold" href="home.html">
                 <i class="fas fa-chart-line me-2"></i>Life Info Tracker
             </a>
             <div>
                 <span class="text-white me-3" id="userNameNav">User</span>
-                <a href="dashboard.html" class="btn btn-light btn-sm me-2">
+                <a href="pages/dashboard.html" class="btn btn-light btn-sm me-2">
                     <i class="fas fa-home me-1"></i>Dashboard
                 </a>
                 <a href="#" class="btn btn-outline-light btn-sm" onclick="logout()">
@@ -92,20 +92,20 @@
         }
 
         const pages = [
-            { name: 'Dashboard', icon: 'fas fa-chart-pie', link: 'dashboard.html', color: 'primary' },
-            { name: 'Daily Tracker', icon: 'fas fa-calendar-alt', link: 'daily-tracker.html', color: 'success' },
-            { name: 'AI Assistant', icon: 'fas fa-robot', link: 'ai-assistant.html', color: 'info' },
-            { name: 'Career', icon: 'fas fa-briefcase', link: 'career.html', color: 'warning' },
-            { name: 'Lifestyle', icon: 'fas fa-tshirt', link: 'lifestyle.html', color: 'primary' },
-            { name: 'Health', icon: 'fas fa-heartbeat', link: 'health.html', color: 'danger' },
-            { name: 'Family', icon: 'fas fa-users', link: 'family.html', color: 'success' },
-            { name: 'Finance', icon: 'fas fa-wallet', link: 'finance.html', color: 'warning' },
-            { name: 'Spiritual', icon: 'fas fa-om', link: 'spiritual.html', color: 'info' },
-            { name: 'Remedies & Daan', icon: 'fas fa-hands-praying', link: 'remedies.html', color: 'primary' },
-            { name: 'Vastu Shastra', icon: 'fas fa-home', link: 'vastu.html', color: 'success' },
-            { name: 'Past Karma', icon: 'fas fa-infinity', link: 'past-karma.html', color: 'warning' },
-            { name: 'Medical Astrology', icon: 'fas fa-user-md', link: 'medical-astrology.html', color: 'danger' },
-            { name: 'Pilgrimage Guide', icon: 'fas fa-mountain', link: 'pilgrimage.html', color: 'info' },
+            { name: 'Dashboard', icon: 'fas fa-chart-pie', link: 'pages/dashboard.html', color: 'primary' },
+            { name: 'Daily Tracker', icon: 'fas fa-calendar-alt', link: 'pages/daily-tracker.html', color: 'success' },
+            { name: 'AI Assistant', icon: 'fas fa-robot', link: 'pages/ai-assistant.html', color: 'info' },
+            { name: 'Career', icon: 'fas fa-briefcase', link: 'pages/career.html', color: 'warning' },
+            { name: 'Lifestyle', icon: 'fas fa-tshirt', link: 'pages/lifestyle.html', color: 'primary' },
+            { name: 'Health', icon: 'fas fa-heartbeat', link: 'pages/health.html', color: 'danger' },
+            { name: 'Family', icon: 'fas fa-users', link: 'pages/family.html', color: 'success' },
+            { name: 'Finance', icon: 'fas fa-wallet', link: 'pages/finance.html', color: 'warning' },
+            { name: 'Spiritual', icon: 'fas fa-om', link: 'pages/spiritual.html', color: 'info' },
+            { name: 'Remedies & Daan', icon: 'fas fa-hands-praying', link: 'pages/remedies.html', color: 'primary' },
+            { name: 'Vastu Shastra', icon: 'fas fa-home', link: 'pages/vastu.html', color: 'success' },
+            { name: 'Past Karma', icon: 'fas fa-infinity', link: 'pages/past-karma.html', color: 'warning' },
+            { name: 'Medical Astrology', icon: 'fas fa-user-md', link: 'pages/medical-astrology.html', color: 'danger' },
+            { name: 'Pilgrimage Guide', icon: 'fas fa-mountain', link: 'pages/pilgrimage.html', color: 'info' },
         ];
 
         async function loadUserData() {

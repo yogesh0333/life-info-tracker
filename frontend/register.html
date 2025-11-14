@@ -154,9 +154,9 @@
                     document.getElementById('loadingSpinner').style.display = 'none';
                     document.getElementById('successMessage').style.display = 'block';
                     
-                    // Redirect to dashboard
+                    // Redirect to home page
                     setTimeout(() => {
-                        window.location.href = 'dashboard.html';
+                        window.location.href = 'home.html';
                     }, 2000);
                 } else {
                     throw new Error(data.message || 'Registration failed');

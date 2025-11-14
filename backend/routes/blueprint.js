@@ -24,7 +24,7 @@ router.get("/", auth, async (req, res) => {
         userInfo: {
           name: user.name,
           email: user.email,
-          dob: user.dob,
+          dob: user.dob ? user.dob.toISOString().split('T')[0] : null,
           gender: user.gender,
         },
       },
