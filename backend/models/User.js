@@ -56,6 +56,11 @@ const UserSchema = new mongoose.Schema(
       },
       generatedAt: Date,
       pages: [String], // List of generated pages
+      content: {
+        type: Map,
+        of: mongoose.Schema.Types.Mixed, // Store AI-generated content for each page
+        default: {},
+      },
     },
     lastLogin: Date,
     createdAt: {

@@ -43,7 +43,7 @@ router.post("/register", async (req, res) => {
       gender: gender || "male",
       astrology: astrologyProfile,
       blueprint: {
-        generated: true,
+        generated: false, // Will be set to true after AI generation
         generatedAt: new Date(),
         pages: [
           "dashboard",
@@ -61,17 +61,31 @@ router.post("/register", async (req, res) => {
           "medical-astrology",
           "pilgrimage",
         ],
+        content: new Map(), // Will be populated by AI
       },
     });
 
     await user.save();
+
+    // Generate AI blueprint content asynchronously (don't wait)
+    const blueprintGenerator = require("../services/blueprintGenerator");
+    blueprintGenerator.generateBlueprint(user).then((content) => {
+      user.blueprint.content = content;
+      user.blueprint.generated = true;
+      user.save().catch((err) => console.error("Error saving blueprint:", err));
+    }).catch((err) => {
+      console.error("Error generating blueprint:", err);
+      // Mark as generated even if AI fails (user can regenerate)
+      user.blueprint.generated = true;
+      user.save().catch((saveErr) => console.error("Error saving:", saveErr));
+    });
 
     // Generate token
     const token = generateToken(user._id);
 
     res.status(201).json({
       success: true,
-      message: "User registered and blueprint generated successfully",
+      message: "User registered. Blueprint generation in progress...",
       token,
       user: user.getPublicProfile(),
     });
