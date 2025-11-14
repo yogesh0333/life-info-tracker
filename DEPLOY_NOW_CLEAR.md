@@ -21,12 +21,13 @@
 4. **Choose Repository**: `yogesh0333/life-info-tracker` ⚠️ NOT yogesh-life-blueprint!
 5. **Project Name**: `life-info-tracker` (or any name you prefer)
 
-6. **Configure Backend Service**:
+6. **Configure Backend Service** (CRITICAL STEP):
    - Click on the service that was created
    - Go to **Settings** tab
-   - Set **Root Directory**: `backend`
-   - **Build Command**: `npm install`
-   - **Start Command**: `npm start`
+   - **IMPORTANT**: Set **Root Directory**: `backend` ⚠️ This is required!
+   - **Build Command**: `npm install` (or leave default)
+   - **Start Command**: `npm start` (or leave default)
+   - **Save** the settings
 
 7. **Add MongoDB Database** (NEW database for this project):
    - In the Railway project, click **"+ New"**
