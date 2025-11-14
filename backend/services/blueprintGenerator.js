@@ -18,18 +18,19 @@ class BlueprintGenerator {
       gender: user.gender,
     };
 
-    const blueprint = {
-      career: await this.generateCareerContent(userProfile),
-      lifestyle: await this.generateLifestyleContent(userProfile),
-      health: await this.generateHealthContent(userProfile),
-      family: await this.generateFamilyContent(userProfile),
-      finance: await this.generateFinanceContent(userProfile),
-      spiritual: await this.generateSpiritualContent(userProfile),
-      remedies: await this.generateRemediesContent(userProfile),
-      vastu: await this.generateVastuContent(userProfile),
-      medicalAstrology: await this.generateMedicalAstrologyContent(userProfile),
-      pilgrimage: await this.generatePilgrimageContent(userProfile),
-    };
+    const blueprint = new Map();
+    
+    blueprint.set('career', await this.generateCareerContent(userProfile));
+    blueprint.set('lifestyle', await this.generateLifestyleContent(userProfile));
+    blueprint.set('health', await this.generateHealthContent(userProfile));
+    blueprint.set('family', await this.generateFamilyContent(userProfile));
+    blueprint.set('finance', await this.generateFinanceContent(userProfile));
+    blueprint.set('spiritual', await this.generateSpiritualContent(userProfile));
+    blueprint.set('remedies', await this.generateRemediesContent(userProfile));
+    blueprint.set('vastu', await this.generateVastuContent(userProfile));
+    blueprint.set('past-karma', await this.generatePastKarmaContent(userProfile));
+    blueprint.set('medical-astrology', await this.generateMedicalAstrologyContent(userProfile));
+    blueprint.set('pilgrimage', await this.generatePilgrimageContent(userProfile));
 
     return blueprint;
   }
@@ -413,6 +414,52 @@ Format as structured JSON with sections: planetaryInfluences, criticalPeriods, t
     } catch (error) {
       console.error("Error generating medical astrology content:", error);
       return { error: "Failed to generate medical astrology content" };
+    }
+  }
+
+  /**
+   * Generate Past Karma Content
+   */
+  async generatePastKarmaContent(userProfile) {
+    const prompt = `Generate past karma remedies and strategic gifting recommendations for ${userProfile.name}:
+
+ASTROLOGICAL PROFILE:
+- Life Path Number: ${userProfile.astrology.lifePath}
+- Planetary Ruler: ${userProfile.astrology.planetaryRuler.planet}
+- Zodiac Sign: ${userProfile.astrology.zodiacSign}
+- Mahadasha: ${userProfile.astrology.mahadasha}
+
+REQUIREMENTS:
+1. Strategic gifting for friends (by planet type)
+2. Service-based karma clearing activities
+3. Pitru Dosha remedies
+4. Karma clearing rituals
+5. Specific gifts for different planetary influences
+6. Timing for karma clearing activities
+
+Format as structured JSON with sections: strategicGifting, serviceActivities, pitruRemedies, rituals, timing.`;
+
+    const systemPrompt = `You are an expert in Vedic astrology and karma clearing. Provide personalized past karma remedies and strategic gifting recommendations based on astrological charts.`;
+
+    try {
+      const response = await aiService.generateCompletion(prompt, {
+        systemPrompt,
+        temperature: 0.7,
+        maxTokens: 3000,
+      });
+      
+      // Try to parse JSON, if fails return as text
+      try {
+        return JSON.parse(response.content);
+      } catch (parseError) {
+        return {
+          raw: response.content,
+          formatted: true,
+        };
+      }
+    } catch (error) {
+      console.error("Error generating past karma content:", error);
+      return { error: "Failed to generate past karma content", message: error.message };
     }
   }
 

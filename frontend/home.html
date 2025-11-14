@@ -94,34 +94,48 @@
         }
 
         const pages = [
-            { name: 'Dashboard', icon: 'fas fa-chart-pie', link: 'pages/dashboard.html', color: 'primary' },
-            { name: 'Daily Tracker', icon: 'fas fa-calendar-alt', link: 'pages/daily-tracker.html', color: 'success' },
-            { name: 'AI Assistant', icon: 'fas fa-robot', link: 'pages/ai-assistant.html', color: 'info' },
-            { name: 'Career', icon: 'fas fa-briefcase', link: 'pages/career.html', color: 'warning' },
-            { name: 'Lifestyle', icon: 'fas fa-tshirt', link: 'pages/lifestyle.html', color: 'primary' },
-            { name: 'Health', icon: 'fas fa-heartbeat', link: 'pages/health.html', color: 'danger' },
-            { name: 'Family', icon: 'fas fa-users', link: 'pages/family.html', color: 'success' },
-            { name: 'Finance', icon: 'fas fa-wallet', link: 'pages/finance.html', color: 'warning' },
-            { name: 'Spiritual', icon: 'fas fa-om', link: 'pages/spiritual.html', color: 'info' },
-            { name: 'Remedies & Daan', icon: 'fas fa-hands-praying', link: 'pages/remedies.html', color: 'primary' },
-            { name: 'Vastu Shastra', icon: 'fas fa-home', link: 'pages/vastu.html', color: 'success' },
-            { name: 'Past Karma', icon: 'fas fa-infinity', link: 'pages/past-karma.html', color: 'warning' },
-            { name: 'Medical Astrology', icon: 'fas fa-user-md', link: 'pages/medical-astrology.html', color: 'danger' },
-            { name: 'Pilgrimage Guide', icon: 'fas fa-mountain', link: 'pages/pilgrimage.html', color: 'info' },
+            { name: 'Dashboard', icon: 'fas fa-chart-pie', link: 'pages/dashboard.html', color: 'primary', pageKey: null, generateable: false },
+            { name: 'Daily Tracker', icon: 'fas fa-calendar-alt', link: 'pages/daily-tracker.html', color: 'success', pageKey: null, generateable: false },
+            { name: 'AI Assistant', icon: 'fas fa-robot', link: 'pages/ai-assistant.html', color: 'info', pageKey: null, generateable: false },
+            { name: 'Career', icon: 'fas fa-briefcase', link: 'pages/career.html', color: 'warning', pageKey: 'career', generateable: true },
+            { name: 'Lifestyle', icon: 'fas fa-tshirt', link: 'pages/lifestyle.html', color: 'primary', pageKey: 'lifestyle', generateable: true },
+            { name: 'Health', icon: 'fas fa-heartbeat', link: 'pages/health.html', color: 'danger', pageKey: 'health', generateable: true },
+            { name: 'Family', icon: 'fas fa-users', link: 'pages/family.html', color: 'success', pageKey: 'family', generateable: true },
+            { name: 'Finance', icon: 'fas fa-wallet', link: 'pages/finance.html', color: 'warning', pageKey: 'finance', generateable: true },
+            { name: 'Spiritual', icon: 'fas fa-om', link: 'pages/spiritual.html', color: 'info', pageKey: 'spiritual', generateable: true },
+            { name: 'Remedies & Daan', icon: 'fas fa-hands-praying', link: 'pages/remedies.html', color: 'primary', pageKey: 'remedies', generateable: true },
+            { name: 'Vastu Shastra', icon: 'fas fa-home', link: 'pages/vastu.html', color: 'success', pageKey: 'vastu', generateable: true },
+            { name: 'Past Karma', icon: 'fas fa-infinity', link: 'pages/past-karma.html', color: 'warning', pageKey: 'past-karma', generateable: true },
+            { name: 'Medical Astrology', icon: 'fas fa-user-md', link: 'pages/medical-astrology.html', color: 'danger', pageKey: 'medical-astrology', generateable: true },
+            { name: 'Pilgrimage Guide', icon: 'fas fa-mountain', link: 'pages/pilgrimage.html', color: 'info', pageKey: 'pilgrimage', generateable: true },
         ];
+
+        let pagesStatus = {};
 
         async function loadUserData() {
             try {
-                const response = await fetch(`${API_URL}/auth/me`, {
+                // Load user data
+                const userResponse = await fetch(`${API_URL}/auth/me`, {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
                 });
 
-                if (!response.ok) throw new Error('Failed to load user data');
+                if (!userResponse.ok) throw new Error('Failed to load user data');
+                const userData = await userResponse.json();
+                const user = userData.user;
 
-                const data = await response.json();
-                const user = data.user;
+                // Load blueprint status
+                const blueprintResponse = await fetch(`${API_URL}/blueprint`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (blueprintResponse.ok) {
+                    const blueprintData = await blueprintResponse.json();
+                    pagesStatus = blueprintData.blueprint.pagesStatus || {};
+                }
 
                 // Update UI
                 document.getElementById('userName').textContent = `${user.name}'s Life Blueprint`;
@@ -134,27 +148,156 @@
                 }
 
                 // Render pages
-                const grid = document.getElementById('pagesGrid');
-                pages.forEach((page, index) => {
-                    const col = document.createElement('div');
-                    col.className = 'col-md-3';
-                    col.innerHTML = `
-                        <div class="page-card">
-                            <div class="text-center">
-                                <i class="${page.icon} fa-3x text-${page.color} mb-3"></i>
-                                <h5 class="fw-bold">${page.name}</h5>
-                                <a href="${page.link}" class="btn btn-${page.color} btn-sm mt-2">
-                                    <i class="fas fa-arrow-right me-1"></i>Open
-                                </a>
-                            </div>
-                        </div>
-                    `;
-                    grid.appendChild(col);
-                });
+                renderPages();
+
+                // Add Generate All button
+                addGenerateAllButton();
             } catch (error) {
                 console.error('Error:', error);
                 alert('Failed to load data. Please login again.');
                 logout();
+            }
+        }
+
+        function renderPages() {
+            const grid = document.getElementById('pagesGrid');
+            grid.innerHTML = '';
+
+            pages.forEach((page, index) => {
+                const col = document.createElement('div');
+                col.className = 'col-md-3';
+                
+                let buttonHtml = '';
+                if (!page.generateable) {
+                    // Non-generateable pages (Dashboard, Daily Tracker, AI Assistant)
+                    buttonHtml = `
+                        <a href="${page.link}" class="btn btn-${page.color} btn-sm mt-2">
+                            <i class="fas fa-arrow-right me-1"></i>Open
+                        </a>
+                    `;
+                } else {
+                    // Generateable pages
+                    const isGenerated = pagesStatus[page.pageKey] || false;
+                    if (isGenerated) {
+                        buttonHtml = `
+                            <a href="${page.link}" class="btn btn-${page.color} btn-sm mt-2">
+                                <i class="fas fa-arrow-right me-1"></i>Open
+                            </a>
+                        `;
+                    } else {
+                        buttonHtml = `
+                            <button onclick="generatePage('${page.pageKey}', '${page.name}')" class="btn btn-outline-${page.color} btn-sm mt-2" id="btn-${page.pageKey}">
+                                <i class="fas fa-magic me-1"></i>Generate
+                            </button>
+                        `;
+                    }
+                }
+
+                col.innerHTML = `
+                    <div class="page-card">
+                        <div class="text-center">
+                            <i class="${page.icon} fa-3x text-${page.color} mb-3"></i>
+                            <h5 class="fw-bold">${page.name}</h5>
+                            ${buttonHtml}
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(col);
+            });
+        }
+
+        function addGenerateAllButton() {
+            const generateablePages = pages.filter(p => p.generateable);
+            const allGenerated = generateablePages.every(p => pagesStatus[p.pageKey]);
+            
+            if (allGenerated) return; // All already generated
+
+            const container = document.querySelector('.container');
+            const generateAllBtn = document.createElement('div');
+            generateAllBtn.className = 'text-center mb-4';
+            generateAllBtn.innerHTML = `
+                <button onclick="generateAllPages()" class="btn btn-lg btn-primary" id="btn-generate-all">
+                    <i class="fas fa-magic me-2"></i>Generate All Sections
+                </button>
+            `;
+            container.insertBefore(generateAllBtn, document.getElementById('pagesGrid'));
+        }
+
+        async function generatePage(pageKey, pageName) {
+            const btn = document.getElementById(`btn-${pageKey}`);
+            if (!btn) return;
+
+            const originalHtml = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i>Generating...';
+
+            try {
+                const response = await fetch(`${API_URL}/blueprint/generate/${pageKey}`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (!response.ok) {
+                    const error = await response.json();
+                    throw new Error(error.message || 'Failed to generate content');
+                }
+
+                const data = await response.json();
+                
+                // Update status
+                pagesStatus[pageKey] = true;
+                
+                // Re-render pages
+                renderPages();
+                
+                // Show success message
+                alert(`${pageName} generated successfully! Click "Open" to view.`);
+            } catch (error) {
+                console.error('Error:', error);
+                alert(`Failed to generate ${pageName}: ${error.message}`);
+                btn.disabled = false;
+                btn.innerHTML = originalHtml;
+            }
+        }
+
+        async function generateAllPages() {
+            const btn = document.getElementById('btn-generate-all');
+            if (!btn) return;
+
+            const originalHtml = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Generating All Sections...';
+
+            try {
+                const response = await fetch(`${API_URL}/blueprint/generate-all`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (!response.ok) {
+                    const error = await response.json();
+                    throw new Error(error.message || 'Failed to generate content');
+                }
+
+                const data = await response.json();
+                
+                alert('Blueprint generation started! This may take a few minutes. Please refresh the page in a moment to see your generated content.');
+                
+                // Refresh after 5 seconds
+                setTimeout(() => {
+                    window.location.reload();
+                }, 5000);
+            } catch (error) {
+                console.error('Error:', error);
+                alert(`Failed to generate content: ${error.message}`);
+                btn.disabled = false;
+                btn.innerHTML = originalHtml;
             }
         }
 

@@ -3,25 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Family Plan | Marriage, Kids, Pets | <span data-user-name>Life</span> Blueprint</title>
+    <title>Family {{PAGE_TITLE}} Future - Life Blueprint</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="apple-touch-icon" href="/favicon.svg">
     
-    <!-- Auth Guard -->
-    <script src="auth-guard.js"></script>
+    <!-- Config & Auth -->
     <script src="../config.js"></script>
+    <script src="auth-guard.js"></script>
     <script src="../js/userData.js"></script>
     <script src="../js/pageInit.js"></script>
+    <script src="../js/pageContentLoader.js"></script>
+    <script src="../js/aiContentRenderer.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-    <link rel="stylesheet" href="../assets/css/main.css">
     <style>
         .gradient-text { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .chart-container { position: relative; height: 300px; margin: 20px 0; }
-        .timeline-item { position: relative; padding-left: 40px; margin-bottom: 30px; border-left: 3px solid #6366f1; padding-left: 30px; }
-        .timeline-item::before { content: '●'; position: absolute; left: -8px; top: 0; color: #6366f1; font-size: 1.5rem; }
+        .loading-container { min-height: 400px; display: flex; align-items: center; justify-content: center; }
+        .not-generated-container { text-align: center; padding: 4rem 2rem; }
     </style>
 </head>
 <body>
@@ -34,875 +33,75 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="../home.html">🏠 Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="career.html">💼 Career</a></li>
-                    <li class="nav-item"><a class="nav-link" href="business.html">💰 Business</a></li>
-                    <li class="nav-item"><a class="nav-link" href="lifestyle.html">👔 Lifestyle</a></li>
-                    <li class="nav-item"><a class="nav-link" href="health.html">💪 Health</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="family.html">👨‍👩‍👧‍👦 Family</a></li>
-                    <li class="nav-item"><a class="nav-link" href="finance.html">💎 Finance</a></li>
-                    <li class="nav-item"><a class="nav-link" href="spiritual.html">🙏 Spiritual</a></li>
-                    <li class="nav-item"><a class="btn btn-warning text-dark ms-2" href="action.html">✅ Start Now</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
     <div class="container" style="padding-top: 100px; padding-bottom: 50px;">
-        <h1 class="display-3 fw-bold text-center mb-3 gradient-text" data-aos="fade-up">👨‍👩‍👧‍👦 Family Plan</h1>
-        <p class="lead text-center text-muted mb-5" data-aos="fade-up">✅ Already Married! | 4 Children by 2034 (Age 38) | 4 Pets by 2033</p>
-
-        <!-- Marriage Status -->
-        <div class="card shadow-lg border-0 rounded-4 mb-5 border-success" style="border-width: 3px !important;" data-aos="fade-up">
-            <div class="card-header bg-success text-white">
-                <h4 class="mb-0"><i class="fas fa-heart me-2"></i>💍 Marriage Status - Already Married! ✅</h4>
-            </div>
-            <div class="card-body">
-                <div class="row g-4">
-                    <div class="col-md-6">
-                        <div class="alert alert-success">
-                            <h5 class="fw-bold mb-3">🎉 Congratulations! You're Already Married!</h5>
-                            <p class="mb-0">Since you're already married, you can start planning for children and pets immediately. The astrological timing is still favorable for starting a family.</p>
-                        </div>
-                        <h5 class="fw-bold mb-3">📅 Best Times for Children (Astrological)</h5>
-                        <div class="timeline-item">
-                            <strong>2026-2027 (Excellent):</strong>
-                            <ul>
-                                <li>Mercury-Venus period (good for 1st child)</li>
-                                <li>Jupiter in favorable position</li>
-                                <li><strong>Best for first child</strong> ✅</li>
-                            </ul>
-                        </div>
-                        <div class="timeline-item">
-                            <strong>2028-2029 (Also Good):</strong>
-                            <ul>
-                                <li>Stable period for family expansion</li>
-                                <li>Financial stability achieved</li>
-                                <li><strong>Good for second child</strong> ✅</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <h5 class="fw-bold mb-3">💰 Current Financial Status</h5>
-                        <ul>
-                            <li><strong>Current Salary:</strong> ₹24 LPA</li>
-                            <li><strong>Current Net Worth:</strong> ₹12 L</li>
-                            <li><strong>Target for First Child:</strong> ₹50 LPA + ₹50L savings</li>
-                            <li><strong>Home:</strong> Plan to buy (₹80L-1.2 Cr) by 2028</li>
-                            <li><strong>Emergency Fund:</strong> Build to ₹10 Lakhs</li>
-                        </ul>
-                        <div class="alert alert-info mt-3">
-                            <strong>📋 Next Steps:</strong>
-                            <ul class="mb-0">
-                                <li>Build savings for home (₹30L down payment)</li>
-                                <li>Plan for first child (2026-2027)</li>
-                                <li>Get German Shepherd (2027)</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Child Conception Plan for 2026 -->
-        <div class="card shadow-lg border-0 rounded-4 mb-5 border-warning" style="border-width: 3px !important;" data-aos="fade-up">
-            <div class="card-header bg-warning text-dark">
-                <h4 class="mb-0"><i class="fas fa-baby-carriage me-2"></i>🎯 Child Conception Plan - 2026 (Next Year!)</h4>
-            </div>
-            <div class="card-body">
-                <div class="alert alert-success mb-4">
-                    <h5 class="fw-bold mb-2">🎉 Perfect Timing for Your First Child!</h5>
-                    <p class="mb-0">2026-2027 is the BEST astrological period for conceiving your first child. Mercury-Venus period favors family expansion. Here's your complete action plan:</p>
-                </div>
-
-                <div class="row g-4">
-                    <div class="col-md-6">
-                        <h5 class="fw-bold text-primary mb-3">📅 Best Conception Dates (2026)</h5>
-                        <div class="card bg-light mb-3">
-                            <div class="card-body">
-                                <h6 class="fw-bold text-success">Method 1: Vedic Astrology Timing</h6>
-                                <ul>
-                                    <li><strong>Best Months:</strong> January, March, May, July 2026</li>
-                                    <li><strong>Best Nakshatras:</strong> Rohini, Uttara Phalguni, Hasta, Swati</li>
-                                    <li><strong>Avoid:</strong> Eclipses, Rahu Kalam, Amavasya</li>
-                                    <li><strong>Best Days:</strong> Wednesday, Thursday, Friday</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="card bg-light">
-                            <div class="card-body">
-                                <h6 class="fw-bold text-info">Method 2: Santana Gopala Mantra</h6>
-                                <ul>
-                                    <li><strong>Mantra:</strong> "ॐ देवकीसुत गोविन्द वासुदेव जगत्पते। देहि मे तनयं कृष्ण त्वामहं शरणं गतः॥"</li>
-                                    <li><strong>Chant:</strong> 108 times daily (both husband & wife)</li>
-                                    <li><strong>Time:</strong> Before sunrise (5-6 AM)</li>
-                                    <li><strong>Duration:</strong> 90 days continuously</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <h5 class="fw-bold text-danger mb-3">🙏 Powerful Remedies for Conception</h5>
-                        
-                        <div class="accordion" id="conceptionRemedies">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#remedy1">
-                                        1. Jupiter Remedies (For Children)
-                                    </button>
-                                </h2>
-                                <div id="remedy1" class="accordion-collapse collapse show" data-bs-parent="#conceptionRemedies">
-                                    <div class="accordion-body">
-                                        <ul class="mb-0">
-                                            <li><strong>Donate:</strong> Yellow clothes, turmeric, yellow dal to Brahmins on Thursdays</li>
-                                            <li><strong>Worship:</strong> Lord Vishnu every Thursday</li>
-                                            <li><strong>Fast:</strong> Thursday fasts (optional, yellow food only)</li>
-                                            <li><strong>Gemstone:</strong> Yellow Sapphire (3-5 carats) after consultation</li>
-                                            <li><strong>Visit:</strong> Tirupati Balaji temple (priority!)</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#remedy2">
-                                        2. Moon Remedies (For Wife's Fertility)
-                                    </button>
-                                </h2>
-                                <div id="remedy2" class="accordion-collapse collapse" data-bs-parent="#conceptionRemedies">
-                                    <div class="accordion-body">
-                                        <ul class="mb-0">
-                                            <li><strong>Donate:</strong> White clothes, rice, milk to women on Mondays</li>
-                                            <li><strong>Worship:</strong> Goddess Parvati (Gauri Puja) on Mondays</li>
-                                            <li><strong>Fast:</strong> Monday fasts (wife should observe)</li>
-                                            <li><strong>Gemstone:</strong> Pearl (5-7 carats) for wife</li>
-                                            <li><strong>Offering:</strong> White flowers to Shiva-Parvati</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#remedy3">
-                                        3. Special Puja & Vrat
-                                    </button>
-                                </h2>
-                                <div id="remedy3" class="accordion-collapse collapse" data-bs-parent="#conceptionRemedies">
-                                    <div class="accordion-body">
-                                        <ul class="mb-0">
-                                            <li><strong>Santana Gopala Puja:</strong> Get it done by a priest (₹5,000-10,000)</li>
-                                            <li><strong>Gauri Vrat:</strong> Wife observes for 5 consecutive Fridays</li>
-                                            <li><strong>Feed Cows:</strong> Feed a cow daily with jaggery and gram</li>
-                                            <li><strong>Plant Trees:</strong> Plant a banana or peepal tree</li>
-                                            <li><strong>Serve Parents:</strong> Touch their feet daily, seek blessings</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#remedy4">
-                                        4. Vastu for Bedroom
-                                    </button>
-                                </h2>
-                                <div id="remedy4" class="accordion-collapse collapse" data-bs-parent="#conceptionRemedies">
-                                    <div class="accordion-body">
-                                        <ul class="mb-0">
-                                            <li><strong>Direction:</strong> Sleep with head towards South or East</li>
-                                            <li><strong>Colors:</strong> Use light pink, peach, or cream bedsheets</li>
-                                            <li><strong>Remove:</strong> All mirrors, TV, electronics from bedroom</li>
-                                            <li><strong>Place:</strong> Fresh flowers (jasmine) in bedroom</li>
-                                            <li><strong>Light:</strong> Keep bedroom well-lit during day, soft light at night</li>
-                                            <li><strong>Avoid:</strong> Black or dark blue colors in bedroom</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="alert alert-warning mt-3">
-                            <strong>⏰ Start NOW:</strong> Begin remedies from December 2025 for best results by mid-2026!
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row mt-4">
-                    <div class="col-12">
-                        <div class="card border-success">
-                            <div class="card-body">
-                                <h5 class="fw-bold text-success mb-3">💊 Medical + Spiritual Combined Approach</h5>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <h6 class="fw-bold">Medical Checkup</h6>
-                                        <ul>
-                                            <li>Full fertility tests (both partners)</li>
-                                            <li>Thyroid, vitamin D, B12 levels</li>
-                                            <li>Consult gynecologist</li>
-                                            <li>Track ovulation cycle</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <h6 class="fw-bold">Ayurvedic Support</h6>
-                                        <ul>
-                                            <li>Shatavari powder (wife): 1 tsp with milk</li>
-                                            <li>Ashwagandha (husband): 1 tsp with milk</li>
-                                            <li>Dates + milk before bed (both)</li>
-                                            <li>Avoid junk food, smoking, alcohol</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Wife's Health - CRITICAL Section -->
-        <div class="card shadow-lg border-0 rounded-4 mb-5 border-danger" style="border-width: 3px !important;" data-aos="fade-up">
-            <div class="card-header bg-danger text-white">
-                <h4 class="mb-0"><i class="fas fa-heartbeat me-2"></i>⚠️ Wife's Health - Astrological Analysis & URGENT Remedies</h4>
-            </div>
-            <div class="card-body">
-                <div class="alert alert-warning mb-4">
-                    <h5 class="fw-bold mb-2">🔍 Astrological Reason for Wife's Frequent Sickness</h5>
-                    <p class="mb-2"><strong>YES, this IS related to your kundli!</strong> Here's the astrological analysis:</p>
-                    <ul class="mb-0">
-                        <li><strong>7th House (Spouse):</strong> Represents your wife's overall well-being</li>
-                        <li><strong>Venus (Wife Significator):</strong> If afflicted, causes health issues for wife</li>
-                        <li><strong>Mars in Your Chart:</strong> Strong Mars can cause health problems for spouse if not balanced</li>
-                        <li><strong>6th House Connection:</strong> If 7th lord is connected to 6th house (diseases), wife faces health issues</li>
-                        <li><strong>Rahu/Ketu Influence:</strong> Can cause mysterious, recurring health problems</li>
-                    </ul>
-                </div>
-
-                <div class="row g-4">
-                    <div class="col-md-6">
-                        <div class="card border-danger h-100">
-                            <div class="card-header bg-light">
-                                <h5 class="mb-0 text-danger">🙏 CRITICAL Remedies - START IMMEDIATELY!</h5>
-                            </div>
-                            <div class="card-body">
-                                <h6 class="fw-bold mb-3">1. For Venus (Wife's Health)</h6>
-                                <ul class="small">
-                                    <li><strong>Friday Fast:</strong> Wife should fast on Fridays (only fruits)</li>
-                                    <li><strong>Donate:</strong> White clothes, sugar, rice to poor women on Fridays</li>
-                                    <li><strong>Mantra:</strong> "ॐ शुं शुक्राय नमः" (Om Shum Shukraya Namah) - 108x daily</li>
-                                    <li><strong>Gemstone:</strong> Diamond or White Sapphire (after astrologer consultation)</li>
-                                    <li><strong>Color:</strong> Wife should wear white, cream, light pink colors</li>
-                                    <li><strong>Offering:</strong> Offer white flowers to Goddess Lakshmi on Fridays</li>
-                                </ul>
-
-                                <h6 class="fw-bold mb-3 mt-3">2. For Moon (Mind & Immunity)</h6>
-                                <ul class="small">
-                                    <li><strong>Monday Fast:</strong> Wife should fast on Mondays (milk & fruits)</li>
-                                    <li><strong>Mantra:</strong> "ॐ चंद्राय नमः" (Om Chandraya Namah) - 108x daily</li>
-                                    <li><strong>Donate:</strong> White items, milk, rice on Mondays</li>
-                                    <li><strong>Moon Water:</strong> Keep water in silver vessel under moonlight, drink next morning</li>
-                                    <li><strong>Pearl:</strong> Wear natural pearl in silver ring (ring finger, Monday)</li>
-                                </ul>
-
-                                <h6 class="fw-bold mb-3 mt-3">3. Hanuman for Protection</h6>
-                                <ul class="small">
-                                    <li><strong>Daily:</strong> You (husband) should recite Hanuman Chalisa 2x for wife's protection</li>
-                                    <li><strong>Tuesday:</strong> Visit Hanuman temple with wife, offer sindoor</li>
-                                    <li><strong>Offering:</strong> Red cloth, jaggery, black gram to Hanuman</li>
-                                    <li><strong>Special:</strong> 11 Tuesdays continuous Hanuman worship</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="card border-success h-100">
-                            <div class="card-header bg-light">
-                                <h5 class="mb-0 text-success">🌿 Ayurvedic + Lifestyle Remedies</h5>
-                            </div>
-                            <div class="card-body">
-                                <h6 class="fw-bold mb-3">4. Ayurvedic Support</h6>
-                                <ul class="small">
-                                    <li><strong>Chyawanprash:</strong> 1 spoon daily (morning) - Boosts immunity</li>
-                                    <li><strong>Ashwagandha:</strong> 500mg daily (night with milk) - Strength & vitality</li>
-                                    <li><strong>Tulsi Tea:</strong> 2 cups daily - Immunity & detox</li>
-                                    <li><strong>Amla Juice:</strong> Empty stomach (morning) - Vitamin C, immunity</li>
-                                    <li><strong>Giloy:</strong> Juice or tablets - Best for recurring infections</li>
-                                    <li><strong>Triphala:</strong> 1 tsp with warm water (night) - Detox & digestion</li>
-                                </ul>
-
-                                <h6 class="fw-bold mb-3 mt-3">5. Vastu for Wife's Health</h6>
-                                <ul class="small">
-                                    <li><strong>Bedroom:</strong> South-West corner (stability & health)</li>
-                                    <li><strong>Sleeping Position:</strong> Wife should sleep on left side of bed</li>
-                                    <li><strong>Head Direction:</strong> Wife's head towards South (health) or East (vitality)</li>
-                                    <li><strong>Remove:</strong> All medicines/pills from bedroom (keep in kitchen/bathroom)</li>
-                                    <li><strong>Avoid:</strong> Mirrors facing bed (drains energy)</li>
-                                    <li><strong>Place:</strong> Fresh flowers (jasmine, rose) in bedroom (positive energy)</li>
-                                </ul>
-
-                                <h6 class="fw-bold mb-3 mt-3">6. Spiritual Protection</h6>
-                                <ul class="small">
-                                    <li><strong>Rudraksha:</strong> Wife should wear 7 Mukhi Rudraksha (health & protection)</li>
-                                    <li><strong>Protection Yantra:</strong> Mahamrityunjaya Yantra in home (conquers disease)</li>
-                                    <li><strong>Mantra:</strong> "ॐ त्र्यम्बकं यजामहे सुगन्धिं पुष्टिवर्धनम्..." (Mahamrityunjaya Mantra) - 11x daily</li>
-                                    <li><strong>Copper Vessel:</strong> Wife should drink water from copper vessel (health benefits)</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="alert alert-info mt-4">
-                    <h5 class="fw-bold mb-2">💡 Important Medical + Spiritual Approach</h5>
-                    <p class="mb-2"><strong>CRITICAL:</strong> Don't replace medical treatment with remedies! Combine both:</p>
-                    <ul class="mb-0">
-                        <li>✅ Continue medical check-ups & treatment</li>
-                        <li>✅ Start all astrological remedies IMMEDIATELY</li>
-                        <li>✅ Focus on immunity-boosting (Ayurveda + diet)</li>
-                        <li>✅ Check for vitamin deficiencies (B12, D, Iron) - Very common!</li>
-                        <li>✅ Complete blood tests every 3 months</li>
-                        <li>✅ Maintain a health journal (track symptoms & remedies)</li>
-                    </ul>
-                </div>
-
-                <div class="alert alert-success mt-3">
-                    <h5 class="fw-bold mb-2">🎯 90-Day Action Plan for Wife's Health</h5>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <h6 class="fw-bold">Days 1-30:</h6>
-                            <ul class="small">
-                                <li>Start Friday fast (wife)</li>
-                                <li>Hanuman Chalisa daily (you)</li>
-                                <li>Begin Ashwagandha + Tulsi tea</li>
-                                <li>Complete blood tests</li>
-                                <li>Fix bedroom Vastu</li>
-                            </ul>
-                        </div>
-                        <div class="col-md-4">
-                            <h6 class="fw-bold">Days 31-60:</h6>
-                            <ul class="small">
-                                <li>Add Monday fast (wife)</li>
-                                <li>11 Tuesdays Hanuman worship</li>
-                                <li>Wear Pearl/Rudraksha</li>
-                                <li>Consult Ayurvedic doctor</li>
-                                <li>Continue all remedies</li>
-                            </ul>
-                        </div>
-                        <div class="col-md-4">
-                            <h6 class="fw-bold">Days 61-90:</h6>
-                            <ul class="small">
-                                <li>Full routine established</li>
-                                <li>Energy should improve 50%+</li>
-                                <li>Less frequent sickness</li>
-                                <li>Review progress</li>
-                                <li>Plan for child (if health stable)</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="alert alert-danger mt-3">
-                    <h5 class="fw-bold mb-2">⚠️ RED FLAGS - Consult Doctor Immediately If:</h5>
-                    <ul class="mb-0">
-                        <li>Recurring fever (more than 2x/month)</li>
-                        <li>Extreme fatigue despite rest</li>
-                        <li>Unexplained weight loss/gain</li>
-                        <li>Digestive issues persisting</li>
-                        <li>Hormonal imbalances (irregular periods)</li>
-                    </ul>
-                    <p class="mb-0 mt-2"><strong>Get tested for:</strong> Thyroid, PCOD, Vitamin D, B12, Iron, Blood Sugar</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Children Plan -->
-        <h2 class="h2 fw-bold text-center mb-4 mt-5" data-aos="fade-up">👶 Children Plan - 4 Kids by Age 38</h2>
+        <h1 class="display-3 fw-bold text-center mb-3 gradient-text" data-aos="fade-up">👨‍👩‍👧‍👦 Your Personalized Family Blueprint</h1>
+        <p class="lead text-center text-muted mb-5" data-aos="fade-up" data-aos-delay="100">AI-Generated Plan Based on Your Astrological Profile</p>
         
-        <div class="card shadow-lg border-0 rounded-4 mb-5" data-aos="fade-up">
-            <div class="card-header bg-success text-white">
-                <h4 class="mb-0"><i class="fas fa-baby me-2"></i>Complete Children Timeline (Since You're Already Married)</h4>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Child</th>
-                                <th>Gender</th>
-                                <th>Birth</th>
-                                <th>Your Age</th>
-                                <th>Gap</th>
-                                <th>Mahadasha</th>
-                                <th>Numerology</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="table-success">
-                                <td><strong>1</strong></td>
-                                <td>👦 Son</td>
-                                <td>Mar 2027</td>
-                                <td>31</td>
-                                <td>-</td>
-                                <td>Mercury</td>
-                                <td>3 or 5</td>
-                            </tr>
-                            <tr>
-                                <td><strong>2</strong></td>
-                                <td>👧 Daughter</td>
-                                <td>Sep 2028</td>
-                                <td>32</td>
-                                <td>18 mo</td>
-                                <td>Mercury</td>
-                                <td>3 or 6</td>
-                            </tr>
-                            <tr>
-                                <td><strong>3</strong></td>
-                                <td>👦 Son</td>
-                                <td>Jun 2030</td>
-                                <td>34</td>
-                                <td>21 mo</td>
-                                <td>Mercury</td>
-                                <td>4 or 5</td>
-                            </tr>
-                            <tr>
-                                <td><strong>4</strong></td>
-                                <td>👧 Daughter</td>
-                                <td>Mar 2032</td>
-                                <td>36</td>
-                                <td>21 mo</td>
-                                <td>Mercury</td>
-                                <td>6 or 3</td>
-                            </tr>
-                        </tbody>
-                    </table>
+        <!-- Loading State -->
+        <div id="loading-state" class="loading-container">
+            <div class="text-center">
+                <div class="spinner-border text-primary mb-3" role="status" style="width: 3rem; height: 3rem;">
+                    <span class="visually-hidden">Loading...</span>
                 </div>
-                <div class="alert alert-success mt-3">
-                    <strong>✅ Since you're already married, you can start planning for children NOW!</strong><br>
-                    <strong>Total:</strong> 4 children (2 sons, 2 daughters) | <strong>By Age 36</strong> = Perfect family 👨‍👩‍👧‍👦
-                </div>
+                <p class="text-muted">Loading your personalized Family blueprint...</p>
             </div>
         </div>
 
-        <!-- Children Timeline Chart -->
-        <div class="card shadow-lg border-0 rounded-4 mb-5" data-aos="fade-up">
-            <div class="card-header bg-primary text-white">
-                <h4 class="mb-0"><i class="fas fa-chart-line me-2"></i>Children Birth Timeline</h4>
-            </div>
-            <div class="card-body">
-                <div class="chart-container">
-                    <canvas id="childrenChart"></canvas>
-                </div>
-            </div>
-        </div>
-
-        <!-- Children Expenses -->
-        <div class="card shadow-lg border-0 rounded-4 mb-5" data-aos="fade-up">
-            <div class="card-header bg-warning text-dark">
-                <h4 class="mb-0"><i class="fas fa-rupee-sign me-2"></i>Children Expenses Breakdown</h4>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Year</th>
-                                <th>Event</th>
-                                <th>Monthly</th>
-                                <th>Annual</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>2029</td>
-                                <td>Child 1 born</td>
-                                <td>₹40,000</td>
-                                <td>₹4.8L</td>
-                            </tr>
-                            <tr>
-                                <td>2030</td>
-                                <td>Child 2 born</td>
-                                <td>₹75,000</td>
-                                <td>₹9L</td>
-                            </tr>
-                            <tr>
-                                <td>2033</td>
-                                <td>Child 3 born</td>
-                                <td>₹1.2L</td>
-                                <td>₹14.4L</td>
-                            </tr>
-                            <tr>
-                                <td>2035</td>
-                                <td>Child 4 born</td>
-                                <td>₹1.75L</td>
-                                <td>₹21L</td>
-                            </tr>
-                            <tr class="table-success">
-                                <td><strong>2043</strong></td>
-                                <td><strong>All kids in school</strong></td>
-                                <td><strong>₹2.35L</strong></td>
-                                <td><strong>₹28.2L</strong></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <!-- Pets Plan -->
-        <h2 class="h2 fw-bold text-center mb-4 mt-5" data-aos="fade-up">🐾 Pets Plan - 4 Pets by 2033</h2>
-        
-        <div class="row g-4 mb-5">
-            <div class="col-lg-6" data-aos="fade-right">
-                <div class="card shadow-lg border-0 rounded-4 border-success" style="border-width: 3px !important;">
-                    <div class="card-header bg-success text-white">
-                        <h5 class="mb-0">🐺 1. Siberian Husky (Current)</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="alert alert-success mb-3">
-                            <strong>Numerology:</strong> 8 (Saturn) ✅ | <strong>Perfect for Life Path 4</strong>
-                        </div>
-                        <ul>
-                            <li><strong>Status:</strong> Already have ✅</li>
-                            <li><strong>Monthly Cost:</strong> ₹8,000</li>
-                            <li><strong>Why:</strong> Loyal, disciplined, strong</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6" data-aos="fade-left">
-                <div class="card shadow-lg border-0 rounded-4 border-primary" style="border-width: 3px !important;">
-                    <div class="card-header bg-primary text-white">
-                        <h5 class="mb-0">🐕 2. German Shepherd (2027)</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="alert alert-primary mb-3">
-                            <strong>Numerology:</strong> 4 (Saturn - YOUR Life Path!) ✅✅✅
-                        </div>
-                        <ul>
-                            <li><strong>When:</strong> Age 31, after Bangalore move</li>
-                            <li><strong>Monthly Cost:</strong> ₹8,000</li>
-                            <li><strong>Why:</strong> Protection, kids safety, intelligent</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6" data-aos="fade-right">
-                <div class="card shadow-lg border-0 rounded-4 border-warning" style="border-width: 3px !important;">
-                    <div class="card-header bg-warning text-dark">
-                        <h5 class="mb-0">🦮 3. Golden Retriever (2030)</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="alert alert-warning mb-3">
-                            <strong>Numerology:</strong> 3 (Jupiter - YOUR birth date!) ✅✅✅
-                        </div>
-                        <ul>
-                            <li><strong>When:</strong> Age 34, when child 1 is 1 year old</li>
-                            <li><strong>Monthly Cost:</strong> ₹10,000</li>
-                            <li><strong>Why:</strong> BEST with kids (safest breed)</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6" data-aos="fade-left">
-                <div class="card shadow-lg border-0 rounded-4 border-info" style="border-width: 3px !important;">
-                    <div class="card-header bg-info text-white">
-                        <h5 class="mb-0">🐱 4. Persian Cat (2033)</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="alert alert-info mb-3">
-                            <strong>Numerology:</strong> 1 (Sun - luxury, status) ✅
-                        </div>
-                        <ul>
-                            <li><strong>When:</strong> Age 37, Venus Mahadasha starts</li>
-                            <li><strong>Monthly Cost:</strong> ₹5,500</li>
-                            <li><strong>Why:</strong> Luxury pet, calm, elegant</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Pets Cost Chart -->
-        <div class="card shadow-lg border-0 rounded-4 mb-5" data-aos="fade-up">
-            <div class="card-header bg-success text-white">
-                <h4 class="mb-0"><i class="fas fa-chart-pie me-2"></i>Pets Monthly Cost Breakdown</h4>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="chart-container">
-                            <canvas id="petsChart"></canvas>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <table class="table">
-                            <tr>
-                                <td>🐺 Husky</td>
-                                <td class="text-end"><strong>₹8,000</strong></td>
-                            </tr>
-                            <tr>
-                                <td>🐕 German Shepherd</td>
-                                <td class="text-end"><strong>₹8,000</strong></td>
-                            </tr>
-                            <tr>
-                                <td>🦮 Golden Retriever</td>
-                                <td class="text-end"><strong>₹10,000</strong></td>
-                            </tr>
-                            <tr>
-                                <td>🐱 Persian Cat</td>
-                                <td class="text-end"><strong>₹5,500</strong></td>
-                            </tr>
-                            <tr class="table-success">
-                                <td><strong>TOTAL</strong></td>
-                                <td class="text-end"><strong>₹31,500/month</strong></td>
-                            </tr>
-                        </table>
-                        <div class="alert alert-info">
-                            <strong>Annual:</strong> ₹3.78L/year<br>
-                            <small>By 2033: 4 kids + 4 pets = Complete family 👨‍👩‍👧‍👦🐕🐕🐕🐈</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Home Requirements -->
-        <div class="card shadow-lg border-0 rounded-4 mb-5" data-aos="fade-up">
-            <div class="card-header bg-dark text-white">
-                <h4 class="mb-0"><i class="fas fa-home me-2"></i>Home Requirements</h4>
-            </div>
-            <div class="card-body">
-                <div class="row g-4">
-                    <div class="col-md-6">
-                        <h5 class="fw-bold">2026-2027: 3BHK (₹80L-1.2 Cr)</h5>
-                        <ul>
-                            <li>For: You + Wife + 1-2 kids (future)</li>
-                            <li>Space: 1,500-1,800 sq ft</li>
-                            <li>3 bedrooms</li>
-                            <li>Balcony for dogs</li>
-                            <li>Kids play area</li>
-                            <li><strong>Buy before first child!</strong> ✅</li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6">
-                        <h5 class="fw-bold">2035: 4BHK (₹1.5-2 Cr) - UPGRADE</h5>
-                        <ul>
-                            <li>For: You + Wife + 4 kids (ages 6, 5, 3, 1)</li>
-                            <li>Space: 2,500-3,000 sq ft</li>
-                            <li>4 bedrooms (kids share 2 rooms)</li>
-                            <li>Large balcony/terrace for pets</li>
-                            <li>Play room for kids</li>
-                            <li>Home office for you</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Family Timeline Chart -->
-        <div class="card shadow-lg border-0 rounded-4 mb-5" data-aos="fade-up">
-            <div class="card-header bg-primary text-white">
-                <h4 class="mb-0"><i class="fas fa-calendar-alt me-2"></i>Complete Family Timeline</h4>
-            </div>
-            <div class="card-body">
-                <div class="chart-container">
-                    <canvas id="timelineChart"></canvas>
-                </div>
-            </div>
-        </div>
-
-        <!-- Family Milestones -->
-        <div class="card shadow-lg border-0 rounded-4 mb-5" data-aos="fade-up">
-            <div class="card-header bg-success text-white">
-                <h4 class="mb-0"><i class="fas fa-tasks me-2"></i>Family Milestones</h4>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Year</th>
-                                <th>Age</th>
-                                <th>Milestone</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>2025</td>
-                                <td>29</td>
-                                <td>✅ Already Married!</td>
-                            </tr>
-                            <tr>
-                                <td>2027</td>
-                                <td>31</td>
-                                <td>Get German Shepherd</td>
-                            </tr>
-                            <tr class="table-success">
-                                <td>2027</td>
-                                <td>31</td>
-                                <td><strong>Child 1 (Son) born</strong></td>
-                            </tr>
-                            <tr>
-                                <td>2028</td>
-                                <td>32</td>
-                                <td>Child 2 (Daughter) + Golden Retriever</td>
-                            </tr>
-                            <tr>
-                                <td>2030</td>
-                                <td>34</td>
-                                <td>Child 3 (Son) born</td>
-                            </tr>
-                            <tr>
-                                <td>2031</td>
-                                <td>35</td>
-                                <td>Persian Cat + Venus Mahadasha</td>
-                            </tr>
-                            <tr class="table-success">
-                                <td>2032</td>
-                                <td>36</td>
-                                <td><strong>Child 4 (Daughter) born - Family Complete!</strong></td>
-                            </tr>
-                            <tr>
-                                <td>2035</td>
-                                <td>39</td>
-                                <td>Upgrade to 4BHK home</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <!-- Back Button -->
-        <div class="text-center mt-5">
-            <a href="../home.html" class="btn btn-primary btn-lg px-5">
-                <i class="fas fa-arrow-left me-2"></i>Back to Home
+        <!-- Not Generated State -->
+        <div id="not-generated-state" class="not-generated-container" style="display: none;">
+            <i class="fas fa-magic fa-4x text-primary mb-4"></i>
+            <h2 class="h3 fw-bold mb-3">Content Not Generated Yet</h2>
+            <p class="text-muted mb-4">Your personalized Family blueprint hasn't been generated yet. Please generate it from the home page.</p>
+            <a href="../home.html" class="btn btn-primary btn-lg">
+                <i class="fas fa-arrow-left me-2"></i>Go to Home & Generate
             </a>
         </div>
-    </div>
 
-    <footer class="bg-dark text-white py-4 mt-5">
-        <div class="container text-center">
-            <p class="mb-2"><strong>🪐 Saturn:</strong> "Family = Wealth. Plan carefully, execute perfectly."</p>
-            <p class="mb-0"><strong>🌟 Jupiter:</strong> "4 children = expansion, abundance. Blessed family!"</p>
-        </div>
-    </footer>
+        <!-- AI-Generated Content Container -->
+        <div id="ai-family-content" style="display: none;"></div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
-
-        // Children Timeline Chart
-        const childrenCtx = document.getElementById('childrenChart').getContext('2d');
-        new Chart(childrenCtx, {
-            type: 'bar',
-                    data: {
-                labels: ['Child 1 (Son)', 'Child 2 (Daughter)', 'Child 3 (Son)', 'Child 4 (Daughter)'],
-                datasets: [{
-                    label: 'Birth Year',
-                    data: [2027, 2028, 2030, 2032],
-                    backgroundColor: ['#28a745', '#dc3545', '#28a745', '#dc3545'],
-                    borderColor: ['#1e7e34', '#c82333', '#1e7e34', '#c82333'],
-                    borderWidth: 2
-                }, {
-                    label: 'Your Age',
-                    data: [31, 32, 34, 36],
-                    backgroundColor: 'rgba(23, 162, 184, 0.5)',
-                    borderColor: '#17a2b8',
-                    borderWidth: 2,
-                    yAxisID: 'y1'
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: false,
-                        min: 2025,
-                        max: 2035,
-                        title: { display: true, text: 'Birth Year' }
-                    },
-                    y1: {
-                        type: 'linear',
-                        display: true,
-                        position: 'right',
-                        title: { display: true, text: 'Your Age' },
-                        min: 28,
-                        max: 38,
-                        grid: { drawOnChartArea: false }
-                    }
-                },
-                plugins: {
-                    legend: { display: true },
-                    title: { display: true, text: 'Children Birth Timeline' }
-                }
-            }
-        });
-
-        // Pets Cost Chart
-        const petsCtx = document.getElementById('petsChart').getContext('2d');
-        new Chart(petsCtx, {
-            type: 'doughnut',
-            data: {
-                labels: ['Husky', 'German Shepherd', 'Golden Retriever', 'Persian Cat'],
-                datasets: [{
-                    data: [8000, 8000, 10000, 5500],
-                    backgroundColor: ['#28a745', '#17a2b8', '#ffc107', '#6c757d'],
-                    borderWidth: 2,
-                    borderColor: '#fff'
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: { display: true, position: 'right' },
-                    title: { display: true, text: 'Monthly Pet Costs (₹31,500 total)' }
-                }
-            }
-        });
-
-        // Family Timeline Chart
-        const timelineCtx = document.getElementById('timelineChart').getContext('2d');
-        new Chart(timelineCtx, {
-            type: 'line',
-            data: {
-                labels: ['2025', '2027', '2028', '2030', '2031', '2032', '2035'],
-                datasets: [{
-                    label: 'Family Size',
-                    data: [2, 3, 4, 5, 6, 7, 7],
-                    borderColor: '#667eea',
-                    backgroundColor: 'rgba(102, 126, 234, 0.1)',
-                    borderWidth: 3,
-                    fill: true,
-                    tension: 0.4
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        max: 8,
-                        title: { display: true, text: 'Family Members' }
-                    }
-                },
-                plugins: {
-                    legend: { display: true },
-                    title: { display: true, text: 'Family Growth Timeline (2025-2035) - Already Married!' }
-                }
-            }
-        });
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", async function() {
+        document.addEventListener('DOMContentLoaded', async function() {
             await PageInit.init();
+            PageInit.updatePageTitle('Family');
+            
+            const token = localStorage.getItem('token');
+            if (!token) {
+                window.location.href = '../login.html';
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_URL}/blueprint/page/family`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+
+                if (response.status === 404) {
+                    document.getElementById('loading-state').style.display = 'none';
+                    document.getElementById('not-generated-state').style.display = 'block';
+                } else if (!response.ok) {
+                    throw new Error('Failed to load content');
+                } else {
+                    const data = await response.json();
+                    document.getElementById('loading-state').style.display = 'none';
+                    const contentContainer = document.getElementById('ai-family-content');
+                    contentContainer.style.display = 'block';
+                    AIContentRenderer.renderContent(contentContainer, data.content);
+                }
+            } catch (error) {
+                console.error('Error loading AI content:', error);
+                document.getElementById('loading-state').style.display = 'none';
+                document.getElementById('not-generated-state').style.display = 'block';
+            }
+            
             AOS.init({ duration: 1000, once: true });
         });
     </script>

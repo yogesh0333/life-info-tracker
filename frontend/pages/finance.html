@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finance & Wealth | ₹75 CR Plan | <span data-user-name>Life</span> Blueprint</title>
+    <title>Finance {{PAGE_TITLE}} Wealth - Life Blueprint</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="apple-touch-icon" href="/favicon.svg">
     
-    <!-- Auth Guard -->
-    <script src="auth-guard.js"></script>
+    <!-- Config & Auth -->
     <script src="../config.js"></script>
+    <script src="auth-guard.js"></script>
     <script src="../js/userData.js"></script>
     <script src="../js/pageInit.js"></script>
+    <script src="../js/pageContentLoader.js"></script>
+    <script src="../js/aiContentRenderer.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-    <link rel="stylesheet" href="../assets/css/main.css">
     <style>
         .gradient-text { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .chart-container { position: relative; height: 300px; margin: 20px 0; }
-        .wealth-badge { font-size: 1.5rem; font-weight: bold; }
+        .loading-container { min-height: 400px; display: flex; align-items: center; justify-content: center; }
+        .not-generated-container { text-align: center; padding: 4rem 2rem; }
     </style>
 </head>
 <body>
@@ -33,694 +33,75 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="../home.html">🏠 Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="career.html">💼 Career</a></li>
-                    <li class="nav-item"><a class="nav-link" href="business.html">💰 Business</a></li>
-                    <li class="nav-item"><a class="nav-link" href="lifestyle.html">👔 Lifestyle</a></li>
-                    <li class="nav-item"><a class="nav-link" href="health.html">💪 Health</a></li>
-                    <li class="nav-item"><a class="nav-link" href="family.html">👨‍👩‍👧‍👦 Family</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="finance.html">💎 Finance</a></li>
-                    <li class="nav-item"><a class="nav-link" href="spiritual.html">🙏 Spiritual</a></li>
-                    <li class="nav-item"><a class="btn btn-warning text-dark ms-2" href="action.html">✅ Start Now</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
     <div class="container" style="padding-top: 100px; padding-bottom: 50px;">
-        <h1 class="display-3 fw-bold text-center mb-3 gradient-text" data-aos="fade-up">💎 Complete Financial Plan</h1>
-        <p class="lead text-center text-muted mb-5" data-aos="fade-up">Current: ₹24 LPA | Target: ₹75 Cr Net Worth by Age 60 (2056)</p>
-
-        <!-- Current Status -->
-        <div class="row mb-5" data-aos="fade-up">
-            <div class="col-lg-10 mx-auto">
-                <div class="card shadow-lg border-0 rounded-4">
-                    <div class="card-body p-4">
-                        <h3 class="h4 fw-bold mb-4 text-center">📊 Current Financial Status (Nov 2025)</h3>
-                        <div class="row g-3">
-                            <div class="col-md-3 text-center">
-                                <div class="p-3 bg-primary text-white rounded-3">
-                                    <div class="h4 fw-bold">₹24 LPA</div>
-                                    <small>Current Salary</small>
-                                </div>
-                            </div>
-                            <div class="col-md-3 text-center">
-                                <div class="p-3 bg-success text-white rounded-3">
-                                    <div class="h4 fw-bold">₹2L/mo</div>
-                                    <small>Monthly Income</small>
-                                </div>
-                            </div>
-                            <div class="col-md-3 text-center">
-                                <div class="p-3 bg-warning text-dark rounded-3">
-                                    <div class="h4 fw-bold">₹1L/mo</div>
-                                    <small>Savings (50%)</small>
-                                </div>
-                            </div>
-                            <div class="col-md-3 text-center">
-                                <div class="p-3 bg-info text-white rounded-3">
-                                    <div class="h4 fw-bold">₹12L</div>
-                                    <small>Current Net Worth</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Income Trajectory Chart -->
-        <div class="card shadow-lg border-0 rounded-4 mb-5" data-aos="fade-up">
-            <div class="card-header bg-primary text-white">
-                <h4 class="mb-0"><i class="fas fa-chart-line me-2"></i>Income Trajectory (2025-2056)</h4>
-            </div>
-            <div class="card-body">
-                <div class="chart-container">
-                    <canvas id="incomeChart"></canvas>
-                </div>
-            </div>
-        </div>
-
-        <!-- Income Projection Table -->
-        <div class="card shadow-lg border-0 rounded-4 mb-5" data-aos="fade-up">
-            <div class="card-header bg-success text-white">
-                <h4 class="mb-0"><i class="fas fa-table me-2"></i>Complete Income Chart (2025-2056)</h4>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th>Age</th>
-                                <th>Year</th>
-                                <th>Job Income</th>
-                                <th>Business</th>
-                                <th>Investments</th>
-                                <th>Total</th>
-                                <th>Net Worth</th>
-                                <th>Role</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>29</td>
-                                <td>2025</td>
-                                <td>₹24 LPA</td>
-                                <td>₹3 LPA</td>
-                                <td>-</td>
-                                <td>₹27 LPA</td>
-                                <td>₹10 L</td>
-                                <td>Developer</td>
-                            </tr>
-                            <tr>
-                                <td>31</td>
-                                <td>2027</td>
-                                <td>₹40 LPA</td>
-                                <td>₹10 LPA</td>
-                                <td>-</td>
-                                <td>₹50 LPA</td>
-                                <td>₹75 L</td>
-                                <td>Lead Dev 🏆</td>
-                            </tr>
-                            <tr>
-                                <td>32</td>
-                                <td>2028</td>
-                                <td>₹50 LPA</td>
-                                <td>₹15 LPA</td>
-                                <td>-</td>
-                                <td>₹65 LPA</td>
-                                <td>₹1.3 Cr</td>
-                                <td>Lead Dev</td>
-                            </tr>
-                            <tr>
-                                <td>37</td>
-                                <td>2033</td>
-                                <td>₹80 LPA</td>
-                                <td>₹30 LPA</td>
-                                <td>₹12 LPA</td>
-                                <td>₹1.22 Cr</td>
-                                <td>₹5.4 Cr</td>
-                                <td>Director 💎</td>
-                            </tr>
-                            <tr>
-                                <td>40</td>
-                                <td>2036</td>
-                                <td>₹1 Cr</td>
-                                <td>₹40 LPA</td>
-                                <td>₹20 LPA</td>
-                                <td>₹1.6 Cr</td>
-                                <td>₹9.4 Cr</td>
-                                <td>VP/CTO 🚀</td>
-                            </tr>
-                            <tr>
-                                <td>45</td>
-                                <td>2041</td>
-                                <td>₹1.5 Cr</td>
-                                <td>₹60 LPA</td>
-                                <td>₹35 LPA</td>
-                                <td>₹2.45 Cr</td>
-                                <td>₹20 Cr</td>
-                                <td>CTO/Founder</td>
-                            </tr>
-                            <tr class="table-success">
-                                <td><strong>60</strong></td>
-                                <td><strong>2056</strong></td>
-                                <td>Retired</td>
-                                <td>₹1.5 Cr</td>
-                                <td>₹1.5 Cr</td>
-                                <td>₹3 Cr</td>
-                                <td><strong class="wealth-badge text-success">₹75 Cr</strong></td>
-                                <td>Retired 🏖️</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <!-- Net Worth Growth Chart -->
-        <div class="card shadow-lg border-0 rounded-4 mb-5" data-aos="fade-up">
-            <div class="card-header bg-warning text-dark">
-                <h4 class="mb-0"><i class="fas fa-chart-area me-2"></i>Net Worth Growth (2025-2056)</h4>
-            </div>
-            <div class="card-body">
-                <div class="chart-container">
-                    <canvas id="netWorthChart"></canvas>
-                </div>
-            </div>
-        </div>
-
-        <!-- Monthly Budget -->
-        <h2 class="h2 fw-bold text-center mb-4 mt-5" data-aos="fade-up">💰 Monthly Budget (Current: ₹2L/month)</h2>
+        <h1 class="display-3 fw-bold text-center mb-3 gradient-text" data-aos="fade-up">💎 Your Personalized Finance Blueprint</h1>
+        <p class="lead text-center text-muted mb-5" data-aos="fade-up" data-aos-delay="100">AI-Generated Plan Based on Your Astrological Profile</p>
         
-        <div class="row g-4 mb-5">
-            <div class="col-lg-6" data-aos="fade-right">
-                <div class="card shadow-lg border-0 rounded-4">
-                    <div class="card-header bg-success text-white">
-                        <h5 class="mb-0">💵 Income (₹2,00,000)</h5>
-                    </div>
-                    <div class="card-body">
-                        <ul class="mb-0">
-                            <li>Salary (in-hand): ₹1,80,000</li>
-                            <li>Freelancing: ₹20,000</li>
-                        </ul>
-                    </div>
+        <!-- Loading State -->
+        <div id="loading-state" class="loading-container">
+            <div class="text-center">
+                <div class="spinner-border text-primary mb-3" role="status" style="width: 3rem; height: 3rem;">
+                    <span class="visually-hidden">Loading...</span>
                 </div>
-            </div>
-            <div class="col-lg-6" data-aos="fade-left">
-                <div class="card shadow-lg border-0 rounded-4">
-                    <div class="card-header bg-primary text-white">
-                        <h5 class="mb-0">💸 Savings (₹1,00,000 - 50%)</h5>
-                    </div>
-                    <div class="card-body">
-                        <ul class="mb-0">
-                            <li>Equity MF SIP: ₹30,000</li>
-                            <li>Debt MF SIP: ₹15,000</li>
-                            <li>PPF: ₹12,500</li>
-                            <li>EPF (auto): ₹25,000</li>
-                            <li>Emergency Fund: ₹17,500</li>
-                        </ul>
-                    </div>
-                </div>
+                <p class="text-muted">Loading your personalized Finance blueprint...</p>
             </div>
         </div>
 
-        <!-- Expenses Breakdown -->
-        <div class="card shadow-lg border-0 rounded-4 mb-5" data-aos="fade-up">
-            <div class="card-header bg-danger text-white">
-                <h4 class="mb-0"><i class="fas fa-wallet me-2"></i>Expenses Breakdown (₹1,00,000 - 50%)</h4>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="chart-container">
-                            <canvas id="expensesChart"></canvas>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <table class="table">
-                            <tr>
-                                <td>🏠 Rent</td>
-                                <td class="text-end"><strong>₹15,000</strong></td>
-                            </tr>
-                            <tr>
-                                <td>🍽️ Food</td>
-                                <td class="text-end"><strong>₹12,000</strong></td>
-                            </tr>
-                            <tr>
-                                <td>🚗 Transport</td>
-                                <td class="text-end"><strong>₹8,000</strong></td>
-                            </tr>
-                            <tr>
-                                <td>💪 Health/Gym</td>
-                                <td class="text-end"><strong>₹5,000</strong></td>
-                            </tr>
-                            <tr>
-                                <td>👔 Clothing</td>
-                                <td class="text-end"><strong>₹20,000</strong></td>
-                            </tr>
-                            <tr>
-                                <td>📱 Bills</td>
-                                <td class="text-end"><strong>₹5,000</strong></td>
-                            </tr>
-                            <tr>
-                                <td>🎬 Entertainment</td>
-                                <td class="text-end"><strong>₹10,000</strong></td>
-                            </tr>
-                            <tr>
-                                <td>👨‍👩‍👦 Parents</td>
-                                <td class="text-end"><strong>₹15,000</strong></td>
-                            </tr>
-                            <tr>
-                                <td>💰 Misc</td>
-                                <td class="text-end"><strong>₹10,000</strong></td>
-                            </tr>
-                            <tr class="table-danger">
-                                <td><strong>TOTAL</strong></td>
-                                <td class="text-end"><strong>₹1,00,000</strong></td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Investment Strategy -->
-        <h2 class="h2 fw-bold text-center mb-4 mt-5" data-aos="fade-up">📈 Investment Strategy</h2>
-        
-        <div class="card shadow-lg border-0 rounded-4 mb-5" data-aos="fade-up">
-            <div class="card-header bg-info text-white">
-                <h4 class="mb-0"><i class="fas fa-chart-pie me-2"></i>Asset Allocation by Age</h4>
-            </div>
-            <div class="card-body">
-                <div class="row g-4">
-                    <div class="col-md-3">
-                        <div class="card border-primary">
-                            <div class="card-header bg-primary text-white">
-                                <h6 class="mb-0">Age 29-35</h6>
-                            </div>
-                            <div class="card-body">
-                                <p><strong>Aggressive:</strong></p>
-                                <ul class="small mb-0">
-                                    <li>Equity: 70%</li>
-                                    <li>Debt: 20%</li>
-                                    <li>Gold: 5%</li>
-                                    <li>Cash: 5%</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card border-success">
-                            <div class="card-header bg-success text-white">
-                                <h6 class="mb-0">Age 36-45</h6>
-                            </div>
-                            <div class="card-body">
-                                <p><strong>Moderate:</strong></p>
-                                <ul class="small mb-0">
-                                    <li>Equity: 60%</li>
-                                    <li>Debt: 25%</li>
-                                    <li>Real Estate: 10%</li>
-                                    <li>Gold: 5%</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card border-warning">
-                            <div class="card-header bg-warning text-dark">
-                                <h6 class="mb-0">Age 46-55</h6>
-                            </div>
-                            <div class="card-body">
-                                <p><strong>Balanced:</strong></p>
-                                <ul class="small mb-0">
-                                    <li>Equity: 50%</li>
-                                    <li>Debt: 30%</li>
-                                    <li>Real Estate: 15%</li>
-                                    <li>Gold: 5%</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card border-danger">
-                            <div class="card-header bg-danger text-white">
-                                <h6 class="mb-0">Age 56-60</h6>
-                            </div>
-                            <div class="card-body">
-                                <p><strong>Conservative:</strong></p>
-                                <ul class="small mb-0">
-                                    <li>Equity: 30%</li>
-                                    <li>Debt: 50%</li>
-                                    <li>Real Estate: 15%</li>
-                                    <li>Gold: 5%</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Monthly Investment Plan -->
-        <div class="card shadow-lg border-0 rounded-4 mb-5" data-aos="fade-up">
-            <div class="card-header bg-dark text-white">
-                <h4 class="mb-0"><i class="fas fa-rupee-sign me-2"></i>Monthly Investment Plan (2025)</h4>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="chart-container">
-                            <canvas id="investmentChart"></canvas>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <table class="table">
-                            <tr>
-                                <td>🏢 EPF</td>
-                                <td class="text-end"><strong>₹15,000</strong></td>
-                            </tr>
-                            <tr>
-                                <td>🏦 PPF</td>
-                                <td class="text-end"><strong>₹12,500</strong></td>
-                            </tr>
-                            <tr>
-                                <td>📈 Equity MF SIP</td>
-                                <td class="text-end"><strong>₹30,000</strong></td>
-                            </tr>
-                            <tr>
-                                <td>💰 Debt MF</td>
-                                <td class="text-end"><strong>₹15,000</strong></td>
-                            </tr>
-                            <tr>
-                                <td>🥇 Gold (SGB)</td>
-                                <td class="text-end"><strong>₹5,000</strong></td>
-                            </tr>
-                            <tr>
-                                <td>💵 Emergency Fund</td>
-                                <td class="text-end"><strong>₹10,000</strong></td>
-                            </tr>
-                            <tr>
-                                <td>🏡 Home Fund</td>
-                                <td class="text-end"><strong>₹12,500</strong></td>
-                            </tr>
-                            <tr class="table-success">
-                                <td><strong>TOTAL</strong></td>
-                                <td class="text-end"><strong>₹1,00,000</strong></td>
-                            </tr>
-                        </table>
-                        <div class="alert alert-success">
-                            <strong>🪐 50% Savings Rate = Saturn Approved!</strong> ✅
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Net Worth Milestones -->
-        <div class="card shadow-lg border-0 rounded-4 mb-5" data-aos="fade-up">
-            <div class="card-header bg-success text-white">
-                <h4 class="mb-0"><i class="fas fa-trophy me-2"></i>Net Worth Milestones</h4>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Year</th>
-                                <th>Age</th>
-                                <th>Net Worth</th>
-                                <th>Milestone</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>2026</td>
-                                <td>30</td>
-                                <td>₹35 Lakhs</td>
-                                <td>First milestone</td>
-                            </tr>
-                            <tr class="table-warning">
-                                <td>2028</td>
-                                <td>32</td>
-                                <td>₹1 Crore</td>
-                                <td>🎊 CROREPATI</td>
-                            </tr>
-                            <tr>
-                                <td>2030</td>
-                                <td>34</td>
-                                <td>₹2.6 Crores</td>
-                                <td>First child</td>
-                            </tr>
-                            <tr>
-                                <td>2033</td>
-                                <td>37</td>
-                                <td>₹5 Crores</td>
-                                <td>Venus Mahadasha</td>
-                            </tr>
-                            <tr>
-                                <td>2036</td>
-                                <td>40</td>
-                                <td>₹15 Crores</td>
-                                <td>Peak career start</td>
-                            </tr>
-                            <tr>
-                                <td>2041</td>
-                                <td>45</td>
-                                <td>₹25 Crores</td>
-                                <td>Mid-career</td>
-                            </tr>
-                            <tr>
-                                <td>2046</td>
-                                <td>50</td>
-                                <td>₹40 Crores</td>
-                                <td>Pre-retirement</td>
-                            </tr>
-                            <tr class="table-success">
-                                <td><strong>2056</strong></td>
-                                <td><strong>60</strong></td>
-                                <td><strong class="wealth-badge text-success">₹75 Crores</strong></td>
-                                <td>🏖️ RETIRED</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <!-- Retirement Plan -->
-        <div class="card shadow-lg border-0 rounded-4 mb-5" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;" data-aos="fade-up">
-            <div class="card-body p-5">
-                <h2 class="h2 fw-bold text-center mb-4">🏖️ Retirement Plan - Age 60 (2056)</h2>
-                <div class="row g-4">
-                    <div class="col-md-4">
-                        <div class="p-3 bg-white text-dark rounded text-center">
-                            <div class="h3 fw-bold text-primary">₹75 Cr</div>
-                            <small>Net Worth</small>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="p-3 bg-white text-dark rounded text-center">
-                            <div class="h3 fw-bold text-success">₹3 Cr</div>
-                            <small>Passive Income/Year</small>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="p-3 bg-white text-dark rounded text-center">
-                            <div class="h3 fw-bold text-warning">₹25L</div>
-                            <small>Monthly Income</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-4">
-                    <h5 class="fw-bold">Income Sources:</h5>
-                    <ul>
-                        <li>💻 Business (passive): ₹1 Cr/year</li>
-                        <li>💰 Investments (8% return): ₹1.5 Cr/year</li>
-                        <li>🏠 Rental income: ₹20 LPA</li>
-                        <li>💼 Advisory/Board: ₹80 LPA</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Key Principles -->
-        <div class="card shadow-lg border-0 rounded-4 mb-5" data-aos="fade-up">
-            <div class="card-header bg-primary text-white">
-                <h4 class="mb-0"><i class="fas fa-key me-2"></i>Key Principles (Saturn - Life Path 4)</h4>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <ul>
-                            <li>✅ Save 50-70% of income (always)</li>
-                            <li>✅ Invest systematically (SIP, not lumpsum)</li>
-                            <li>✅ Avoid speculation (no trading, gambling)</li>
-                            <li>✅ Long-term focus (20-30 years)</li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6">
-                        <ul>
-                            <li>✅ Diversify (equity, debt, gold, real estate)</li>
-                            <li>✅ Tax planning (save ₹1-2 Lakhs/year)</li>
-                            <li>✅ Insurance (₹2 Cr term + ₹20L health)</li>
-                            <li>✅ Emergency fund (12 months expenses)</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="alert alert-info mt-3">
-                    <strong>🪐 Saturn's Promise:</strong> "Discipline = Wealth | Patience = Growth | Consistency = Success"
-                </div>
-            </div>
-        </div>
-
-        <!-- Back Button -->
-        <div class="text-center mt-5">
-            <a href="../home.html" class="btn btn-primary btn-lg px-5">
-                <i class="fas fa-arrow-left me-2"></i>Back to Home
+        <!-- Not Generated State -->
+        <div id="not-generated-state" class="not-generated-container" style="display: none;">
+            <i class="fas fa-magic fa-4x text-primary mb-4"></i>
+            <h2 class="h3 fw-bold mb-3">Content Not Generated Yet</h2>
+            <p class="text-muted mb-4">Your personalized Finance blueprint hasn't been generated yet. Please generate it from the home page.</p>
+            <a href="../home.html" class="btn btn-primary btn-lg">
+                <i class="fas fa-arrow-left me-2"></i>Go to Home & Generate
             </a>
         </div>
-    </div>
 
-    <footer class="bg-dark text-white py-4 mt-5">
-        <div class="container text-center">
-            <p class="mb-2"><strong>🪐 Saturn:</strong> "Discipline + Patience = ₹75 Crores"</p>
-            <p class="mb-0"><strong>Follow this plan, become crorepati by 40</strong> ✅</p>
-        </div>
-    </footer>
+        <!-- AI-Generated Content Container -->
+        <div id="ai-finance-content" style="display: none;"></div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
-
-        // Income Chart
-        const incomeCtx = document.getElementById('incomeChart').getContext('2d');
-        new Chart(incomeCtx, {
-            type: 'line',
-            data: {
-                labels: ['2025', '2027', '2030', '2033', '2036', '2041', '2046', '2051', '2056'],
-                datasets: [{
-                    label: 'Job Income (₹ LPA)',
-                    data: [24, 40, 60, 80, 100, 150, 200, 250, 0],
-                    borderColor: '#28a745',
-                    backgroundColor: 'rgba(40, 167, 69, 0.1)',
-                    borderWidth: 3,
-                    fill: true,
-                    tension: 0.4
-                }, {
-                    label: 'Business (₹ LPA)',
-                    data: [3, 10, 20, 30, 40, 60, 80, 100, 150],
-                    borderColor: '#17a2b8',
-                    backgroundColor: 'rgba(23, 162, 184, 0.1)',
-                    borderWidth: 3,
-                    fill: true,
-                    tension: 0.4
-                }, {
-                    label: 'Total Income (₹ LPA)',
-                    data: [27, 50, 80, 110, 140, 210, 280, 350, 150],
-                    borderColor: '#dc3545',
-                    backgroundColor: 'rgba(220, 53, 69, 0.1)',
-                    borderWidth: 4,
-                    fill: false,
-                    tension: 0.4
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        title: { display: true, text: 'Income (₹ LPA)' }
-                    }
-                },
-                plugins: {
-                    legend: { display: true },
-                    title: { display: true, text: 'Income Growth Trajectory (2025-2056)' }
-                }
-            }
-        });
-
-        // Net Worth Chart
-        const netWorthCtx = document.getElementById('netWorthChart').getContext('2d');
-        new Chart(netWorthCtx, {
-            type: 'line',
-            data: {
-                labels: ['2025', '2028', '2030', '2033', '2036', '2041', '2046', '2051', '2056'],
-                datasets: [{
-                    label: 'Net Worth (₹ Crores)',
-                    data: [0.1, 1.3, 2.6, 5.4, 9.4, 20, 35, 55, 75],
-                    borderColor: '#ffc107',
-                    backgroundColor: 'rgba(255, 193, 7, 0.1)',
-                    borderWidth: 4,
-                    fill: true,
-                    tension: 0.4
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        title: { display: true, text: 'Net Worth (₹ Crores)' }
-                    }
-                },
-                plugins: {
-                    legend: { display: true },
-                    title: { display: true, text: 'Net Worth Growth (2025-2056) - Target: ₹75 Cr' }
-                }
-            }
-        });
-
-        // Expenses Chart
-        const expensesCtx = document.getElementById('expensesChart').getContext('2d');
-        new Chart(expensesCtx, {
-            type: 'doughnut',
-            data: {
-                labels: ['Rent', 'Food', 'Clothing', 'Parents', 'Transport', 'Health', 'Entertainment', 'Bills', 'Misc'],
-                datasets: [{
-                    data: [15000, 12000, 20000, 15000, 8000, 5000, 10000, 5000, 10000],
-                    backgroundColor: ['#dc3545', '#28a745', '#ffc107', '#17a2b8', '#6c757d', '#20c997', '#fd7e14', '#6610f2', '#e83e8c'],
-                    borderWidth: 2,
-                    borderColor: '#fff'
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: { display: true, position: 'right' },
-                    title: { display: true, text: 'Monthly Expenses Breakdown (₹1,00,000)' }
-                }
-            }
-        });
-
-        // Investment Chart
-        const investmentCtx = document.getElementById('investmentChart').getContext('2d');
-        new Chart(investmentCtx, {
-            type: 'doughnut',
-            data: {
-                labels: ['EPF', 'PPF', 'Equity MF', 'Debt MF', 'Gold', 'Emergency', 'Home Fund'],
-                datasets: [{
-                    data: [15000, 12500, 30000, 15000, 5000, 10000, 12500],
-                    backgroundColor: ['#28a745', '#17a2b8', '#ffc107', '#dc3545', '#6c757d', '#20c997', '#6610f2'],
-                    borderWidth: 2,
-                    borderColor: '#fff'
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: { display: true, position: 'right' },
-                    title: { display: true, text: 'Monthly Investment Plan (₹1,00,000)' }
-                }
-            }
-        });
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", async function() {
+        document.addEventListener('DOMContentLoaded', async function() {
             await PageInit.init();
+            PageInit.updatePageTitle('Finance');
+            
+            const token = localStorage.getItem('token');
+            if (!token) {
+                window.location.href = '../login.html';
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_URL}/blueprint/page/finance`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+
+                if (response.status === 404) {
+                    document.getElementById('loading-state').style.display = 'none';
+                    document.getElementById('not-generated-state').style.display = 'block';
+                } else if (!response.ok) {
+                    throw new Error('Failed to load content');
+                } else {
+                    const data = await response.json();
+                    document.getElementById('loading-state').style.display = 'none';
+                    const contentContainer = document.getElementById('ai-finance-content');
+                    contentContainer.style.display = 'block';
+                    AIContentRenderer.renderContent(contentContainer, data.content);
+                }
+            } catch (error) {
+                console.error('Error loading AI content:', error);
+                document.getElementById('loading-state').style.display = 'none';
+                document.getElementById('not-generated-state').style.display = 'block';
+            }
+            
             AOS.init({ duration: 1000, once: true });
         });
     </script>

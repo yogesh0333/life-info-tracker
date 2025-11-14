@@ -19,12 +19,20 @@ router.get("/", auth, async (req, res) => {
       ? Object.fromEntries(user.blueprint.content) 
       : {};
 
+    // Check which pages have content
+    const pagesStatus = {};
+    const allPages = user.blueprint.pages || [];
+    allPages.forEach(page => {
+      pagesStatus[page] = !!contentObj[page];
+    });
+
     res.json({
       success: true,
       blueprint: {
         generated: user.blueprint.generated,
         generatedAt: user.blueprint.generatedAt,
         pages: user.blueprint.pages,
+        pagesStatus, // Which pages have content
         astrology: user.astrology,
         content: contentObj, // AI-generated content
         userInfo: {
@@ -38,6 +46,120 @@ router.get("/", auth, async (req, res) => {
   } catch (error) {
     console.error("Get blueprint error:", error);
     res.status(500).json({ error: "Server error" });
+  }
+});
+
+// @route   POST /api/blueprint/generate/:pageName
+// @desc    Generate AI content for a specific page
+// @access  Private
+router.post("/generate/:pageName", auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id);
+    const { pageName } = req.params;
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    const blueprintGenerator = require("../services/blueprintGenerator");
+    const userProfile = {
+      name: user.name,
+      dob: user.dob.toISOString().split("T")[0],
+      age: Math.floor((new Date() - user.dob) / (365.25 * 24 * 60 * 60 * 1000)),
+      astrology: user.astrology,
+      gender: user.gender,
+    };
+
+    let generatedContent;
+    switch (pageName) {
+      case "career":
+        generatedContent = await blueprintGenerator.generateCareerContent(userProfile);
+        break;
+      case "lifestyle":
+        generatedContent = await blueprintGenerator.generateLifestyleContent(userProfile);
+        break;
+      case "health":
+        generatedContent = await blueprintGenerator.generateHealthContent(userProfile);
+        break;
+      case "family":
+        generatedContent = await blueprintGenerator.generateFamilyContent(userProfile);
+        break;
+      case "finance":
+        generatedContent = await blueprintGenerator.generateFinanceContent(userProfile);
+        break;
+      case "spiritual":
+        generatedContent = await blueprintGenerator.generateSpiritualContent(userProfile);
+        break;
+      case "remedies":
+        generatedContent = await blueprintGenerator.generateRemediesContent(userProfile);
+        break;
+      case "vastu":
+        generatedContent = await blueprintGenerator.generateVastuContent(userProfile);
+        break;
+      case "past-karma":
+        generatedContent = await blueprintGenerator.generatePastKarmaContent(userProfile);
+        break;
+      case "medical-astrology":
+        generatedContent = await blueprintGenerator.generateMedicalAstrologyContent(userProfile);
+        break;
+      case "pilgrimage":
+        generatedContent = await blueprintGenerator.generatePilgrimageContent(userProfile);
+        break;
+      default:
+        return res.status(404).json({ error: "Page not found" });
+    }
+
+    // Save generated content
+    if (!user.blueprint.content) {
+      user.blueprint.content = new Map();
+    }
+    user.blueprint.content.set(pageName, generatedContent);
+    user.blueprint.generated = true;
+    await user.save();
+
+    res.json({
+      success: true,
+      message: `${pageName} content generated successfully`,
+      page: pageName,
+      content: generatedContent,
+    });
+  } catch (error) {
+    console.error("Generate page content error:", error);
+    res.status(500).json({ error: "Server error", message: error.message });
+  }
+});
+
+// @route   POST /api/blueprint/generate-all
+// @desc    Generate AI content for all pages
+// @access  Private
+router.post("/generate-all", auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id);
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Start generation in background (don't wait)
+    const blueprintGenerator = require("../services/blueprintGenerator");
+    
+    // Generate all content
+    blueprintGenerator.generateBlueprint(user).then((content) => {
+      user.blueprint.content = content;
+      user.blueprint.generated = true;
+      user.save().catch((err) => console.error("Error saving blueprint:", err));
+    }).catch((err) => {
+      console.error("Error generating blueprint:", err);
+    });
+
+    res.json({
+      success: true,
+      message: "Blueprint generation started. Content will be available shortly.",
+      status: "generating",
+    });
+  } catch (error) {
+    console.error("Generate all error:", error);
+    res.status(500).json({ error: "Server error", message: error.message });
   }
 });
 
@@ -107,71 +229,19 @@ router.get("/page/:pageName", auth, async (req, res) => {
     // Check if content exists
     const content = user.blueprint.content?.get(pageName);
 
-    if (content) {
-      return res.json({
-        success: true,
+    if (!content) {
+      return res.status(404).json({ 
+        error: "Content not generated yet",
         page: pageName,
-        content,
+        generated: false
       });
     }
-
-    // Generate content on-demand if not exists
-    const blueprintGenerator = require("../services/blueprintGenerator");
-    const userProfile = {
-      name: user.name,
-      dob: user.dob.toISOString().split("T")[0],
-      age: Math.floor((new Date() - user.dob) / (365.25 * 24 * 60 * 60 * 1000)),
-      astrology: user.astrology,
-      gender: user.gender,
-    };
-
-    let generatedContent;
-    switch (pageName) {
-      case "career":
-        generatedContent = await blueprintGenerator.generateCareerContent(userProfile);
-        break;
-      case "lifestyle":
-        generatedContent = await blueprintGenerator.generateLifestyleContent(userProfile);
-        break;
-      case "health":
-        generatedContent = await blueprintGenerator.generateHealthContent(userProfile);
-        break;
-      case "family":
-        generatedContent = await blueprintGenerator.generateFamilyContent(userProfile);
-        break;
-      case "finance":
-        generatedContent = await blueprintGenerator.generateFinanceContent(userProfile);
-        break;
-      case "spiritual":
-        generatedContent = await blueprintGenerator.generateSpiritualContent(userProfile);
-        break;
-      case "remedies":
-        generatedContent = await blueprintGenerator.generateRemediesContent(userProfile);
-        break;
-      case "vastu":
-        generatedContent = await blueprintGenerator.generateVastuContent(userProfile);
-        break;
-      case "medical-astrology":
-        generatedContent = await blueprintGenerator.generateMedicalAstrologyContent(userProfile);
-        break;
-      case "pilgrimage":
-        generatedContent = await blueprintGenerator.generatePilgrimageContent(userProfile);
-        break;
-      default:
-        return res.status(404).json({ error: "Page not found" });
-    }
-
-    // Save generated content
-    if (!user.blueprint.content) {
-      user.blueprint.content = new Map();
-    }
-    user.blueprint.content.set(pageName, generatedContent);
-    await user.save();
 
     res.json({
       success: true,
       page: pageName,
-      content: generatedContent,
+      content,
+      generated: true,
     });
   } catch (error) {
     console.error("Get page content error:", error);
@@ -180,4 +250,3 @@ router.get("/page/:pageName", auth, async (req, res) => {
 });
 
 module.exports = router;
-

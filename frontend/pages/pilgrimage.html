@@ -3,23 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pilgrimage & Sacred Places | <span data-user-name>Life</span> Blueprint</title>
+    <title>Pilgrimage Guide - Life Blueprint</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="apple-touch-icon" href="/favicon.svg">
     
-    <!-- Auth Guard -->
-    <script src="auth-guard.js"></script>
+    <!-- Config & Auth -->
     <script src="../config.js"></script>
+    <script src="auth-guard.js"></script>
     <script src="../js/userData.js"></script>
     <script src="../js/pageInit.js"></script>
+    <script src="../js/pageContentLoader.js"></script>
+    <script src="../js/aiContentRenderer.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/main.css">
     <style>
         .gradient-text { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .place-card { transition: all 0.3s ease; }
-        .place-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.2) !important; }
+        .loading-container { min-height: 400px; display: flex; align-items: center; justify-content: center; }
+        .not-generated-container { text-align: center; padding: 4rem 2rem; }
     </style>
 </head>
 <body>
@@ -32,439 +33,77 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="../home.html">🏠 Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="career.html">💼 Career</a></li>
-                    <li class="nav-item"><a class="nav-link" href="business.html">💰 Business</a></li>
-                    <li class="nav-item"><a class="nav-link" href="lifestyle.html">👔 Lifestyle</a></li>
-                    <li class="nav-item"><a class="nav-link" href="health.html">💪 Health</a></li>
-                    <li class="nav-item"><a class="nav-link" href="family.html">👨‍👩‍👧‍👦 Family</a></li>
-                    <li class="nav-item"><a class="nav-link" href="finance.html">💎 Finance</a></li>
-                    <li class="nav-item"><a class="nav-link" href="spiritual.html">🙏 Spiritual</a></li>
-                    <li class="nav-item"><a class="btn btn-warning text-dark ms-2" href="action.html">✅ Start Now</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
     <div class="container" style="padding-top: 100px; padding-bottom: 50px;">
-        <h1 class="display-3 fw-bold text-center mb-3 gradient-text" data-aos="fade-up">🕉️ Sacred Pilgrimage - Your Spiritual Journey</h1>
-        <p class="lead text-center text-muted mb-5" data-aos="fade-up">Astrologically Aligned Temples & Holy Places for Maximum Blessings</p>
-
-        <div class="alert alert-info mx-auto mb-5" style="max-width: 900px;" data-aos="fade-up">
-            <h5 class="fw-bold mb-2">🌟 Why Visit These Places?</h5>
-            <p class="mb-2">Based on your birth chart (Virgo Ascendant, Mercury dasha, Mars protection needed), these temples will:</p>
-            <ul class="mb-0">
-                <li>✅ Strengthen weak planets (Venus, Sun, Jupiter)</li>
-                <li>✅ Remove obstacles in career, marriage, children</li>
-                <li>✅ Provide spiritual protection (Mars, Rahu)</li>
-                <li>✅ Fulfill desires (wealth, family, peace)</li>
-            </ul>
-        </div>
-
-        <!-- CRITICAL/PRIORITY TEMPLES -->
-        <h2 class="h2 fw-bold text-center mb-4 mt-5" data-aos="fade-up">🔥 CRITICAL PRIORITY - Visit Within 1 Year!</h2>
-        <p class="text-center text-muted mb-5" data-aos="fade-up">These temples are ESSENTIAL for your current life phase</p>
-
-        <div class="row g-4 mb-5">
-            <!-- Tirupati Balaji -->
-            <div class="col-lg-6" data-aos="fade-up">
-                <div class="card shadow-lg border-0 rounded-4 place-card border-danger" style="border-width: 3px !important;">
-                    <div class="card-header bg-danger text-white py-3">
-                        <h4 class="mb-1">🙏 Tirupati Balaji (Andhra Pradesh)</h4>
-                        <span class="badge bg-light text-danger">URGENT - Visit in 2025!</span>
-                    </div>
-                    <div class="card-body">
-                        <h6 class="fw-bold mb-2">Why CRITICAL for YOU:</h6>
-                        <ul class="small">
-                            <li><strong>Lord Vishnu/Venkateshwara:</strong> Removes all obstacles, grants wishes</li>
-                            <li><strong>For Venus:</strong> Wife's health (Lakshmi energy here!)</li>
-                            <li><strong>For Jupiter:</strong> Wealth, children, prosperity</li>
-                            <li><strong>For Children:</strong> MUST visit before conceiving (2026 plan!)</li>
-                            <li><strong>Lifetime Blessing:</strong> One visit = lifetime protection</li>
-                        </ul>
-
-                        <h6 class="fw-bold mt-3 mb-2">Best Time to Visit:</h6>
-                        <ul class="small">
-                            <li><strong>When:</strong> November-February (pleasant weather)</li>
-                            <li><strong>Ideal:</strong> Thursday (Jupiter day) or Friday (Venus day)</li>
-                            <li><strong>Nakshatra:</strong> Rohini, Pushya, Uttara Phalguni</li>
-                        </ul>
-
-                        <h6 class="fw-bold mt-3 mb-2">What to Offer:</h6>
-                        <ul class="small">
-                            <li>Ladoo prasad (famous Tirupati ladoos)</li>
-                            <li>Yellow/Orange clothes (Jupiter/Sun)</li>
-                            <li>Donate hair (tonsure for fulfilling wishes)</li>
-                            <li>₹501 or ₹1001 donation</li>
-                        </ul>
-
-                        <h6 class="fw-bold mt-3 mb-2">💰 Budget:</h6>
-                        <p class="small mb-0"><strong>₹30,000-50,000</strong> (flights, accommodation, darshan, donations for 2 people, 3 days)</p>
-
-                        <div class="alert alert-danger mt-3 mb-0">
-                            <strong>🎯 ACTION:</strong> Book tickets THIS MONTH! Go with wife. Pray for her health + first child. This visit is NON-NEGOTIABLE before 2026 conception plan!
-                        </div>
-                    </div>
+        <h1 class="display-3 fw-bold text-center mb-3 gradient-text" data-aos="fade-up">🕉️ Your Personalized Pilgrimage Blueprint</h1>
+        <p class="lead text-center text-muted mb-5" data-aos="fade-up" data-aos-delay="100">AI-Generated Plan Based on Your Astrological Profile</p>
+        
+        <!-- Loading State -->
+        <div id="loading-state" class="loading-container">
+            <div class="text-center">
+                <div class="spinner-border text-primary mb-3" role="status" style="width: 3rem; height: 3rem;">
+                    <span class="visually-hidden">Loading...</span>
                 </div>
-            </div>
-
-            <!-- Hanuman Temple (Local + Major) -->
-            <div class="col-lg-6" data-aos="fade-up">
-                <div class="card shadow-lg border-0 rounded-4 place-card border-warning" style="border-width: 3px !important;">
-                    <div class="card-header bg-warning text-dark py-3">
-                        <h4 class="mb-1">🔱 Hanuman Temples (Local + Major)</h4>
-                        <span class="badge bg-dark">WEEKLY - Every Tuesday!</span>
-                    </div>
-                    <div class="card-body">
-                        <h6 class="fw-bold mb-2">Why CRITICAL for YOU:</h6>
-                        <ul class="small">
-                            <li><strong>Mars Protection:</strong> YOUR #1 spiritual need!</li>
-                            <li><strong>Accidents Prevention:</strong> Strong Mars = accident risk</li>
-                            <li><strong>Health Protection:</strong> For you AND wife</li>
-                            <li><strong>Enemies Removal:</strong> Protects from competition, negativity</li>
-                            <li><strong>Mental Strength:</strong> Courage, confidence, willpower</li>
-                        </ul>
-
-                        <h6 class="fw-bold mt-3 mb-2">Local Temple Routine:</h6>
-                        <ul class="small">
-                            <li><strong>Every Tuesday:</strong> Visit local Hanuman temple</li>
-                            <li><strong>Offering:</strong> Sindoor, red flowers, red cloth</li>
-                            <li><strong>Prasad:</strong> Ladoo, besan ladoo</li>
-                            <li><strong>Donation:</strong> ₹21 or ₹51 weekly</li>
-                            <li><strong>Hanuman Chalisa:</strong> Recite 2x at temple</li>
-                        </ul>
-
-                        <h6 class="fw-bold mt-3 mb-2">Major Hanuman Temples to Visit:</h6>
-                        <ul class="small">
-                            <li><strong>1. Sankat Mochan Temple (Varanasi):</strong> Removes all troubles</li>
-                            <li><strong>2. Mehandipur Balaji (Rajasthan):</strong> Black magic, spirits removal</li>
-                            <li><strong>3. Salangpur Hanuman (Gujarat):</strong> Wish fulfillment</li>
-                            <li><strong>4. Allahabad Hanuman Temple:</strong> Ancient, very powerful</li>
-                        </ul>
-
-                        <h6 class="fw-bold mt-3 mb-2">💰 Budget:</h6>
-                        <p class="small mb-0"><strong>Local:</strong> ₹100-500/week | <strong>Major:</strong> ₹15,000-25,000/trip</p>
-
-                        <div class="alert alert-warning mt-3 mb-0">
-                            <strong>🎯 ACTION:</strong> Start local Tuesday visits THIS WEEK! Plan major Hanuman temple trip once a year (rotate temples).
-                        </div>
-                    </div>
-                </div>
+                <p class="text-muted">Loading your personalized Pilgrimage blueprint...</p>
             </div>
         </div>
 
-        <!-- FOR SPECIFIC LIFE GOALS -->
-        <h2 class="h2 fw-bold text-center mb-4 mt-5" data-aos="fade-up">🎯 Temples by Life Goals</h2>
-        <p class="text-center text-muted mb-5" data-aos="fade-up">Visit these temples for specific blessings aligned with your chart</p>
-
-        <!-- FOR CHILDREN & FAMILY -->
-        <div class="card shadow-lg border-0 rounded-4 mb-5 border-success" style="border-width: 3px !important;" data-aos="fade-up">
-            <div class="card-header bg-success text-white py-3">
-                <h3 class="h4 mb-0">👶 For Children & Family Happiness</h3>
-            </div>
-            <div class="card-body">
-                <div class="row g-4">
-                    <div class="col-md-6">
-                        <h5 class="fw-bold">1. Tirupati Balaji (Andhra Pradesh)</h5>
-                        <p class="small"><strong>Why:</strong> Lord Vishnu grants santana (children). MUST visit before conceiving!</p>
-                        <p class="small"><strong>When:</strong> Before 2026 (your child plan year)</p>
-                        <p class="small mb-0"><strong>Offering:</strong> Pray for healthy child, donate ₹1001, offer yellow/white flowers</p>
-                    </div>
-                    <div class="col-md-6">
-                        <h5 class="fw-bold">2. Guruvayur Temple (Kerala)</h5>
-                        <p class="small"><strong>Why:</strong> Lord Krishna grants children. Famous for santana blessings!</p>
-                        <p class="small"><strong>When:</strong> Thursday, Jupiter hora</p>
-                        <p class="small mb-0"><strong>Offering:</strong> Unniappam, yellow clothes, tulsi leaves</p>
-                    </div>
-                    <div class="col-md-6">
-                        <h5 class="fw-bold">3. Kanyakumari Devi Temple (Tamil Nadu)</h5>
-                        <p class="small"><strong>Why:</strong> Goddess Kanyakumari blesses couples with children</p>
-                        <p class="small"><strong>When:</strong> Friday (Venus day for wife's health)</p>
-                        <p class="small mb-0"><strong>Offering:</strong> Bangles, flowers, coconut</p>
-                    </div>
-                    <div class="col-md-6">
-                        <h5 class="fw-bold">4. Chottanikkara Devi (Kerala)</h5>
-                        <p class="small"><strong>Why:</strong> Famous for wife's health & mental peace</p>
-                        <p class="small"><strong>When:</strong> Full moon nights (powerful!)</p>
-                        <p class="small mb-0"><strong>Offering:</strong> Flowers, coconut, saree</p>
-                    </div>
-                </div>
-            </div>
+        <!-- Not Generated State -->
+        <div id="not-generated-state" class="not-generated-container" style="display: none;">
+            <i class="fas fa-magic fa-4x text-primary mb-4"></i>
+            <h2 class="h3 fw-bold mb-3">Content Not Generated Yet</h2>
+            <p class="text-muted mb-4">Your personalized Pilgrimage blueprint hasn't been generated yet. Please generate it from the home page.</p>
+            <a href="../home.html" class="btn btn-primary btn-lg">
+                <i class="fas fa-arrow-left me-2"></i>Go to Home & Generate
+            </a>
         </div>
 
-        <!-- FOR WEALTH & CAREER -->
-        <div class="card shadow-lg border-0 rounded-4 mb-5 border-primary" style="border-width: 3px !important;" data-aos="fade-up">
-            <div class="card-header bg-primary text-white py-3">
-                <h3 class="h4 mb-0">💰 For Wealth, Career & Business Success</h3>
-            </div>
-            <div class="card-body">
-                <div class="row g-4">
-                    <div class="col-md-6">
-                        <h5 class="fw-bold">1. Tirupati Balaji (Andhra Pradesh)</h5>
-                        <p class="small"><strong>Why:</strong> Lord of wealth, removes poverty, grants prosperity</p>
-                        <p class="small"><strong>When:</strong> Thursday (Jupiter - wealth)</p>
-                        <p class="small mb-0"><strong>Offering:</strong> Gold/silver donation, yellow clothes, ₹1001+</p>
-                    </div>
-                    <div class="col-md-6">
-                        <h5 class="fw-bold">2. Mahalakshmi Temple, Kolhapur (Maharashtra)</h5>
-                        <p class="small"><strong>Why:</strong> Goddess of wealth, Venus energy, business success</p>
-                        <p class="small"><strong>When:</strong> Friday (Venus day)</p>
-                        <p class="small mb-0"><strong>Offering:</strong> Gold ornament, turmeric, coconut</p>
-                    </div>
-                    <div class="col-md-6">
-                        <h5 class="fw-bold">3. Sripuram Golden Temple (Vellore)</h5>
-                        <p class="small"><strong>Why:</strong> Mahalakshmi in pure gold, multiplies wealth!</p>
-                        <p class="small"><strong>When:</strong> Friday, Dhanteras, Diwali</p>
-                        <p class="small mb-0"><strong>Offering:</strong> Donate food, clothes, money</p>
-                    </div>
-                    <div class="col-md-6">
-                        <h5 class="fw-bold">4. Padmanabhaswamy Temple (Trivandrum)</h5>
-                        <p class="small"><strong>Why:</strong> Richest temple, Lord Vishnu's wealth form</p>
-                        <p class="small"><strong>When:</strong> Thursday (Jupiter)</p>
-                        <p class="small mb-0"><strong>Offering:</strong> Yellow clothes, gold, traditional dress code required</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- FOR HEALTH & PROTECTION -->
-        <div class="card shadow-lg border-0 rounded-4 mb-5" data-aos="fade-up">
-            <div class="card-header" style="background: linear-gradient(135deg, #ef4444, #dc2626); color: white;">
-                <h3 class="h4 mb-0">🛡️ For Health, Protection & Longevity</h3>
-            </div>
-            <div class="card-body">
-                <div class="row g-4">
-                    <div class="col-md-6">
-                        <h5 class="fw-bold">1. All Hanuman Temples (Nationwide)</h5>
-                        <p class="small"><strong>Why:</strong> Mars protection, accidents prevention, disease removal</p>
-                        <p class="small"><strong>When:</strong> Every Tuesday + Saturdays (Hanuman protects from Saturn)</p>
-                        <p class="small mb-0"><strong>Offering:</strong> Sindoor, red flowers, black gram, jaggery</p>
-                    </div>
-                    <div class="col-md-6">
-                        <h5 class="fw-bold">2. Dhanvantari Temple (Tamil Nadu)</h5>
-                        <p class="small"><strong>Why:</strong> God of Ayurveda, healing, medicine</p>
-                        <p class="small"><strong>When:</strong> Dhanteras, Sundays (health deity)</p>
-                        <p class="small mb-0"><strong>Offering:</strong> Medicinal herbs, neem leaves, yellow flowers</p>
-                    </div>
-                    <div class="col-md-6">
-                        <h5 class="fw-bold">3. Kaalabhairava Temples (Various)</h5>
-                        <p class="small"><strong>Why:</strong> Removes Rahu/Ketu effects, protects from diseases</p>
-                        <p class="small"><strong>When:</strong> Sundays, Ashtami (8th lunar day)</p>
-                        <p class="small mb-0"><strong>Offering:</strong> Black items, mustard oil, liquor (only for deity)</p>
-                    </div>
-                    <div class="col-md-6">
-                        <h5 class="fw-bold">4. Arasanipalai Durgai (Tamil Nadu)</h5>
-                        <p class="small"><strong>Why:</strong> Durga removes Rahu dosha, chronic diseases</p>
-                        <p class="small"><strong>When:</strong> Tuesdays, Navaratri</p>
-                        <p class="small mb-0"><strong>Offering:</strong> Red flowers, coconut, sweets</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- COMPLETE PILGRIMAGE PLAN -->
-        <h2 class="h2 fw-bold text-center mb-4 mt-5" data-aos="fade-up">📅 Your 5-Year Pilgrimage Roadmap (2025-2030)</h2>
-        <p class="text-center text-muted mb-5" data-aos="fade-up">Strategic temple visits aligned with your life goals & dasha periods</p>
-
-        <div class="card shadow-lg border-0 rounded-4 mb-5" data-aos="fade-up">
-            <div class="card-header bg-dark text-white">
-                <h4 class="mb-0"><i class="fas fa-map-marked-alt me-2"></i>Complete Pilgrimage Timeline</h4>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Year</th>
-                                <th>Temple/Place</th>
-                                <th>Purpose</th>
-                                <th>Best Month</th>
-                                <th>Budget (2 people)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="table-danger">
-                                <td><strong>2025</strong></td>
-                                <td>🔥 Tirupati Balaji</td>
-                                <td>Wife's health + Child planning</td>
-                                <td>Nov-Dec 2025</td>
-                                <td>₹40,000</td>
-                            </tr>
-                            <tr class="table-warning">
-                                <td><strong>2025</strong></td>
-                                <td>Hanuman (Local)</td>
-                                <td>Mars protection (ongoing)</td>
-                                <td>Every Tuesday</td>
-                                <td>₹500/week</td>
-                            </tr>
-                            <tr class="table-success">
-                                <td><strong>2026</strong></td>
-                                <td>Guruvayur Temple</td>
-                                <td>Santana blessing (after conception)</td>
-                                <td>March-April 2026</td>
-                                <td>₹35,000</td>
-                            </tr>
-                            <tr class="table-info">
-                                <td><strong>2026</strong></td>
-                                <td>Mahalakshmi, Kolhapur</td>
-                                <td>Business launch, wealth</td>
-                                <td>October 2026 (Diwali)</td>
-                                <td>₹25,000</td>
-                            </tr>
-                            <tr class="table-warning">
-                                <td><strong>2027</strong></td>
-                                <td>Vaishno Devi (J&K)</td>
-                                <td>First child born, thanksgiving</td>
-                                <td>May-June 2027</td>
-                                <td>₹50,000</td>
-                            </tr>
-                            <tr class="table-primary">
-                                <td><strong>2027</strong></td>
-                                <td>Kedarnath/Badrinath</td>
-                                <td>Char Dham, spiritual elevation</td>
-                                <td>June-July 2027</td>
-                                <td>₹70,000</td>
-                            </tr>
-                            <tr class="table-success">
-                                <td><strong>2028</strong></td>
-                                <td>Kashi Vishwanath (Varanasi)</td>
-                                <td>Shiva blessings, moksha</td>
-                                <td>February 2028 (Mahashivratri)</td>
-                                <td>₹30,000</td>
-                            </tr>
-                            <tr class="table-info">
-                                <td><strong>2029</strong></td>
-                                <td>Rameswaram + Kanyakumari</td>
-                                <td>South pilgrimage, 2nd child planning</td>
-                                <td>December 2029</td>
-                                <td>₹45,000</td>
-                            </tr>
-                            <tr class="table-warning">
-                                <td><strong>2030</strong></td>
-                                <td>Shirdi Sai Baba</td>
-                                <td>All wishes fulfilled</td>
-                                <td>October 2030 (Dussehra)</td>
-                                <td>₹20,000</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="alert alert-info mt-4">
-                    <h5 class="fw-bold mb-2">💰 Total Pilgrimage Budget (2025-2030)</h5>
-                    <ul class="mb-0">
-                        <li><strong>Major Temples:</strong> ₹3,00,000 (6 trips over 5 years)</li>
-                        <li><strong>Local Weekly:</strong> ₹1,30,000 (₹500/week × 260 weeks)</li>
-                        <li><strong>Accommodation/Travel:</strong> Included above</li>
-                        <li><strong>TOTAL:</strong> <strong class="text-danger">₹4,30,000 over 5 years</strong> (₹86,000/year = ₹7,166/month)</li>
-                    </ul>
-                    <p class="mb-0 mt-2"><strong>Budget Allocation:</strong> Include this in your monthly spiritual expenses!</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- GENERAL PILGRIMAGE TIPS -->
-        <div class="card shadow-lg border-0 rounded-4 mb-5" data-aos="fade-up">
-            <div class="card-header bg-info text-white">
-                <h4 class="mb-0"><i class="fas fa-lightbulb me-2"></i>Pilgrimage Best Practices</h4>
-            </div>
-            <div class="card-body">
-                <div class="row g-4">
-                    <div class="col-md-6">
-                        <h5 class="fw-bold text-success">✅ Do's</h5>
-                        <ul>
-                            <li>Go with pure intentions, clean mind</li>
-                            <li>Take bath before temple visit</li>
-                            <li>Wear clean, traditional clothes (dhoti/kurta)</li>
-                            <li>Fast before major temple visits (if possible)</li>
-                            <li>Chant respective mantras during travel</li>
-                            <li>Donate generously at temples</li>
-                            <li>Take prasad and distribute to family/friends</li>
-                            <li>Go with wife (increases blessings for family)</li>
-                            <li>Maintain celibacy night before major temples</li>
-                            <li>Book accommodations near temple</li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6">
-                        <h5 class="fw-bold text-danger">🚫 Don'ts</h5>
-                        <ul>
-                            <li>Don't go with negative thoughts</li>
-                            <li>Don't consume non-veg/alcohol before visit</li>
-                            <li>Don't wear black (except specific temples)</li>
-                            <li>Don't argue/fight during pilgrimage</li>
-                            <li>Don't use mobile phone inside temple</li>
-                            <li>Don't show off wealth/donations</li>
-                            <li>Don't step on temple threshold</li>
-                            <li>Don't waste prasad (very inauspicious)</li>
-                            <li>Don't touch deity idols (unless allowed)</li>
-                            <li>Don't go during menstruation (for women)</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- IMMEDIATE ACTION -->
-        <div class="card shadow-lg border-0 rounded-4 mb-5 border-danger" style="border-width: 3px !important;" data-aos="fade-up">
-            <div class="card-header bg-danger text-white">
-                <h4 class="mb-0"><i class="fas fa-bolt me-2"></i>🎯 IMMEDIATE ACTION PLAN</h4>
-            </div>
-            <div class="card-body">
-                <div class="row g-4">
-                    <div class="col-md-4">
-                        <h5 class="fw-bold text-danger">This Week</h5>
-                        <ul>
-                            <li>✅ Find local Hanuman temple</li>
-                            <li>✅ Visit this Tuesday</li>
-                            <li>✅ Set recurring Tuesday calendar reminder</li>
-                            <li>✅ Buy sindoor, red flowers</li>
-                        </ul>
-                    </div>
-                    <div class="col-md-4">
-                        <h5 class="fw-bold text-warning">This Month</h5>
-                        <ul>
-                            <li>✅ Book Tirupati tickets (Nov-Dec 2025)</li>
-                            <li>✅ Book darshan online</li>
-                            <li>✅ Book accommodation</li>
-                            <li>✅ Plan 3-day trip with wife</li>
-                        </ul>
-                    </div>
-                    <div class="col-md-4">
-                        <h5 class="fw-bold text-success">This Year</h5>
-                        <ul>
-                            <li>✅ Complete Tirupati trip</li>
-                            <li>✅ Maintain Tuesday Hanuman routine</li>
-                            <li>✅ Save for 2026 trips</li>
-                            <li>✅ Research other temples</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="alert alert-danger mt-4 mb-0">
-                    <h5 class="fw-bold mb-2">🔥 TOP PRIORITY:</h5>
-                    <ol class="mb-0">
-                        <li><strong>Tirupati Balaji:</strong> BOOK THIS MONTH! Before your 2026 child conception plan!</li>
-                        <li><strong>Local Hanuman:</strong> START THIS TUESDAY! Non-negotiable for Mars protection!</li>
-                        <li><strong>Budget:</strong> Allocate ₹7,200/month for pilgrimage savings</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-
-        <div class="alert alert-success text-center" data-aos="fade-up">
-            <h4 class="fw-bold mb-2">🙏 May Your Spiritual Journey Bring Infinite Blessings!</h4>
-            <p class="mb-0">These sacred places hold immense power to transform your life. Visit with devotion, and you shall receive divine grace! 🕉️</p>
-        </div>
+        <!-- AI-Generated Content Container -->
+        <div id="ai-pilgrimage-content" style="display: none;"></div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init({ duration: 1000, once: true });</script>
     <script>
-        document.addEventListener("DOMContentLoaded", async function() {
+        document.addEventListener('DOMContentLoaded', async function() {
             await PageInit.init();
+            PageInit.updatePageTitle('Pilgrimage');
+            
+            const token = localStorage.getItem('token');
+            if (!token) {
+                window.location.href = '../login.html';
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_URL}/blueprint/page/pilgrimage`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+
+                if (response.status === 404) {
+                    document.getElementById('loading-state').style.display = 'none';
+                    document.getElementById('not-generated-state').style.display = 'block';
+                } else if (!response.ok) {
+                    throw new Error('Failed to load content');
+                } else {
+                    const data = await response.json();
+                    document.getElementById('loading-state').style.display = 'none';
+                    const contentContainer = document.getElementById('ai-pilgrimage-content');
+                    contentContainer.style.display = 'block';
+                    AIContentRenderer.renderContent(contentContainer, data.content);
+                }
+            } catch (error) {
+                console.error('Error loading AI content:', error);
+                document.getElementById('loading-state').style.display = 'none';
+                document.getElementById('not-generated-state').style.display = 'block';
+            }
+            
             AOS.init({ duration: 1000, once: true });
         });
     </script>
 </body>
 </html>
-
