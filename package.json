@@ -1,0 +1,13 @@
+{
+  "name": "life-info-tracker",
+  "version": "1.0.0",
+  "description": "Multi-user life tracking application",
+  "scripts": {
+    "install": "cd backend && npm install",
+    "start": "cd backend && npm start"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
+
